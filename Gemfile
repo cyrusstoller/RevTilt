@@ -22,8 +22,10 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
-  gem "zurb-foundation", "~> 4.1.2"
+  gem 'uglifier', '~> 1.2.3'
+  
+  gem 'bootstrap-sass', '~> 2.2.1.1'
+  gem 'compass'
 end
 
 group :development, :test do
@@ -34,6 +36,10 @@ group :development, :test do
   
   gem "guard-spork", "~> 1.4.3"
   gem "spork", "~> 0.9.2"
+end
+
+group :development do
+  gem "twitter-bootstrap-rails", "2.2.0"
 end
 
 gem 'jquery-rails'
