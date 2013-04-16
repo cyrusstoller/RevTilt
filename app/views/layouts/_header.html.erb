@@ -1,0 +1,15 @@
+<div class="masthead">
+  <div class="pull-right auth_links">
+    <% if user_signed_in? %>
+      <span class="muted">Hi <%= link_to (current_user.username || current_user.email), edit_user_registration_path, :class => "muted" %>! &nbsp; | &nbsp;</span>
+      <span class="muted">for autism &nbsp; | &nbsp;</span>
+      <%= link_to "sign out", destroy_user_session_path, :method => :delete, :class => "muted" %>
+    <% else %>
+      <%= link_to "sign in", new_user_session_path, :class => "muted" %>
+    <% end %>
+  </div>
+  
+  <%= link_to "/" do %>
+    logo
+  <% end %>
+</div>
