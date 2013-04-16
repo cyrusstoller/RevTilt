@@ -1,0 +1,37 @@
+<h2>Sign in</h2>
+<br />
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form-vertical' }) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  
+  <div class="control-group">
+    <%= f.label :login, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :login, :class => 'login_field' %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :password, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.password_field :password, :class => 'password_field' %>
+    </div>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="control-group">
+      <div class="controls">
+        <label class="checkbox">
+          <%= f.check_box :remember_me %>
+          Remember me
+        </label>
+      </div>
+    </div>  
+  <% end -%>
+
+  <div>
+    <%= f.submit "Sign in", :class => 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
