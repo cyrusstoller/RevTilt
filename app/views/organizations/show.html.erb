@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @organization.name %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @organization.url %>
+</p>
+
+<p>
+  <b>Url type:</b>
+  <%= @organization.url_type %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @organization.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @organization.longitude %>
+</p>
+
+
+<%= link_to 'Edit', edit_organization_path(@organization) %> |
+<%= link_to 'Back', organizations_path %>

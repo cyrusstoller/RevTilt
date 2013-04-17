@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130416210931) do
+ActiveRecord::Schema.define(:version => 20130417181129) do
+
+  create_table "organizations", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "url_type"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "organizations", ["latitude"], :name => "index_organizations_on_latitude"
+  add_index "organizations", ["longitude"], :name => "index_organizations_on_longitude"
+  add_index "organizations", ["name"], :name => "index_organizations_on_name"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
