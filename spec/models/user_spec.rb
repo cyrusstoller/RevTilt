@@ -23,5 +23,17 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "validations" do
+    it "should be valid" do
+      FactoryGirl.build(:user).should be_valid
+    end
+    
+    it "should not be valid without an email" do
+      FactoryGirl.build(:user, :email => nil).should_not be_valid
+    end
+    
+    it "should not be valid without a username" do
+      FactoryGirl.build(:user, :username => nil).should_not be_valid
+    end
+  end
 end
