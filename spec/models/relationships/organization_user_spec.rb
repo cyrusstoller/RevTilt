@@ -26,4 +26,14 @@ describe Relationships::OrganizationUser do
       FactoryGirl.build(:relationships_organization_user, :user_id => nil).should_not be_valid
     end
   end
+  
+  describe "database relationships" do
+    it "should respond_to :organization" do
+      FactoryGirl.build(:relationships_organization_user).should respond_to(:organization)
+    end
+    
+    it "should respond_to :user" do
+      FactoryGirl.build(:relationships_organization_user).should respond_to(:user)
+    end
+  end
 end
