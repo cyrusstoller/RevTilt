@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
   validates_presence_of :username
   validates_uniqueness_of :username, :case_sensitive => false
   
+  # Database Relationships
+  has_many :organization_user_relationships, :class_name => "Relationships::OrganizationUser", :foreign_key => "user_id"
+  has_many :favorite_organizations, :through => :organization_user_relationships, :source => :organization
+  
   protected
   
   # Allowing for devise to use either the username or email as the authentication key

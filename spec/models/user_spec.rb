@@ -36,4 +36,14 @@ describe User do
       FactoryGirl.build(:user, :username => nil).should_not be_valid
     end
   end
+  
+  describe "database relationships" do
+    it "should respond to organization_user_relationships" do
+      FactoryGirl.build(:user).should respond_to(:organization_user_relationships)
+    end
+    
+    it "should respond to favorite_organizations" do
+      FactoryGirl.build(:user).should respond_to(:favorite_organizations)
+    end
+  end
 end
