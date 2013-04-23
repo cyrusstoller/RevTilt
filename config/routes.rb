@@ -1,7 +1,11 @@
 RevTilt::Application.routes.draw do
-  resources :organizations
+  root :to => "organizations#index"
+  
   devise_for :users
+  
   get "/about" => "pages#about"
+  
+  resources :organizations
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
