@@ -10,12 +10,12 @@
 
   <div class="container">
     <%= render "layouts/header" %>
-    <%= render "shared/flash_messages", :flash => flash %>
   </div>
   
   <%= yield :unbounded %>
   
   <div class="container">
+    <%= render "shared/flash_messages", :flash => flash %>
     <%= yield %>
   </div>
 </body>
