@@ -42,6 +42,21 @@ class User < ActiveRecord::Base
   has_many :organization_user_relationships, :class_name => "Relationships::OrganizationUser", :foreign_key => "user_id"
   has_many :favorite_organizations, :through => :organization_user_relationships, :source => :organization
   
+  # Instance Methods
+  def favorite!(organization)
+    self.favorite_organizations += [organization]
+    return organization
+  end
+  
+  def unfavorite!(organization)
+    self.favorite_organizations -= [organization]
+    return organization
+  end
+  
+  def favorited?(organization)
+    favorite_organizations.include?(organization)
+  end
+  
   protected
   
   # Allowing for devise to use either the username or email as the authentication key

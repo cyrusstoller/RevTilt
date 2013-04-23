@@ -46,4 +46,66 @@ describe User do
       FactoryGirl.build(:user).should respond_to(:favorite_organizations)
     end
   end
+  
+  describe "instance methods" do
+    describe "favorite organizations" do
+      describe "method existance" do
+        it "should respond to favorite!" do
+          FactoryGirl.build(:user).should respond_to(:favorite!)
+        end
+
+        it "should respond to unfavorite!" do
+          FactoryGirl.build(:user).should respond_to(:unfavorite!)
+        end
+
+        it "should respond to favorited?" do
+          FactoryGirl.build(:user).should respond_to(:favorited?)
+        end
+      end
+
+      describe "relationship changes" do
+        before(:each) do
+          @user = FactoryGirl.create(:user)
+          @organization = FactoryGirl.create(:organization)
+        end
+        
+        it "should create a Relationships::OrganizationUser" do
+          expect {
+            @user.favorite!(@organization)
+          }.to change(Relationships::OrganizationUser, :count).by(1)
+        end
+        
+        it "should not create a Relationships::OrganizationUser" do
+          @user.favorite!(@organization)
+
+          expect {
+            @user.favorite!(@organization)
+          }.to_not change(Relationships::OrganizationUser, :count)
+        end
+        
+        it "should destroy a Relationships::OrganizationUser" do
+          @user.favorite!(@organization)
+          
+          expect {
+            @user.unfavorite!(@organization)
+          }.to change(Relationships::OrganizationUser, :count).by(-1)
+        end
+        
+        it "should not destroy a Relationships::OrganizationUser" do
+          expect {
+            @user.unfavorite!(@organization)
+          }.to_not change(Relationships::OrganizationUser, :count)
+        end
+        
+        it "should return true if the user has favorited an @organization" do
+          @user.favorite!(@organization)
+          @user.favorited?(@organization).should be_true
+        end
+        
+        it "should return false if the user has not favorited an @organization" do
+          @user.favorited?(@organization).should be_false
+        end
+      end
+    end
+  end
 end
