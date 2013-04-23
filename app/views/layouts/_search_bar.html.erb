@@ -1,0 +1,17 @@
+<div class="add-small-top header_bar">
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="welcome-question">
+        What are you looking for?
+      </div>
+    </div>
+    
+    <div class="span5">
+      <%= form_tag root_path, :method => :get, :class => "form-inline" do %>
+      <%= select_tag "category", options_for_select([["all types", 0]]), :class => "span5" %>
+      <%= text_field_tag "zipcode", params[:zipcode], :placeholder => "Enter Zipcode", :class => "span4" %>
+      <%= link_to "Search", root_path, :class => "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
