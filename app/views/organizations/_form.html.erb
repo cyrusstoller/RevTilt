@@ -6,6 +6,12 @@
     </div>
   </div>
   <div class="control-group">
+    <%= f.label :category_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :category_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
     <%= f.label :url, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :url, :class => 'text_field' %>
