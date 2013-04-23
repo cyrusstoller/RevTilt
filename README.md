@@ -1,4 +1,4 @@
-# Nuanced Reviews
+# RevTilt
 
 ## Goal
 
@@ -10,10 +10,10 @@ Your child has cut his/her own hair and you need to find a barber to give your c
 Searching Yelp for good salons or barber shops won't give you sufficient information.
 You want to find a barber who will be accommodating of your child's special needs.
 
-This is where *Nuanced Reviews* comes in.
+This is where *RevTilt* comes in.
 
 As a parent you can easily find businesses that are autism-friendly. 
-*Nuanced Reviews* is a platform to share and find reviews specific to your family member's special needs. 
+*RevTilt* is a platform to share and find reviews specific to your family member's special needs. 
 These reviews are provided along side existing _mainstream_ reviews on sites like Yelp.
 
 For now this project is devoted entirely to autism, but our goal is to accommodate other special needs as well.

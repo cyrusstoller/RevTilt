@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-NuancedReviews::Application.load_tasks
+RevTilt::Application.load_tasks

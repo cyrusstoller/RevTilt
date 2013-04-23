@@ -1,4 +1,5 @@
-NuancedReviews::Application.routes.draw do
+RevTilt::Application.routes.draw do
+  resources :organizations
   devise_for :users
   get "/about" => "pages#about"
 

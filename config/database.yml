@@ -15,7 +15,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: NuancedReviews_development
+  database: RevTilt_development
   pool: 5
   username:
   password:
@@ -41,7 +41,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: NuancedReviews_test
+  database: RevTilt_test
   pool: 5
   username:
   password:
@@ -49,7 +49,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: NuancedReviews_production
+  database: RevTilt_production
   pool: 5
   username:
   password:
