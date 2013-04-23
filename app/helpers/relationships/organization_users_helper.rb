@@ -1,0 +1,2 @@
+module Relationships::OrganizationUsersHelper
+end
