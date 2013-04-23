@@ -7,5 +7,6 @@ FactoryGirl.define do
     url_type "MyString"
     latitude 1.5
     longitude 1.5
+    category_id 1
   end
 end

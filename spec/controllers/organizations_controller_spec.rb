@@ -25,7 +25,7 @@ describe OrganizationsController do
   # Organization. As you add validations to Organization, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "name" => "MyString" }
+    { "name" => "MyString", "url" => "http://foobar.com", "category_id" => "1" }
   end
 
   # This should return the minimal set of values that should be in the session
