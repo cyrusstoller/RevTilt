@@ -9,9 +9,13 @@
   <span class="muted">written: <%= review.created_at.strftime("%b %d, %Y") %></span>
 
   &nbsp;
-  <%= link_to "edit", edit_review_path(review), :class => "muted" %>
+  <% if can? :edit, review %>
+    <%= link_to "edit", edit_review_path(review), :class => "muted" %>
+  <% end %>
   &nbsp;
-  <%= link_to "delete", review_path(review), :class => "muted", :method => :delete, :confirm => "Are you sure?" %>
+  <% if can? :destroy, review %>
+    <%= link_to "delete", review_path(review), :class => "muted", :method => :delete, :confirm => "Are you sure?" %>
+  <% end %>
   
   <br /><br />
   <div class="well">
