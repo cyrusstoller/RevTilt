@@ -76,6 +76,9 @@ gem "url_formatter", "~> 0.0.1"
 gem "will_paginate", "~> 3.0"
 gem "bootstrap-will_paginate", "~> 0.0.9"
 
+# geolocation
+gem "geocoder"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

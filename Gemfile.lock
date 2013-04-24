@@ -87,6 +87,7 @@ GEM
       thor (>= 0.13.6)
     formatador (0.2.4)
     fssm (0.2.10)
+    geocoder (1.1.8)
     growl (1.0.3)
     guard (1.7.0)
       formatador (>= 0.2.4)
@@ -227,6 +228,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.2.1)
   faker
   foreman
+  geocoder
   growl (~> 1.0.3)
   guard-rspec (~> 2.3.3)
   guard-spork (~> 1.4.3)
