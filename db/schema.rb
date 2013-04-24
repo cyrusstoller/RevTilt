@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130424193539) do
+ActiveRecord::Schema.define(:version => 20130424214510) do
 
   create_table "organizations", :force => true do |t|
     t.string   "name"
@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(:version => 20130424193539) do
     t.string   "url_type"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "category_id"
-    t.string   "display_location"
+    t.string   "address"
   end
 
   add_index "organizations", ["category_id"], :name => "index_organizations_on_category_id"
