@@ -14,7 +14,11 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1.json
   def show
     @organization = Organization.find(params[:id])
+    @reviews = @organization.reviews
 
+    @review = Review.new
+    @review.organization = @organization
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @organization }
