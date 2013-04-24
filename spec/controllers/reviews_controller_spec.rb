@@ -25,7 +25,7 @@ describe ReviewsController do
   # Review. As you add validations to Review, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "rating" => "1", "content" => "blah", "organization_id" => "3", "condition_id" => "1" }
+    { "rating" => "1", "content" => "blah", "condition_id" => "1" }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -141,6 +141,13 @@ describe ReviewsController do
           put :update, {:id => review.to_param, :review => valid_attributes}
           response.should redirect_to(review)
         end
+        
+        it "should redirect to the organization" do
+          organization = FactoryGirl.create(:organization)
+          review = FactoryGirl.create(:review, :organization => organization)
+          put :update, {:id => review.to_param, :review => valid_attributes}
+          response.should redirect_to(organization)
+        end
       end
 
       describe "with invalid params" do
@@ -170,10 +177,17 @@ describe ReviewsController do
         }.to change(Review, :count).by(-1)
       end
 
-      it "redirects to the reviews list" do
+      it "redirects to the organization" do
+        organization = FactoryGirl.create(:organization)
+        review = FactoryGirl.create(:review, :organization => organization)
+        delete :destroy, {:id => review.to_param}
+        response.should redirect_to(organization)
+      end
+      
+      it "redirects to the root_path" do
         review = FactoryGirl.create(:review)
         delete :destroy, {:id => review.to_param}
-        response.should redirect_to(reviews_url)
+        response.should redirect_to(root_path)
       end
     end
   end
