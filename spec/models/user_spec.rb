@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20130416210931
+# Schema version: 20130424193539
 #
 # Table name: users
 #
@@ -18,6 +18,7 @@
 #  username               :string(255)      default(""), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  admin                  :boolean          default(FALSE)
 #
 
 require 'spec_helper'
