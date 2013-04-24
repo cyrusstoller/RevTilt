@@ -43,6 +43,8 @@
   </tbody>
 </table>
 
+<%= will_paginate @reviews, :class => "pagination pagination-centered" %>
+
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_review_path,
             :class => 'btn btn-primary' %>
