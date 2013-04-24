@@ -38,6 +38,8 @@
 
 <%= render @reviews %>
 
+<%= will_paginate @reviews, :class => "pagination pagination-centered" %>
+
 <div class="review_form">
   <% if signed_in? %>
     <%= render "reviews/inline_form", :redirect => organization_path(@organization) %>

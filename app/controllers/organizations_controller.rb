@@ -20,7 +20,7 @@ class OrganizationsController < ApplicationController
     
     authorize! :show, @organization
     
-    @reviews = @organization.reviews
+    @reviews = @organization.reviews.paginate(:page => params[:page])
 
     @review = Review.new
     @review.organization = @organization
