@@ -1,4 +1,5 @@
 <%= form_for @organization, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= render "shared/error_messages", :object => f.object %>
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">

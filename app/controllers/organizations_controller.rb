@@ -21,6 +21,8 @@ class OrganizationsController < ApplicationController
     @review.organization = @organization
     @review.condition_id = 0
     
+    @title = @organization.name
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @organization }
@@ -32,6 +34,8 @@ class OrganizationsController < ApplicationController
   def new
     @organization = Organization.new
 
+    @title = new_action_title
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @organization }
@@ -41,6 +45,8 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1/edit
   def edit
     @organization = Organization.find(params[:id])
+    
+    @title = edit_action_title
   end
 
   # POST /organizations
@@ -53,7 +59,7 @@ class OrganizationsController < ApplicationController
         format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
         format.json { render json: @organization, status: :created, location: @organization }
       else
-        format.html { render action: "new" }
+        format.html { @title = new_action_title; render action: "new" }
         format.json { render json: @organization.errors, status: :unprocessable_entity }
       end
     end
@@ -69,7 +75,7 @@ class OrganizationsController < ApplicationController
         format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { @title = edit_action_title; render action: "edit" }
         format.json { render json: @organization.errors, status: :unprocessable_entity }
       end
     end
@@ -85,5 +91,15 @@ class OrganizationsController < ApplicationController
       format.html { redirect_to organizations_url }
       format.json { head :no_content }
     end
+  end
+  
+  protected
+  
+  def new_action_title
+    "Share an Organization"
+  end
+  
+  def edit_action_title
+    "Edit Organization"
   end
 end
