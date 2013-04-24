@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
   
   def favorites
-    @organizations = current_user.favorite_organizations
+    @organizations = current_user.favorite_organizations.paginate(:page => params[:page])
     if @organizations.count == 0
       redirect_to root_path, :notice => "You haven't selected any favorites yet"
     end
