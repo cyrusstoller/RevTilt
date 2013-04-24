@@ -25,3 +25,26 @@
 .add-small-top{
 	margin-top: 7px;
 }
+
+.footer{
+	margin-bottom:20px;
+}
+
+$subtle_grey:#999;
+$subtle_grey_hover:#555;
+
+#copyright{
+	color: $subtle_grey;
+}
+
+ul.horizontal{
+	list-style-type: none;
+	margin:0;
+	li{
+		display: inline;
+		padding-left: 10px;
+		&:first-child{
+			padding-left:0px;
+		}
+	}
+}

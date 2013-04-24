@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="footer">
+    <ul class="horizontal">
+      <li><%= link_to "About", about_path %></li>
+      <% unless Rails.env.production? %>
+        <li><span class="label label-success"><%= Rails.env %></span></li>
+      <% end %>
+      <li><span id="copyright">Copyright © 2013</span></li>
+    </ul>
+  </div>
+</div>
