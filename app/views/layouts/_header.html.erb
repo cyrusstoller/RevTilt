@@ -9,6 +9,8 @@
     <%= link_to "About RevTilt", about_path, :class => "muted" %><span class="muted"> &nbsp; | &nbsp;</span>
     <span class="muted">Autism &nbsp; | &nbsp;</span>
     <% if user_signed_in? %>
+      <%= link_to "Favorites", nil, :class => "muted" %>
+      <span class="muted">&nbsp; | &nbsp;</span>
       <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => "muted" %>
     <% else %>
       <%= link_to "Sign In", new_user_session_path, :class => "muted" %>
