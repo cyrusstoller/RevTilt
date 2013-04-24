@@ -2,7 +2,8 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.all
+    @organizations = Organization.paginate(:page => params[:page])
+    @organizations = @organizations.where(:category_id => params[:category]) unless params[:category].blank?
 
     respond_to do |format|
       format.html # index.html.erb

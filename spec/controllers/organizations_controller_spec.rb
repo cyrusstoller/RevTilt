@@ -41,6 +41,12 @@ describe OrganizationsController do
       get :index, {}
       assigns(:organizations).should eq([organization])
     end
+    
+    it "should not show the organization because of the filter" do
+      organization = FactoryGirl.create(:organization)
+      get :index, { :category => organization.category_id + 1 }
+      assigns(:organizations).should eq([])
+    end
   end
 
   describe "GET show" do
