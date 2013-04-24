@@ -34,6 +34,8 @@ class ReviewsController < ApplicationController
 
     authorize! :new, @review
 
+    @title = new_action_title
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @review }
@@ -45,6 +47,8 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     
     authorize! :edit, @review
+    
+    @title = edit_action_title
   end
 
   # POST /reviews
@@ -60,7 +64,7 @@ class ReviewsController < ApplicationController
         format.html { redirect_to @review.organization || root_path, notice: 'Review was successfully created.' }
         format.json { render json: @review, status: :created, location: @review }
       else
-        format.html { render action: "new" }
+        format.html { @title = new_action_title; render action: "new" }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
@@ -78,7 +82,7 @@ class ReviewsController < ApplicationController
         format.html { redirect_to @review.organization || @review, notice: 'Review was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { @title = edit_action_title; render action: "edit" }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
@@ -97,5 +101,15 @@ class ReviewsController < ApplicationController
       format.html { redirect_to @review.organization || root_path }
       format.json { head :no_content }
     end
+  end
+  
+  protected
+  
+  def new_action_title
+    "New Review"
+  end
+  
+  def edit_action_title
+    "Edit Review"
   end
 end
