@@ -6,6 +6,7 @@ RevTilt::Application.routes.draw do
   get "/about" => "pages#about"
   
   resources :organizations
+  resources :reviews
   
   namespace :relationships do
     resources :organization_users do
