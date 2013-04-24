@@ -53,7 +53,7 @@ describe ReviewsController do
 
   describe "CRUD actions" do
     before(:each) do
-      @user = FactoryGirl.create(:user)
+      @user = FactoryGirl.create(:user, :admin => true)
       sign_in @user
     end
     

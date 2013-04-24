@@ -4,7 +4,9 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    authorize! :index, Review
+    
+    @reviews = Review.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,6 +19,8 @@ class ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
 
+    authorize! :show, @review
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @review }
@@ -28,6 +32,8 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
 
+    authorize! :new, @review
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @review }
@@ -37,6 +43,8 @@ class ReviewsController < ApplicationController
   # GET /reviews/1/edit
   def edit
     @review = Review.find(params[:id])
+    
+    authorize! :edit, @review
   end
 
   # POST /reviews
@@ -44,6 +52,8 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(params[:review])
     @review.user = current_user
+    
+    authorize! :create, @review
     
     respond_to do |format|
       if @review.save
@@ -61,6 +71,8 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
 
+    authorize! :update, @review
+
     respond_to do |format|
       if @review.update_attributes(params[:review])
         format.html { redirect_to @review.organization || @review, notice: 'Review was successfully updated.' }
@@ -76,6 +88,9 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1.json
   def destroy
     @review = Review.find(params[:id])
+    
+    authorize! :destroy, @review
+    
     @review.destroy
 
     respond_to do |format|
