@@ -4,12 +4,16 @@
       <tr>
         <td class="span6">
           <span class="label"><%= organization.category_text %></span>&nbsp;
-          <%= link_to organization.name, organization %>
+          <%= link_to organization.name, organization %> <span class="muted one-line"><%= organization.display_location %></span>
           <% if can? :edit, organization %>
-            ( <%= link_to "edit", edit_organization_path(organization) %> )
+            <span class="one-line muted">
+              | <%= link_to "edit", edit_organization_path(organization), :class => "muted" %>
+            </span>
           <% end %>
           <% if can? :destroy, organization %>
-            ( <%= link_to "destroy", organization_path(organization), :method => :delete, :confirm => "Are you sure?" %> )
+            <span class="one-line muted">
+              | <%= link_to "destroy", organization_path(organization), :method => :delete, :confirm => "Are you sure?", :class => "muted" %>
+            </span>
           <% end %>
         </td>
         <td>
