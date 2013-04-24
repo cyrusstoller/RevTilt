@@ -1,7 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  sequence(:url) {|n| "http://www.example.com/#{n}" }
+  sequence(:url) {|n| "http://www.yelp.com/#{n}" }
   
   factory :organization do
     name "MyString"

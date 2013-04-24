@@ -16,6 +16,8 @@
 #  display_location :string(255)
 #
 
+require "open-uri"
+
 class Organization < ActiveRecord::Base
   attr_accessible :address, :category_id, :latitude, :longitude, :name, :url
 
@@ -32,8 +34,8 @@ class Organization < ActiveRecord::Base
   has_many :users, :through => :organization_user_relationships, :source => :user
   
   # URL cleaning
-  format_url :url
   before_validation :clean_url
+  format_url :url
   
   # Geocoding
   geocoded_by :address
@@ -66,6 +68,15 @@ class Organization < ActiveRecord::Base
   private
   
   def clean_url
-    
+    unless url.blank?
+      components = URI.split(url)
+      
+      res = ""
+      if components[2] =~ /yelp\.com/
+        res << "www.yelp.com"
+        res << components[5]
+      end
+      self.url = res
+    end
   end
 end
