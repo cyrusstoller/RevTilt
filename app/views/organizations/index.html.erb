@@ -1,9 +1,17 @@
-<%- model_class = Organization -%>
-<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<div class="add-small-top pull-right">
+  <%= link_to "Share a new organization",
+              new_organization_path,
+              :class => 'btn btn-primary' %>
+</div>
+ 
+<h1>Organizations</h1>
 <br />
 
-<%= render "table", :organizations => @organizations %>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_organization_path,
-            :class => 'btn btn-primary' %>
+<% if @organizations.blank? %>
+  <div class="alert alert-box alert-error">
+    <span class="label label-important">Uh oh!</span>
+    There are no organizations that meet these criteria yet! Be the first to contribute. Click <%= link_to "here", new_organization_path %>.
+  </div>
+<% else %>
+  <%= render "table", :organizations => @organizations %>
+<% end %>

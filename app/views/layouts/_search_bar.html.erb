@@ -8,9 +8,9 @@
     
     <div class="span5">
       <%= form_tag root_path, :method => :get, :class => "form-inline" do %>
-      <%= select_tag "category", options_for_select([["all types", 0]] + Organization.category_options), :class => "span5" %>
-      <%= text_field_tag "zipcode", params[:zipcode], :placeholder => "Enter Zipcode", :class => "span4" %>
-      <%= link_to "Search", root_path, :class => "btn btn-primary" %>
+        <%= select_tag "category", options_for_select([["all types", 0]] + Organization.category_options, params[:category]), :class => "span5" %>
+        <%= text_field_tag "zipcode", params[:zipcode], :placeholder => "Enter Zipcode", :class => "span4" %>
+        <%= submit_tag "Search", :class => "btn btn-primary" %>
       <% end %>
     </div>
   </div>
