@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
+  
   # GET /reviews
   # GET /reviews.json
   def index
@@ -41,7 +43,8 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(params[:review])
-
+    @review.user = current_user
+    
     respond_to do |format|
       if @review.save
         format.html { redirect_to @review, notice: 'Review was successfully created.' }

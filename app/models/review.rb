@@ -14,5 +14,16 @@
 #
 
 class Review < ActiveRecord::Base
-  attr_accessible :condition_id, :content, :organization_id, :rating, :user_id
+  attr_accessible :condition_id, :content, :organization_id, :rating
+  
+  # Validations
+  validates_presence_of :condition_id
+  validates_presence_of :content
+  validates_presence_of :organization_id
+  validates_presence_of :rating
+  validates_presence_of :user_id
+  
+  # Database Relationships
+  belongs_to :user, :class_name => "User", :foreign_key => "user_id"
+  belongs_to :organization, :class_name => "Organization", :foreign_key => "organization_id"
 end
