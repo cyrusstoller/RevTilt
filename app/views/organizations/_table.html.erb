@@ -5,8 +5,12 @@
         <td class="span6">
           <span class="label"><%= organization.category_text %></span>&nbsp;
           <%= link_to organization.name, organization %>
-          ( <%= link_to "edit", edit_organization_path(organization) %> )
-          ( <%= link_to "destroy", organization_path(organization), :method => :delete, :confirm => "Are you sure?" %> )
+          <% if can? :edit, organization %>
+            ( <%= link_to "edit", edit_organization_path(organization) %> )
+          <% end %>
+          <% if can? :destroy, organization %>
+            ( <%= link_to "destroy", organization_path(organization), :method => :delete, :confirm => "Are you sure?" %> )
+          <% end %>
         </td>
         <td>
           <%= content_tag :div, :class => "stars inline", "data-score" => organization.reviews.average(:rating), "data-readonly" => true do end %>

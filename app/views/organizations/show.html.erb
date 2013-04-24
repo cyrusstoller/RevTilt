@@ -17,11 +17,15 @@
   </h1>
 
   <%= link_to "See Full Review", @organization.url, :target => "_blank" %>
-  | <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_organization_path(@organization) %>
-  | <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              organization_path(@organization),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
+  <% if can? :edit, @organization %>
+    | <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_organization_path(@organization) %>
+  <% end %>
+  <% if can? :destroy, @organization %>
+    | <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                organization_path(@organization),
+                :method => 'delete',
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
+  <% end %>
 <% end %>
 
 <%= content_for :unbounded do %>
