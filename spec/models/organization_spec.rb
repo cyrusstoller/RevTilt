@@ -41,6 +41,10 @@ describe Organization do
       FactoryGirl.build(:organization).should respond_to(:organization_user_relationships)
     end
     
+    it "should respond to reviews" do
+      FactoryGirl.build(:organization).should respond_to(:reviews)
+    end
+    
     it "should respond to users" do
       FactoryGirl.build(:organization).should respond_to(:users)
     end
