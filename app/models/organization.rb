@@ -24,7 +24,8 @@ class Organization < ActiveRecord::Base
   validates_presence_of :url
 
   # Database Relationships
-  has_many :organization_user_relationships, :class_name => "Relationships::OrganizationUser", :foreign_key => "organization_id"
+  has_many :organization_user_relationships, :class_name => "Relationships::OrganizationUser", :foreign_key => "organization_id", 
+           :dependent => :destroy
   has_many :reviews, :class_name => "Review", :foreign_key => "organization_id"
   has_many :users, :through => :organization_user_relationships, :source => :user
   

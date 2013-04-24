@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username, :case_sensitive => false
   
   # Database Relationships
-  has_many :organization_user_relationships, :class_name => "Relationships::OrganizationUser", :foreign_key => "user_id"
+  has_many :organization_user_relationships, :class_name => "Relationships::OrganizationUser", :foreign_key => "user_id", :dependent => :destroy
   has_many :favorite_organizations, :through => :organization_user_relationships, :source => :organization
   
   # Instance Methods
