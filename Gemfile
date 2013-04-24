@@ -72,6 +72,10 @@ gem "cancan", "~> 1.6.8"
 
 gem "url_formatter", "~> 0.0.1"
 
+# pagination
+gem "will_paginate", "~> 3.0"
+gem "bootstrap-will_paginate", "~> 0.0.9"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
