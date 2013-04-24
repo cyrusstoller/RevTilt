@@ -13,4 +13,13 @@ module ApplicationHelper
       type.to_s
     end
   end
+  
+  def title
+    base_title = "RevTilt"
+    if @title.blank?
+      base_title
+    else
+      "#{base_title} | #{@title}"
+    end
+  end
 end

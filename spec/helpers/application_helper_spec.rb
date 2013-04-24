@@ -32,4 +32,18 @@ describe ApplicationHelper do
       helper.bootstrap_alert_type(:success).should == "success"
     end
   end
+  
+  describe "title_helper" do
+    it "should return 'Hazelnut'" do
+      @title = nil
+      helper.title.should == "RevTilt"
+      @title = ""
+      helper.title.should == "RevTilt"
+    end
+    
+    it "should return 'RevTilt | Home'" do
+      @title = "Home"
+      helper.title.should == "RevTilt | Home"
+    end
+  end
 end

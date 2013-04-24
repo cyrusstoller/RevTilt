@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   before_filter :authenticate_user!, :only => [:favorites]
   
   def about
+    @title = "About"
   end
   
   def favorites
