@@ -10,6 +10,9 @@ class Ability
     #   can :manage, :all
     # end
     
+    can [:show, :index], Organization
+    can :create, Organization unless user.new_record?
+    
     can [:show, :index], Review
     can :manage, Review, :user_id => user.id unless user.new_record?
     
