@@ -2,6 +2,8 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
+    authorize! :index, Organization
+    
     @organizations = Organization.paginate(:page => params[:page])
     @organizations = @organizations.where(:category_id => params[:category]) unless params[:category].blank?
 
@@ -15,6 +17,9 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1.json
   def show
     @organization = Organization.find(params[:id])
+    
+    authorize! :show, @organization
+    
     @reviews = @organization.reviews
 
     @review = Review.new
@@ -34,6 +39,8 @@ class OrganizationsController < ApplicationController
   def new
     @organization = Organization.new
 
+    authorize! :new, @organization
+
     @title = new_action_title
 
     respond_to do |format|
@@ -45,6 +52,8 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1/edit
   def edit
     @organization = Organization.find(params[:id])
+
+    authorize! :edit, @organization
     
     @title = edit_action_title
   end
@@ -53,6 +62,8 @@ class OrganizationsController < ApplicationController
   # POST /organizations.json
   def create
     @organization = Organization.new(params[:organization])
+
+    authorize! :create, @organization
 
     respond_to do |format|
       if @organization.save
@@ -70,6 +81,8 @@ class OrganizationsController < ApplicationController
   def update
     @organization = Organization.find(params[:id])
 
+    authorize! :update, @organization
+
     respond_to do |format|
       if @organization.update_attributes(params[:organization])
         format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
@@ -85,6 +98,9 @@ class OrganizationsController < ApplicationController
   # DELETE /organizations/1.json
   def destroy
     @organization = Organization.find(params[:id])
+
+    authorize! :destroy, @organization
+
     @organization.destroy
 
     respond_to do |format|
