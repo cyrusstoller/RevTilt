@@ -30,6 +30,13 @@ describe Relationships::OrganizationUsersController do
     it "routes to #destroy" do
       delete("/relationships/organization_users/1").should route_to("relationships/organization_users#destroy", :id => "1")
     end
+    
+    it "routes to #favorite" do
+      post("/relationships/organization_users/favorite").should route_to("relationships/organization_users#favorite")
+    end
 
+    it "routes to #unfavorite" do
+      delete("/relationships/organization_users/unfavorite").should route_to("relationships/organization_users#unfavorite")
+    end
   end
 end

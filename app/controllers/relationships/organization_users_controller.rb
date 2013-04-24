@@ -1,4 +1,6 @@
 class Relationships::OrganizationUsersController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /relationships/organization_users
   # GET /relationships/organization_users.json
   def index
@@ -78,6 +80,34 @@ class Relationships::OrganizationUsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to relationships_organization_users_url }
       format.json { head :no_content }
+    end
+  end
+  
+  # POST /relationships/organization_users/favorite
+  # POST /relationships/organization_users/favorite.js
+  # POST /relationships/organization_users/favorite.json
+  def favorite
+    @organization = Organization.find(params[:organization_id])
+    @relationships_organization_user = current_user.favorite!(@organization)
+    
+    respond_to do |format|
+      format.html { redirect_to @organization }
+      format.json { render json: @relationships_organization_user, status: :created }
+      format.js
+    end
+  end
+  
+  # DELETE /relationships/organization_users/unfavorite
+  # DELETE /relationships/organization_users/unfavorite.js
+  # DELETE /relationships/organization_users/unfavorite.json
+  def unfavorite
+    @organization = Organization.find(params[:organization_id])
+    @relationships_organization_user = current_user.unfavorite!(@organization)
+    
+    respond_to do |format|
+      format.html { redirect_to @organization }
+      format.json { render json: @relationships_organization_user, status: :created }
+      format.js
     end
   end
 end

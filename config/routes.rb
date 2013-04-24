@@ -8,7 +8,12 @@ RevTilt::Application.routes.draw do
   resources :organizations
   
   namespace :relationships do
-    resources :organization_users
+    resources :organization_users do
+      collection do
+        post :favorite
+        delete :unfavorite
+      end
+    end
   end
 
   # The priority is based upon order of creation:
