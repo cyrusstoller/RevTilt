@@ -26,9 +26,11 @@
 
 <%= content_for :unbounded do %>
   <div class="center review_iframe">
-    <%= content_tag :iframe, :id => "review_content", :src => @organization.url, :width => "1000px", :height => "300px" do end %>
+    <%= content_tag :iframe, :id => "review_content", :src => @organization.url, :width => "1024px", :height => "300px" do end %>
   </div>
 <% end %>
+
+<h3>Reviews (<%= @reviews.count %>)</h3>
 
 <%= render @reviews %>
 
