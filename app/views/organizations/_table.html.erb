@@ -1,0 +1,21 @@
+<table class="table table-hover">
+  <tbody>
+    <% organizations.each do |organization| %>
+      <tr>
+        <td class="span6">
+          <span class="label"><%= organization.category_text %></span>&nbsp;
+          <%= link_to organization.name, organization %> ( <%= link_to "review", organization.url, :target => "_blank" %> )
+          ( <%= link_to "edit", edit_organization_path(organization) %> )
+          ( <%= link_to "destroy", organization_path(organization), :method => :delete, :confirm => "Are you sure?" %> )
+        </td>
+        <td>
+          <%= content_tag :div, :class => "stars inline", "data-score" => organization.reviews.average(:rating), "data-readonly" => true do end %>
+          <span class="one-line"><%= pluralize organization.reviews.count, "Review" %></span>
+        </td>
+        <td>
+          <%= render "relationships/organization_users/favorite_form", :organization => organization %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

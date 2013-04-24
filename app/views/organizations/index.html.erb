@@ -2,42 +2,7 @@
 <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 <br />
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:url) %></th>
-      <th><%= model_class.human_attribute_name(:url_type) %></th>
-      <th><%= model_class.human_attribute_name(:latitude) %></th>
-      <th><%= model_class.human_attribute_name(:longitude) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @organizations.each do |organization| %>
-      <tr>
-        <td><%= link_to organization.id, organization_path(organization) %></td>
-        <td><%= organization.name %></td>
-        <td><%= organization.url %></td>
-        <td><%= organization.url_type %></td>
-        <td><%= organization.latitude %></td>
-        <td><%= organization.longitude %></td>
-        <td><%=l organization.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_organization_path(organization), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      organization_path(organization),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render "table", :organizations => @organizations %>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_organization_path,
