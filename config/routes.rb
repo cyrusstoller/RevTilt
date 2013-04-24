@@ -4,6 +4,7 @@ RevTilt::Application.routes.draw do
   devise_for :users
   
   get "/about" => "pages#about"
+  get "/favorites" => "pages#favorites"
   
   resources :organizations
   resources :reviews
