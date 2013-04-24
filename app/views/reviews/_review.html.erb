@@ -7,6 +7,12 @@
   </span>
   &nbsp;
   <span class="muted">written: <%= review.created_at.strftime("%b %d, %Y") %></span>
+
+  &nbsp;
+  <%= link_to "edit", edit_review_path(review), :class => "muted" %>
+  &nbsp;
+  <%= link_to "delete", review_path(review), :class => "muted", :method => :delete, :confirm => "Are you sure?" %>
+  
   <br /><br />
   <div class="well">
     <%= review.content %>
