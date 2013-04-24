@@ -63,4 +63,20 @@ describe Organization do
       organization.longitude.should == -74.0059731
     end
   end
+  
+  describe "clean_url" do
+    describe "yelp" do
+      it "should remove the url_params" do
+        organization = FactoryGirl.create(:organization, :url => "http://www.yelp.com/12?a=b")
+        organization.url_type.should == "yelp"
+        organization.url.should == "http://www.yelp.com/12"
+      end
+      
+      it "should remove the url_params without http://" do
+        organization = FactoryGirl.create(:organization, :url => "www.yelp.com/12?a=b")
+        organization.url_type.should == "yelp"
+        organization.url.should == "http://www.yelp.com/12"
+      end
+    end
+  end
 end

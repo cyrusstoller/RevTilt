@@ -24,7 +24,7 @@ class Organization < ActiveRecord::Base
   # Validations
   validates_presence_of :category_id
   validates_presence_of :name
-  validates_presence_of :url
+  validates_presence_of :url, :message => "must be a yelp URL?"
   validates_uniqueness_of :url
 
   # Database Relationships
@@ -35,7 +35,6 @@ class Organization < ActiveRecord::Base
   
   # URL cleaning
   before_validation :clean_url
-  format_url :url
   
   # Geocoding
   geocoded_by :address
@@ -69,12 +68,18 @@ class Organization < ActiveRecord::Base
   
   def clean_url
     unless url.blank?
-      components = URI.split(url)
+      query_url = self.url
+      unless query_url =~ /\Ahttps?:\/\//
+        query_url = "http://" + query_url
+      end
+      
+      components = URI.split(query_url)
       
       res = ""
       if components[2] =~ /yelp\.com/
-        res << "www.yelp.com"
+        res << "http://www.yelp.com"
         res << components[5]
+        self.url_type = "yelp"
       end
       self.url = res
     end
