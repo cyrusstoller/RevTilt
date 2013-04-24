@@ -1,18 +1,19 @@
 # == Schema Information
-# Schema version: 20130424214510
+# Schema version: 20130424221615
 #
 # Table name: organizations
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  url         :string(255)
-#  url_type    :string(255)
-#  latitude    :float
-#  longitude   :float
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  category_id :integer
-#  address     :string(255)
+#  id               :integer          not null, primary key
+#  name             :string(255)
+#  url              :string(255)
+#  url_type         :string(255)
+#  latitude         :float
+#  longitude        :float
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  category_id      :integer
+#  address          :string(255)
+#  display_location :string(255)
 #
 
 class Organization < ActiveRecord::Base
@@ -31,6 +32,13 @@ class Organization < ActiveRecord::Base
   
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
+  
+  reverse_geocoded_by :latitude, :longitude do |obj,results|
+    if geo = results.first
+      obj.display_location = [geo.city, geo.state_code, geo.postal_code].join(", ")
+    end
+  end
+  after_validation :reverse_geocode
   
   # Class Methods
   def self.category_options
