@@ -1,34 +1,32 @@
-<%= form_for @review, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @review, :html => { :class => 'form-inline' } do |f| %>
   <%= render "shared/error_messages", :object => f.object %>
-
+  
   <div class="control-group">
-    <%= f.label :rating, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :rating, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :content, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :content, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :condition_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :condition_id, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :organization_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :organization_id, :class => 'number_field' %>
+      Organization Name
+      <%= text_field_tag nil, (@review.organization.name rescue "N/A"), :disabled => "disabled" %>
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                reviews_path, :class => 'btn' %>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.text_area :content, :class => 'text_area span12', :rows => 5, :placeholder => "Write your review here" %>
+    </div>
+  </div>
+  <%= f.hidden_field :rating, :class => "rating" %>
+  
+  <%= f.hidden_field :condition_id %>
+  <%= f.hidden_field :organization_id %>
+  
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit "Leave review", :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  @review.organization || root_path, :class => 'btn' %>
+      &nbsp;
+      <%= f.label :rating, "Overall rating", :class => 'control-label' %>
+      &nbsp;
+      <div class="stars inline"></div>
+    </div>
   </div>
 <% end %>
