@@ -34,3 +34,7 @@
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
 </div>
+
+<div class="review_form">
+  <%= render "reviews/inline_form", :redirect => organization_path(@organization) %>
+</div>
