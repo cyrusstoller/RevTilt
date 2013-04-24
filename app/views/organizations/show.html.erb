@@ -35,5 +35,9 @@
 <%= render @reviews %>
 
 <div class="review_form">
-  <%= render "reviews/inline_form", :redirect => organization_path(@organization) %>
+  <% if signed_in? %>
+    <%= render "reviews/inline_form", :redirect => organization_path(@organization) %>
+  <% else %>
+    <%= link_to "Sign in to leave a review", new_user_session_path, :class => "btn btn-success" %>
+  <% end %>
 </div>
