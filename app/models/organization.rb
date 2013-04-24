@@ -31,6 +31,10 @@ class Organization < ActiveRecord::Base
   has_many :reviews, :class_name => "Review", :foreign_key => "organization_id"
   has_many :users, :through => :organization_user_relationships, :source => :user
   
+  # URL cleaning
+  format_url :url
+  before_validation :clean_url
+  
   # Geocoding
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
@@ -57,5 +61,11 @@ class Organization < ActiveRecord::Base
   # Instance Methods
   def category_text
     Organization.category_options.select { |k,v| v == category_id }.keys[0] rescue "MISC"
+  end
+  
+  private
+  
+  def clean_url
+    
   end
 end

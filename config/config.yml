@@ -1,0 +1,5 @@
+google_analytics:
+  development: UA-XXXXXXXX-X
+  test: UA-XXXXXXXX-Y
+  staging: UA-XXXXXXXX-Z
+  production: UA-XXXXXXXX-W
