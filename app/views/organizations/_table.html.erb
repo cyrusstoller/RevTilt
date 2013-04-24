@@ -4,7 +4,7 @@
       <tr>
         <td class="span6">
           <span class="label"><%= organization.category_text %></span>&nbsp;
-          <%= link_to organization.name, organization %> ( <%= link_to "review", organization.url, :target => "_blank" %> )
+          <%= link_to organization.name, organization %>
           ( <%= link_to "edit", edit_organization_path(organization) %> )
           ( <%= link_to "destroy", organization_path(organization), :method => :delete, :confirm => "Are you sure?" %> )
         </td>
