@@ -9,6 +9,7 @@ describe Ability do
       end
       subject { @ability }
       
+      it { should be_able_to(:show, FactoryGirl.build(:review)) }
       it { should_not be_able_to(:manage, FactoryGirl.build(:review)) }
     end
     
@@ -19,6 +20,7 @@ describe Ability do
       end
       subject { @ability }
       
+      it { should be_able_to(:show, FactoryGirl.build(:review)) }
       it { should be_able_to(:manage, FactoryGirl.build(:review, :user => @user)) }
       it { should_not be_able_to(:manage, FactoryGirl.build(:review, :user_id => @user.id - 1)) }
     end
