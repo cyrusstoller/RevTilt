@@ -35,6 +35,11 @@ describe Organization do
     it "should not be valid without a url" do
       FactoryGirl.build(:organization, :url => nil).should_not be_valid
     end
+    
+    it "should not be valid with the smae url" do
+      organization = FactoryGirl.create(:organization)
+      FactoryGirl.build(:organization, :url => organization.url).should_not be_valid
+    end
   end
   
   describe "database relationships" do

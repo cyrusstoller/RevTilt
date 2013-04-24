@@ -23,6 +23,7 @@ class Organization < ActiveRecord::Base
   validates_presence_of :category_id
   validates_presence_of :name
   validates_presence_of :url
+  validates_uniqueness_of :url
 
   # Database Relationships
   has_many :organization_user_relationships, :class_name => "Relationships::OrganizationUser", :foreign_key => "organization_id", 
@@ -30,6 +31,7 @@ class Organization < ActiveRecord::Base
   has_many :reviews, :class_name => "Review", :foreign_key => "organization_id"
   has_many :users, :through => :organization_user_relationships, :source => :user
   
+  # Geocoding
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
   
