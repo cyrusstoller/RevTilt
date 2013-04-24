@@ -7,7 +7,8 @@
       </span>
     <% end %>
     <%= link_to "About RevTilt", about_path, :class => "muted" %><span class="muted"> &nbsp; | &nbsp;</span>
-    <span class="muted">Autism &nbsp; | &nbsp;</span>
+    <span class="label label-info">Autism</span>
+    <span class="muted">&nbsp; | &nbsp;</span>
     <% if user_signed_in? %>
       <%= link_to "Favorites", favorites_path, :class => "muted" %>
       <span class="muted">&nbsp; | &nbsp;</span>
