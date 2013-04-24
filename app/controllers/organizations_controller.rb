@@ -18,6 +18,7 @@ class OrganizationsController < ApplicationController
 
     @review = Review.new
     @review.organization = @organization
+    @review.condition_id = 0
     
     respond_to do |format|
       format.html # show.html.erb

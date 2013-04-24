@@ -1,0 +1,14 @@
+<div class="review-item">
+  <div class="pull-right">
+    <%= content_tag :div, :class => "stars inline", "data-score" => review.rating, "data-readonly" => true do end %>
+  </div>
+  <span class="label label-info">
+    <%= review.user.username rescue "N/A" %>
+  </span>
+  &nbsp;
+  <span class="muted">written: <%= review.created_at.strftime("%b %d, %Y") %></span>
+  <br /><br />
+  <div class="well">
+    <%= review.content %>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 <%= form_for @review, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= render "shared/error_messages", :object => f.object %>
+
   <div class="control-group">
     <%= f.label :rating, :class => 'control-label' %>
     <div class="controls">
@@ -9,12 +11,6 @@
     <%= f.label :content, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :content, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :user_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :user_id, :class => 'number_field' %>
     </div>
   </div>
   <div class="control-group">
