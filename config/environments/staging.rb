@@ -31,7 +31,7 @@ RevTilt::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
+  config.log_level = :debug
 
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
@@ -66,5 +66,12 @@ RevTilt::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
   # Devise
-  config.action_mailer.default_url_options = { :host => 'revtilt.com' }
+  config.action_mailer.default_url_options = { :host => 'staging.revtilt.com' }
+  
+  # Actually send emails
+  config.action_mailer.perform_deliveries = true
+
+  config.middleware.insert_after(::Rack::Lock, "::Rack::Auth::Basic", "Not for public eyes") do |u, p|
+    u == ENV["admin_user"] && p == ENV["admin_password"]
+  end
 end

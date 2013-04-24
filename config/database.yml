@@ -45,6 +45,14 @@ test:
   pool: 5
   username:
   password:
+    
+staging:
+  adapter: postgresql
+  encoding: unicode
+  database: RevTilt_staging
+  pool: 5
+  username:
+  password:
 
 production:
   adapter: postgresql
