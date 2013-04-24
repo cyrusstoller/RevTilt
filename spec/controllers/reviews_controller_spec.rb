@@ -74,21 +74,30 @@ describe ReviewsController do
 
     describe "POST create" do
       describe "with valid params" do
+        before(:each) do
+          @organization = FactoryGirl.create(:organization)
+        end
+        
         it "creates a new Review" do
           expect {
-            post :create, {:review => valid_attributes}
+            post :create, {:review => valid_attributes.merge({"organization_id" => @organization.to_param })}
           }.to change(Review, :count).by(1)
         end
 
         it "assigns a newly created review as @review" do
-          post :create, {:review => valid_attributes}
+          post :create, {:review => valid_attributes.merge({"organization_id" => @organization.to_param })}
           assigns(:review).should be_a(Review)
           assigns(:review).should be_persisted
         end
 
         it "redirects to the created review" do
-          post :create, {:review => valid_attributes}
-          response.should redirect_to(Review.last)
+          post :create, {:review => valid_attributes.merge({"organization_id" => @organization.to_param })}
+          response.should redirect_to(Review.last.organization)
+        end
+        
+        it "redirects to the root_path" do
+          post :create, {:review => valid_attributes.merge({"organization_id" => -1 })}
+          response.should redirect_to(root_path)
         end
       end
 
