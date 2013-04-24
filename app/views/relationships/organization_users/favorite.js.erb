@@ -1,0 +1,2 @@
+$(".o<%= @organization.to_param %>").html("<%= escape_javascript(render('relationships/organization_users/unfavorite', :organization => @organization)) %>");
+unfavorite_button_hover();

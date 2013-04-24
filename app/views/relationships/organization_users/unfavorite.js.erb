@@ -1,0 +1,1 @@
+$(".o<%= @organization.to_param %>").html("<%= escape_javascript(render('relationships/organization_users/favorite', :organization => @organization)) %>");

@@ -1,0 +1,9 @@
+<% if signed_in? %>
+  <%= content_tag :div, :class => "o#{organization.to_param} organization_favorite_form" do %>
+    <% if current_user.favorited?(organization) %>
+      <%= render 'relationships/organization_users/unfavorite', :organization => organization %>
+    <% else %>
+      <%= render 'relationships/organization_users/favorite', :organization => organization %>
+    <% end %>
+  <% end %>
+<% end %>
