@@ -3,6 +3,9 @@
     <% if user_signed_in? %>
       <span class="muted">
         Hi <%= link_to (current_user.username || current_user.email), edit_user_registration_path, :class => "muted" %>! 
+        <% if current_user.admin? %>
+          <span class="label">admin</span>
+        <% end %>
         &nbsp; | &nbsp;
       </span>
     <% end %>
