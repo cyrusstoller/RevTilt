@@ -16,8 +16,26 @@
   </div>
   <%= f.hidden_field :rating, :class => "rating" %>
   
-  <%= f.hidden_field :condition_id %>
-  <%= f.hidden_field :organization_id %>
+  <% if current_user.admin? %>
+    <div class="control-group">
+      <%= f.label :condition_id %>
+      <div class="controls">
+        <%= f.number_field :condition_id %>
+        <span class"inline-helper">Only edit this if you're sure of what you're doing</span>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :organization_id %>
+      <div class="controls">
+        <%= f.number_field :organization_id %>
+        <span class"inline-helper">Only edit this if you're sure of what you're doing</span>
+      </div>
+    </div>
+  <% else %>
+    <%= f.hidden_field :condition_id %>
+    <%= f.hidden_field :organization_id %>
+  <% end %>
   
   <div class="control-group">
     <div class="controls">
