@@ -17,7 +17,7 @@
 #
 
 class Organization < ActiveRecord::Base
-  attr_accessible :address, :category_id, :latitude, :longitude, :name, :url, :url_type
+  attr_accessible :address, :category_id, :latitude, :longitude, :name, :url
 
   # Validations
   validates_presence_of :category_id
