@@ -4,7 +4,9 @@ class Relationships::OrganizationUsersController < ApplicationController
   # GET /relationships/organization_users
   # GET /relationships/organization_users.json
   def index
-    @relationships_organization_users = Relationships::OrganizationUser.all
+    @relationships_organization_users = Relationships::OrganizationUser.paginate(:page => params[:page])
+
+    authorize! :index, Relationships::OrganizationUser
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,6 +19,8 @@ class Relationships::OrganizationUsersController < ApplicationController
   def show
     @relationships_organization_user = Relationships::OrganizationUser.find(params[:id])
 
+    authorize! :show, @relationships_organization_user
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @relationships_organization_user }
@@ -28,6 +32,8 @@ class Relationships::OrganizationUsersController < ApplicationController
   def new
     @relationships_organization_user = Relationships::OrganizationUser.new
 
+    authorize! :new, @relationships_organization_user
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @relationships_organization_user }
@@ -37,12 +43,16 @@ class Relationships::OrganizationUsersController < ApplicationController
   # GET /relationships/organization_users/1/edit
   def edit
     @relationships_organization_user = Relationships::OrganizationUser.find(params[:id])
+
+    authorize! :edit, @relationships_organization_user
   end
 
   # POST /relationships/organization_users
   # POST /relationships/organization_users.json
   def create
     @relationships_organization_user = Relationships::OrganizationUser.new(params[:relationships_organization_user])
+
+    authorize! :create, @relationships_organization_user
 
     respond_to do |format|
       if @relationships_organization_user.save
@@ -60,6 +70,8 @@ class Relationships::OrganizationUsersController < ApplicationController
   def update
     @relationships_organization_user = Relationships::OrganizationUser.find(params[:id])
 
+    authorize! :update, @relationships_organization_user
+
     respond_to do |format|
       if @relationships_organization_user.update_attributes(params[:relationships_organization_user])
         format.html { redirect_to @relationships_organization_user, notice: 'Organization user was successfully updated.' }
@@ -75,6 +87,9 @@ class Relationships::OrganizationUsersController < ApplicationController
   # DELETE /relationships/organization_users/1.json
   def destroy
     @relationships_organization_user = Relationships::OrganizationUser.find(params[:id])
+
+    authorize! :destroy, @relationships_organization_user
+
     @relationships_organization_user.destroy
 
     respond_to do |format|

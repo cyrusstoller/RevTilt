@@ -60,4 +60,18 @@ describe Ability do
       it { should_not be_able_to(:manage, FactoryGirl.build(:organization)) }
     end
   end
+  
+  describe "Relationships::OrganizationUser" do
+    describe "signed in user" do
+      before(:each) do
+        @user = FactoryGirl.create(:user)
+        @ability = Ability.new(@user)
+      end
+      subject { @ability }
+      
+      it { should_not be_able_to(:update, FactoryGirl.build(:relationships_organization_user)) }
+      it { should_not be_able_to(:show, FactoryGirl.build(:relationships_organization_user)) }
+      it { should_not be_able_to(:manage, FactoryGirl.build(:relationships_organization_user)) }
+    end
+  end
 end

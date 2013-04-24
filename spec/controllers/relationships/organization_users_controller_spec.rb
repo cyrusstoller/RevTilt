@@ -36,7 +36,7 @@ describe Relationships::OrganizationUsersController do
   # end
   
   before(:each) do
-    @user = FactoryGirl.create(:user)
+    @user = FactoryGirl.create(:user, :admin => true)
     sign_in @user
   end
 
