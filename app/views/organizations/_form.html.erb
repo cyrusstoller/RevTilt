@@ -8,7 +8,7 @@
   <div class="control-group">
     <%= f.label :category_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :category_id, Organization.category_options %>
+      <%= f.select :category_id, options_for_select(Organization.category_options) %>
     </div>
   </div>
   <div class="control-group">

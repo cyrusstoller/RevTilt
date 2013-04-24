@@ -31,18 +31,18 @@ class Organization < ActiveRecord::Base
   
   # Class Methods
   def self.category_options
-    return [["activities", 1], 
-            ["childcare", 2], 
-            ["dentist", 3], 
-            ["doctors", 4], 
-            ["haircut / salons", 5], 
-            ["restaurants", 6], 
-            ["schools", 7], 
-            ["therapists", 8]]
+    return { "activities" => 1, 
+             "childcare" => 2, 
+             "dentist" => 3, 
+             "doctors" => 4, 
+             "haircut / salons" => 5, 
+             "restaurants" => 6, 
+             "schools" => 7, 
+             "therapists" => 8 }
   end
   
   # Instance Methods
   def category_text
-    Organization.category_options[self.category_id - 1][0] rescue "MISC"
+    Organization.category_options.select { |k,v| v == category_id }.keys[0] rescue "MISC"
   end
 end
