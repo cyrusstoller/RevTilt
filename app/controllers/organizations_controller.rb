@@ -6,6 +6,7 @@ class OrganizationsController < ApplicationController
     
     @organizations = Organization.paginate(:page => params[:page])
     @organizations = @organizations.where(:category_id => params[:category]) unless params[:category].blank?
+    @organizations = @organizations.near(params[:zipcode], 25) unless params[:zipcode].blank?
 
     respond_to do |format|
       format.html # index.html.erb
