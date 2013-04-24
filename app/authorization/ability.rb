@@ -10,6 +10,7 @@ class Ability
     #   can :manage, :all
     # end
     
+    can :manage, Review, :user_id => user.id unless user.new_record?
     
     #   if user.admin?
     #     can :manage, :all
