@@ -2,6 +2,16 @@ require 'spec_helper'
 require "cancan/matchers"
 
 describe Ability do
+  describe "admin" do
+    before(:each) do
+      @user = FactoryGirl.create(:user, :admin => true)
+      @ability = Ability.new(@user)
+    end
+    
+    subject { @ability }
+    it { should be_able_to(:manage, :all) }
+  end
+  
   describe "Reviews" do
     describe "guest" do
       before(:each) do

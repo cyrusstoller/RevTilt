@@ -6,10 +6,10 @@ class Ability
 
     user ||= User.new # guest user (not logged in)
 
-    # if user.admin?
-    #   can :manage, :all
-    # end
-    
+    if user.admin?
+      can :manage, :all
+    end
+        
     can [:show, :index], Organization
     can :create, Organization unless user.new_record?
     
