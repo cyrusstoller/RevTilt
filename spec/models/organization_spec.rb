@@ -49,4 +49,12 @@ describe Organization do
       FactoryGirl.build(:organization).should respond_to(:users)
     end
   end
+  
+  describe "geocoder" do
+    it "should set the lat/lon" do
+      organization = FactoryGirl.create(:organization, :address => "19081")
+      organization.latitude.should == 40.7143528
+      organization.longitude.should == -74.0059731
+    end
+  end
 end
