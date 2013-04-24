@@ -29,6 +29,9 @@ class Organization < ActiveRecord::Base
   has_many :reviews, :class_name => "Review", :foreign_key => "organization_id"
   has_many :users, :through => :organization_user_relationships, :source => :user
   
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
+  
   # Class Methods
   def self.category_options
     return { "activities" => 1, 
