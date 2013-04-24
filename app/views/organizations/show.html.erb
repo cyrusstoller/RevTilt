@@ -1,45 +1,34 @@
 <%- model_class = Organization -%>
 
-<div class="add-small-top pull-right">
-  <%= render "relationships/organization_users/favorite_form", :organization => @organization %>  
-</div>
-<div class="pull-right add-small-top">
-  <%= content_tag :div, :class => "stars inline", "data-score" => @organization.reviews.average(:rating), "data-readonly" => true do end %>
-  &nbsp;
-  ( <%= pluralize @organization.reviews.count, "Rating" %> )
-  &nbsp;
-</div>
+<%= content_for :above_iframe do %>
+  <div class="add-small-top pull-right">
+    <%= render "relationships/organization_users/favorite_form", :organization => @organization %>  
+  </div>
+  <div class="pull-right add-small-top">
+    <%= content_tag :div, :class => "stars inline", "data-score" => @organization.reviews.average(:rating), "data-readonly" => true do end %>
+    &nbsp;
+    ( <%= pluralize @organization.reviews.count, "Rating" %> )
+    &nbsp;
+  </div>
 
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
-</div>
+  <h1>
+    <%= @organization.name %>
+    <small><span class="one-line">( <%= @organization.category_text %> )</span></small>
+  </h1>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @organization.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:category_id) %>:</strong></dt>
-  <dd><%= @organization.category_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:url) %>:</strong></dt>
-  <dd><%= @organization.url %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:url_type) %>:</strong></dt>
-  <dd><%= @organization.url_type %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:latitude) %>:</strong></dt>
-  <dd><%= @organization.latitude %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:longitude) %>:</strong></dt>
-  <dd><%= @organization.longitude %></dd>
-</dl>
-
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              organizations_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_organization_path(@organization), :class => 'btn' %>
+  <%= link_to "See full review", @organization.url %> | 
+  <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_organization_path(@organization) %> |
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               organization_path(@organization),
               :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
+<% end %>
+
+<%= content_for :unbounded do %>
+  <div class="center review_iframe">
+    <%= content_tag :iframe, :id => "review_content", :src => @organization.url, :width => "1000px", :height => "300px" do end %>
+  </div>
+<% end %>
 
 <%= render @reviews %>
 
