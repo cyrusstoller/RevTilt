@@ -13,6 +13,7 @@
   </div>
   <br />
   <div class="container">
+    <%= render "shared/flash_messages", :flash => flash %>
     <%= render "layouts/search_bar" %>
     <%= yield :above_iframe %>
   </div>
@@ -20,7 +21,6 @@
   <%= yield :unbounded %>
   
   <div class="container">
-    <%= render "shared/flash_messages", :flash => flash %>
     <%= yield %>
   </div>
   
