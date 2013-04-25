@@ -25,7 +25,7 @@
     </div>
   </div>
   
-  <% if can? :manage, @organization %>
+  <% if can? :manage, :all %>
     <div class="control-group">
       <%= f.label :latitude, :class => 'control-label' %>
       <div class="controls">
