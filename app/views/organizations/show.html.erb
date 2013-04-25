@@ -16,7 +16,8 @@
     <small><span class="one-line">( <%= @organization.category_text %> )</span></small>
   </h1>
 
-  <%= link_to "See Full Review", @organization.url, :target => "_blank" %>
+  <%= @organization.display_location %>
+  | <%= link_to "See Full Review", @organization.url, :target => "_blank" %>
   <% if can? :edit, @organization %>
     | <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_organization_path(@organization) %>
   <% end %>
