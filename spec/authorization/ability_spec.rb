@@ -57,7 +57,13 @@ describe Ability do
       
       it { should be_able_to(:show, FactoryGirl.build(:organization)) }
       it { should be_able_to(:create, FactoryGirl.build(:organization)) }
-      it { should_not be_able_to(:manage, FactoryGirl.build(:organization)) }
+      it { should be_able_to(:manage, FactoryGirl.build(:organization)) }
+      
+      it "should not be able to manage an organization if it has reviews" do
+        organization = FactoryGirl.create(:organization)
+        review = FactoryGirl.create(:review, :organization => organization)
+        should_not be_able_to(:manage, organization)
+      end
     end
   end
   

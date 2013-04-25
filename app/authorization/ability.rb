@@ -11,7 +11,12 @@ class Ability
     end
         
     can [:show, :index], Organization
-    can :create, Organization unless user.new_record?
+    unless user.new_record?
+      can :create, Organization
+      can :manage, Organization do |organization|
+        organization.reviews.count == 0
+      end
+    end
     
     can [:show, :index], Review
     can :manage, Review, :user_id => user.id unless user.new_record?
