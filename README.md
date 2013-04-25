@@ -2,7 +2,7 @@
 
 ## Goal
 
-This is a platform to collect information and reviews about businesses that are accommodating of customers with special needs.
+This is a platform to collect information and reviews about whether businesses are accommodating of customers with special needs.
 
 Here is a scenario where this sort of information might be useful:
 Imagine you are a parent of a child who is on the autism spectrum and that you are out of town visiting relatives.
