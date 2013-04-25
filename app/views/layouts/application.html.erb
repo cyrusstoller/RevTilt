@@ -12,10 +12,9 @@
   <div class="container">
     <%= render "layouts/header" %>
   </div>
-  <br />
   <div class="container">
-    <%= render "shared/flash_messages", :flash => flash %>
     <%= render "layouts/search_bar" %>
+    <%= render "shared/flash_messages", :flash => flash %>
     <%= yield :above_iframe %>
   </div>
   
