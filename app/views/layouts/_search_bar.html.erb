@@ -1,6 +1,12 @@
 <div class="add-small-top header_bar">
   <div class="row-fluid">
-    <div class="span6">
+    <div class="span2">
+      <%= link_to root_path do %>
+        <%= image_tag "logo.png", :id => "header_logo" %>
+      <% end %>
+    </div>
+    
+    <div class="span5">
       <div class="welcome-question">
         What are you looking for?
       </div>
