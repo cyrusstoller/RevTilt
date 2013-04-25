@@ -67,15 +67,22 @@ describe Organization do
   describe "clean_url" do
     describe "yelp" do
       it "should remove the url_params" do
-        organization = FactoryGirl.create(:organization, :url => "http://www.yelp.com/12?a=b")
+        organization = FactoryGirl.create(:organization, :url => "http://www.yelp.com/biz/12?a=b")
         organization.url_type.should == "yelp"
-        organization.url.should == "http://www.yelp.com/12"
+        organization.url.should == "http://www.yelp.com/biz/12"
       end
       
       it "should remove the url_params without http://" do
-        organization = FactoryGirl.create(:organization, :url => "www.yelp.com/12?a=b")
+        organization = FactoryGirl.create(:organization, :url => "www.yelp.com/biz/12?a=b")
         organization.url_type.should == "yelp"
-        organization.url.should == "http://www.yelp.com/12"
+        organization.url.should == "http://www.yelp.com/biz/12"
+      end
+    end
+    
+    describe "non-yelp" do
+      it "should not be valid" do
+        organization = FactoryGirl.build(:organization, :url => "http://www.yelp.com/bz/12?a=b")
+        organization.should_not be_valid
       end
     end
   end

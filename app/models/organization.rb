@@ -24,7 +24,7 @@ class Organization < ActiveRecord::Base
   # Validations
   validates_presence_of :category_id
   validates_presence_of :name
-  validates_presence_of :url, :message => "must be a yelp URL?"
+  validates_presence_of :url, :message => "must be a yelp URL"
   validates_uniqueness_of :url
 
   # Database Relationships
@@ -76,7 +76,7 @@ class Organization < ActiveRecord::Base
       components = URI.split(query_url)
       
       res = ""
-      if components[2] =~ /yelp\.com/
+      if components[2] =~ /yelp\.com/ and components[5] =~ /\A\/biz\//
         res << "http://www.yelp.com"
         res << components[5]
         self.url_type = "yelp"
