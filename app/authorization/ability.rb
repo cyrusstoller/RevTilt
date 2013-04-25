@@ -14,7 +14,9 @@ class Ability
     unless user.new_record?
       can :create, Organization
       can :manage, Organization do |organization|
-        organization.reviews.count == 0
+        no_reviews = organization.reviews.count == 0
+        only_review_by_user = organization.reviews.count == 1 && organization.reviews.first.user == user
+        no_reviews || only_review_by_user
       end
     end
     

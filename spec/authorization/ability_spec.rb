@@ -64,6 +64,12 @@ describe Ability do
         review = FactoryGirl.create(:review, :organization => organization)
         should_not be_able_to(:manage, organization)
       end
+      
+      it "should be able to manage an organization if it only has one review and it is by the user" do
+        organization = FactoryGirl.create(:organization)
+        review = FactoryGirl.create(:review, :organization => organization, :user => @user)
+        should be_able_to(:manage, organization)
+      end
     end
   end
   
