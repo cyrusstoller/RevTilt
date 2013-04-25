@@ -1,2 +1,53 @@
-<h1>Pages#about</h1>
-<p>Find me in app/views/pages/about.html.erb</p>
+<h1>About RevTilt</h1>
+
+<div class="row">
+  <div class="span8">
+    <p>
+      RevTilt is a platform to collect information and reviews about businesses that are accommodating of customers with special needs.
+      This first version is helping those on the Autism spectrum.
+    </p>
+    
+    <p>
+      Users benefit from the reviews left on sites like <%= link_to "Yelp", "http://www.yelp.com", :target => "_blank" %>,
+      while also benefiting from a parallel set of reviews from other users with similar constraints.
+    </p>
+    
+    <h4>Scenario</h4>
+    <p>
+      Imagine you are a parent of a child who is on the autism spectrum and that you are out of town visiting relatives.
+      Your child has cut his/her own hair and you need to find a barber to give your child a haircut. 
+      Searching Yelp for good salons or barber shops won't give you sufficient information.
+      You want to find a barber who will be accommodating of your child's special needs.
+    </p>
+    
+    <h4>Open Data</h4>
+    <p>
+      This is an open platform. The software is open source and available on <%= link_to "Github", nil %>.
+      This data collected using RevTilt will be made available so that developers can create amazing tools like
+      mobile phone apps and web services that are built to help people like you.
+    </p>
+    
+    <h4>Please Help</h4>
+    <p>
+      We all benefit by sharing our collective knowledge with each other.
+    </p>
+  </div>
+  
+  <div class="span4">
+    <div class="well">
+      <p>
+        <%= link_to "Cyrus Stoller", "http://www.cyrusstoller.com/", :target => "_blank" %> 
+        wrote the original software powering RevTilt and is maintaining the open source project.
+      </p>
+      <p>
+        <%= link_to "Ryan Stevens", "http://ryanrstevens.com", :target => "_blank" %>
+        contributed the original design of RevTilt.
+      </p>
+      
+      <p>
+        Thank you to <%= link_to "Autism Speaks", "http://www.autismspeaks.org/", :target => "_blank" %>
+        for supporting RevTilt and helping to build this online community.
+      </p>
+    </div>
+  </div>
+</div>
