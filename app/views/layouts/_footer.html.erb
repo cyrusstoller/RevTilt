@@ -2,7 +2,7 @@
   <div class="footer">
     <ul class="horizontal">
       <li><%= link_to "About", about_path %></li>
-      <li><%= link_to "Github", APP_CONFIG["github_repo"] %></li>
+      <li><%= link_to "Github", APP_CONFIG["github_repo"], :target => "_blank" %></li>
       <% unless Rails.env.production? %>
         <li><span class="label label-success"><%= Rails.env %></span></li>
       <% end %>
