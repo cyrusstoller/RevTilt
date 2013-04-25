@@ -38,3 +38,30 @@ don't have people duplicating work unnecessarily.
 ## Where did this all get started?
 
 Cyrus and Ryan won first place at the AT&T Hackathon on Hacking Autism in April 2013.
+
+# Getting you development environment setup
+
+You will need to create a `.env` file in the `RevTilt` directory. You should have the following variables defined.
+```
+SECRET_TOKEN=*SOME HEX STRING*
+admin_user=cyrus
+admin_password=p455w0rd
+SMTP_DEV_EMAIL=*where all development emails should be sent*
+SMTP_ADDRESS=smtp.gmail.com
+SMTP_DOMAIN=gmail.com
+SMTP_USERNAME=*sending gmail address*
+SMTP_PASSWORD=*sending gmail password*
+```
+
+add these variables to Heroku with `heroku config:add`.
+
+## Install gems and setup your database
+
+```
+$ bundle install
+$ rake db:create # first time only
+$ rake db:migrate # whenever you update the database schema
+$ rake db:test:prepare
+$ foreman start
+$ bundle exec guard # to run spork and tests
+```
