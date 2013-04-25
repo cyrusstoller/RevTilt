@@ -9,6 +9,9 @@ class OrganizationsController < ApplicationController
     @organizations = Organization.paginate(:page => params[:page])
     @organizations = @organizations.where(:category_id => params[:category]) unless params[:category].blank?
     @organizations = @organizations.near(params[:zipcode], 25) unless params[:zipcode].blank?
+    @organizations = @organizations.joins(%(LEFT JOIN "reviews" on "reviews"."organization_id" = "organizations"."id")).
+                        group(%("organizations"."id")).
+                        order(%(COUNT("reviews") = 0 ASC, AVG("reviews"."rating") DESC, COUNT("reviews") DESC))
 
     respond_to do |format|
       format.html # index.html.erb
