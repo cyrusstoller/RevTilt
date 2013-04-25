@@ -3,25 +3,25 @@
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
+      <%= f.text_field :name, :class => 'text_field span6' %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :category_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :category_id, options_for_select(Organization.category_options) %>
+      <%= f.select :category_id, options_for_select(Organization.category_options), {}, :class => "span6" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :url, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :url, :class => 'text_field', :placeholder => "e.g. 'www.yelp.com/biz/...'" %>
+      <%= f.text_field :url, :class => 'text_field span6', :placeholder => "e.g. 'www.yelp.com/biz/...'" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :address, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :address, :class => 'text_field' %>
+      <%= f.text_field :address, :class => 'text_field span6', :placeholder => "e.g. 1600 Pennsylvania Ave NW, Washington DC, 20006" %>
     </div>
   </div>
   
