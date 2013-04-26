@@ -2,7 +2,7 @@
   <tbody>
     <% organizations.each do |organization| %>
       <tr>
-        <td class="span6">
+        <td class="span7">
           <span class="label"><%= organization.category_text %></span>&nbsp;
           <%= link_to organization.name, organization %> <span class="muted one-line"><%= organization.display_location %></span>
           <% if can? :edit, organization %>
@@ -20,9 +20,11 @@
           <%= content_tag :div, :class => "stars inline", "data-score" => organization.reviews.average(:rating), "data-readonly" => true do end %>
           <span class="one-line"><%= pluralize organization.reviews.count, "Review" %></span>
         </td>
-        <td>
-          <%= render "relationships/organization_users/favorite_form", :organization => organization %>
-        </td>
+        <% if signed_in? %>
+          <td>
+            <%= render "relationships/organization_users/favorite_form", :organization => organization %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
