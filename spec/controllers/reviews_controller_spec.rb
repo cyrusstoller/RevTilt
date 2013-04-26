@@ -61,6 +61,14 @@ describe ReviewsController do
       it "assigns a new review as @review" do
         get :new, {}
         assigns(:review).should be_a_new(Review)
+        assigns(:review).organization.should be_nil
+        assigns(:review).user.should eq(@user)
+      end
+      
+      it "should connect an organization to the new review" do
+        organization = FactoryGirl.create(:organization)
+        get :new, { :o_id => organization.to_param }
+        assigns(:review).organization.should eq(organization)
       end
     end
 

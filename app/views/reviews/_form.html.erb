@@ -5,6 +5,8 @@
     <div class="controls">
       Organization Name
       <%= text_field_tag nil, (@review.organization.name rescue "N/A"), :disabled => "disabled" %>
+      &nbsp;
+      <%= @review.organization.display_location rescue nil %>
     </div>
   </div>
 

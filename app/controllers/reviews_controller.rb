@@ -30,8 +30,9 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   # GET /reviews/new.json
   def new
-    @review = Review.new
-
+    @review = Review.new(:organization_id => params[:o_id])
+    @review.user = current_user
+    
     authorize! :new, @review
 
     @title = new_action_title
