@@ -13,7 +13,7 @@
     </div>
     
     <div class="span5">
-      <%= form_tag root_path, :method => :get, :class => "form-inline" do %>
+      <%= form_tag organizations_path, :method => :get, :class => "form-inline" do %>
         <%= select_tag "category", options_for_select({ "all types" => nil }.merge(Organization.category_options), 
                         params[:category]), :class => "span5" %>
         <%= text_field_tag "zipcode", params[:zipcode], :placeholder => "Enter Zipcode", :class => "span4" %>
