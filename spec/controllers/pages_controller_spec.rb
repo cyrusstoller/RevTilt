@@ -28,5 +28,12 @@ describe PagesController do
       response.should be_successful
     end
   end
+  
+  describe "GET 'press'" do
+    it "returns http success" do
+      get 'press'
+      response.should be_success
+    end
+  end
 
 end

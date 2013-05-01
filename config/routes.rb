@@ -5,6 +5,7 @@ RevTilt::Application.routes.draw do
   
   get "/about" => "pages#about"
   get "/favorites" => "pages#favorites"
+  get "/press" => "pages#press"
   
   resources :organizations
   resources :reviews

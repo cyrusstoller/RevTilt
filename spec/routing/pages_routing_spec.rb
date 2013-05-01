@@ -11,5 +11,9 @@ describe PagesController do
       get("/favorites").should route_to("pages#favorites")
     end
     
+    it "routes to press" do
+      get("/press").should route_to("pages#press")
+    end
+    
   end
 end

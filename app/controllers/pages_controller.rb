@@ -11,4 +11,8 @@ class PagesController < ApplicationController
       redirect_to root_path, :notice => "You haven't selected any favorites yet"
     end
   end
+  
+  def press
+    @title = "Press"
+  end
 end
