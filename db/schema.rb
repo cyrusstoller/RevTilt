@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130501180835) do
+ActiveRecord::Schema.define(:version => 20130501214342) do
+
+  create_table "cache_review_stats", :force => true do |t|
+    t.integer  "organization_id"
+    t.integer  "num_reviews",     :default => 0
+    t.float    "avg_review",      :default => 0.0
+    t.integer  "condition_id"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "cache_review_stats", ["avg_review"], :name => "index_cache_review_stats_on_avg_review"
+  add_index "cache_review_stats", ["condition_id"], :name => "index_cache_review_stats_on_condition_id"
+  add_index "cache_review_stats", ["num_reviews"], :name => "index_cache_review_stats_on_num_reviews"
+  add_index "cache_review_stats", ["organization_id"], :name => "index_cache_review_stats_on_organization_id"
 
   create_table "organizations", :force => true do |t|
     t.string   "name"
