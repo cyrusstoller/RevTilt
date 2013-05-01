@@ -18,6 +18,10 @@
 
   <%= @organization.display_location %>
   | <%= link_to "See Full Review", @organization.url, :target => "_blank" %>
+  <% unless @organization.homepage_url.blank? %>
+    | <%= link_to "See Homepage", @organization.homepage_url, :target => "_blank" %>
+  <% end %>
+  
   <% if can? :edit, @organization %>
     | <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_organization_path(@organization) %>
   <% end %>
