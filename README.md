@@ -39,6 +39,11 @@ don't have people duplicating work unnecessarily.
 
 Cyrus and Ryan won first place at the AT&T Hackathon on Hacking Autism in April 2013.
 
+### Press
+
+So far there have been stories about RevTilt written by the LA Times, CNN, and SFGate. 
+Click [here](http://www.revtilt.com/press) for a complete list.
+
 # Getting you development environment setup
 
 You will need to create a `.env` file in the `RevTilt` directory. You should have the following variables defined.
