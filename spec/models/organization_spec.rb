@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20130424221615
+# Schema version: 20130501180835
 #
 # Table name: organizations
 #
@@ -14,6 +14,7 @@
 #  category_id      :integer
 #  address          :string(255)
 #  display_location :string(255)
+#  homepage_url     :string(255)
 #
 
 require 'spec_helper'
@@ -39,6 +40,24 @@ describe Organization do
     it "should not be valid with the smae url" do
       organization = FactoryGirl.create(:organization)
       FactoryGirl.build(:organization, :url => organization.url).should_not be_valid
+    end
+    
+    it "should be valid with a homepage_url" do
+      FactoryGirl.build(:organization, :homepage_url => "http://www.google.com").should be_valid
+    end
+    
+    it "should be valid without a homepage_url" do
+      FactoryGirl.build(:organization, :homepage_url => nil).should be_valid
+    end
+    
+    it "should be valid with a homepage_url sans http" do
+      organization = FactoryGirl.build(:organization, :homepage_url => "www.google.com")
+      organization.should be_valid
+      organization.homepage_url.should == "http://www.google.com"
+    end
+    
+    it "should not be valid with an invaid homepage_url" do
+      FactoryGirl.build(:organization, :homepage_url => "foo").should_not be_valid
     end
   end
   

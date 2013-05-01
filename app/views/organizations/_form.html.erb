@@ -18,6 +18,14 @@
       <%= f.text_field :url, :class => 'text_field span6', :placeholder => "e.g. 'www.yelp.com/biz/...'" %>
     </div>
   </div>
+  
+  <div class="control-group">
+    <%= f.label :homepage_url, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :homepage_url, :class => 'text_field span6', :placeholder => "optional" %>
+    </div>
+  </div>
+  
   <div class="control-group">
     <%= f.label :address, :class => 'control-label' %>
     <div class="controls">

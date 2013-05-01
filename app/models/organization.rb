@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20130424221615
+# Schema version: 20130501180835
 #
 # Table name: organizations
 #
@@ -14,19 +14,21 @@
 #  category_id      :integer
 #  address          :string(255)
 #  display_location :string(255)
+#  homepage_url     :string(255)
 #
 
 require "open-uri"
 
 class Organization < ActiveRecord::Base
-  attr_accessible :address, :category_id, :latitude, :longitude, :name, :url
+  attr_accessible :address, :category_id, :homepage_url, :latitude, :longitude, :name, :url
 
   # Validations
   validates_presence_of :category_id
   validates_presence_of :name
   validates_presence_of :url, :message => "must be a yelp URL"
   validates_uniqueness_of :url
-
+  validates_format_of :homepage_url, with: UrlFormatter.url_regexp, message: "is not a valid URL", if: "homepage_url?"
+  
   # Database Relationships
   has_many :organization_user_relationships, :class_name => "Relationships::OrganizationUser", :foreign_key => "organization_id", 
            :dependent => :destroy
@@ -35,6 +37,11 @@ class Organization < ActiveRecord::Base
   
   # URL cleaning
   before_validation :clean_url
+  
+  # Based on https://github.com/nhocki/url_formatter
+  before_validation do
+    self.homepage_url = UrlFormatter.format_url(self.homepage_url)
+  end
   
   # Geocoding
   geocoded_by :address

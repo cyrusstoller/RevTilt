@@ -7,6 +7,7 @@ FactoryGirl.define do
     name "MyString"
     url
     url_type "MyString"
+    homepage_url nil
     latitude 1.5
     longitude 1.5
     category_id 1

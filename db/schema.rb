@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130424221615) do
+ActiveRecord::Schema.define(:version => 20130501180835) do
 
   create_table "organizations", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20130424221615) do
     t.integer  "category_id"
     t.string   "address"
     t.string   "display_location"
+    t.string   "homepage_url"
   end
 
   add_index "organizations", ["category_id"], :name => "index_organizations_on_category_id"
