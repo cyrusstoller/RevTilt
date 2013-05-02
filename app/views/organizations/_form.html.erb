@@ -9,7 +9,7 @@
   <div class="control-group">
     <%= f.label :category_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :category_id, options_for_select(Organization.category_options), {}, :class => "span6" %>
+      <%= f.select :category_id, Organization.category_options.map { |k,v| [k, v] }, {}, :class => "span6" %>
     </div>
   </div>
   <div class="control-group">
