@@ -60,10 +60,13 @@ class Organization < ActiveRecord::Base
              "childcare" => 2, 
              "dentist" => 3, 
              "doctors" => 4, 
+             "education" => 7, 
              "haircut / salons" => 5, 
              "restaurants" => 6, 
-             "schools" => 7, 
-             "therapists" => 8 }
+             "therapy - speech & language" => 8,
+             "therapy - occupational" => 9,
+             "therapy - cognitive behavioral" => 10,
+             "therapy - other" => 11 }
   end
   
   # Instance Methods
