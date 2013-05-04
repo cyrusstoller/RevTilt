@@ -51,4 +51,16 @@ describe Review do
       FactoryGirl.build(:review).should respond_to(:organization)
     end
   end
+  
+  describe "scopes" do
+    it "should respond to with_condition" do
+      Review.should respond_to(:with_condition)
+    end
+    
+    it "should return only the Cache::ReviewStat with that condition" do
+      r1 = FactoryGirl.create(:review, :condition_id => 1)
+      r2 = FactoryGirl.create(:review, :condition_id => 2)
+      Review.with_condition(1).should eq([r1])
+    end
+  end
 end

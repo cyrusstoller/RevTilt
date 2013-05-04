@@ -22,5 +22,5 @@ class Cache::ReviewStat < ActiveRecord::Base
   # Database Relationships
   belongs_to :organization, :class_name => "Organization", :foreign_key => "organization_id"
   
-  scope :with_condition, Proc.new { |n| where(%("cache_review_stats"."condition_id" = ?), n) }
+  scope :with_condition, Proc.new { |n| where(:condition_id => n) }
 end
