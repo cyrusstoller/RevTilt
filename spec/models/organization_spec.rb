@@ -148,6 +148,18 @@ describe Organization do
          review_cache.num_reviews.should == 2
          review_cache.avg_review.should == 2.5
       end
+      
+      it "should not set the avg_review to nil when there are no reviews" do
+        organization = FactoryGirl.create(:organization)
+        condition_id = 1
+        review_cache = FactoryGirl.create(:cache_review_stat, :organization => organization, :condition_id => condition_id)
+                
+        organization.update_cache!(condition_id)
+        
+        review_cache.reload
+        review_cache.num_reviews.should == 0
+        review_cache.avg_review.should == 0
+      end
     end
   end
 end

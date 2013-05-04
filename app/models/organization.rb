@@ -85,7 +85,7 @@ class Organization < ActiveRecord::Base
     end
     
     review_cache.num_reviews = reviews.with_condition(condition_id).count
-    review_cache.avg_review =  reviews.with_condition(condition_id).average(:rating)
+    review_cache.avg_review = reviews.with_condition(condition_id).average(:rating) || 0
     
     review_cache.save!
   end
