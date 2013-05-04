@@ -1,13 +1,16 @@
 <%- model_class = Organization -%>
+<% num_reviews = @organization.cache_review_stats.with_condition(0).first.num_reviews rescue 0 %>
+<% avg_review =  @organization.cache_review_stats.with_condition(0).first.avg_review rescue 0 %>
+
 
 <%= content_for :above_iframe do %>
   <div class="add-small-top pull-right">
     <%= render "relationships/organization_users/favorite_form", :organization => @organization %>  
   </div>
   <div class="pull-right add-small-top">
-    <%= content_tag :div, :class => "stars inline", "data-score" => @organization.reviews.average(:rating), "data-readonly" => true do end %>
+    <%= content_tag :div, :class => "stars inline", "data-score" => avg_review, "data-readonly" => true do end %>
     &nbsp;
-    ( <%= pluralize @organization.reviews.count, "Rating" %> )
+    ( <%= pluralize num_reviews, "Rating" %> )
     &nbsp;
   </div>
 
