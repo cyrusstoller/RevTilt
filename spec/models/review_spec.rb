@@ -92,6 +92,13 @@ describe Review do
         review.content = "foo"
         review.save!
       end
+      
+      it "should send update_cache to the organization model on destroy" do
+        condition_id = 1
+        review = FactoryGirl.create(:review, :organization => @organization, :condition_id => condition_id)
+        Organization.any_instance.should_receive(:update_cache!).with(condition_id)
+        review.destroy
+      end
     end
   end
 end

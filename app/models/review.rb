@@ -30,6 +30,7 @@ class Review < ActiveRecord::Base
   scope :with_condition, Proc.new { |n| where(:condition_id => n) }
   
   after_save :update_cache!, :if => :rating_changed?
+  after_destroy :update_cache!
 
   private
   
