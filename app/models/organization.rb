@@ -63,9 +63,10 @@ class Organization < ActiveRecord::Base
              "education" => 7, 
              "haircut / salons" => 5, 
              "restaurants" => 6, 
-             "therapy - speech & language" => 8,
-             "therapy - occupational" => 9,
              "therapy - cognitive behavioral" => 10,
+             "therapy - occupational" => 9,
+             "therapy - speech & language" => 8,
+             "therapy - physical" => 12,
              "therapy - other" => 11 }
   end
   
