@@ -45,6 +45,10 @@ class OrganizationsController < ApplicationController
   # GET /organizations/new.json
   def new
     @organization = Organization.new
+    @organization.name = params[:name]
+    @organization.url = params[:url]
+    @organization.homepage_url = params[:homepage_url]
+    @organization.address = params[:address]
 
     authorize! :new, @organization
 

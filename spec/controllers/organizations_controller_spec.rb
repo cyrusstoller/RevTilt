@@ -83,6 +83,20 @@ describe OrganizationsController do
         get :new, {}
         assigns(:organization).should be_a_new(Organization)
       end
+      
+      it "should set name, url, homepage_url, and address from url parameters" do
+        name = "Woot"
+        url = "http://www.yelp.com/biz/123"
+        homepage_url = "http://www.google.com"
+        address = "500 College Ave, Swarthmore Pa, 19081"
+
+        get :new, { :name => name, :url => url, :homepage_url => homepage_url, :address => address }
+
+        assigns(:organization).name.should eq(name)
+        assigns(:organization).url.should eq(url)
+        assigns(:organization).homepage_url.should eq(homepage_url)
+        assigns(:organization).address.should eq(address)
+      end
     end
 
     describe "GET edit" do
