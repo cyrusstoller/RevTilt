@@ -133,6 +133,21 @@ describe Organization do
           organization.update_cache!(condition_id)
         }.to_not change(Cache::ReviewStat, :count)
       end
+      
+      it "should set the num_reviews and average review" do
+         organization = FactoryGirl.create(:organization)
+         condition_id = 1
+         review_cache = FactoryGirl.create(:cache_review_stat, :organization => organization, :condition_id => condition_id)
+         
+         review1 = FactoryGirl.create(:review, :organization => organization, :condition_id => condition_id, :rating => 3)
+         review2 = FactoryGirl.create(:review, :organization => organization, :condition_id => condition_id, :rating => 2)
+         
+         organization.update_cache!(condition_id)
+         
+         review_cache.reload
+         review_cache.num_reviews.should == 2
+         review_cache.avg_review.should == 2.5
+      end
     end
   end
 end
