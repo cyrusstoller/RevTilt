@@ -73,14 +73,14 @@ describe Review do
       
       it "should send update_cache to the organization model" do
         condition_id = 1
-        Organization.any_instance.should_receive(:update_cache!).with(condition_id)
+        @organization.should_receive(:update_cache!).with(condition_id).once
         FactoryGirl.create(:review, :organization => @organization, :condition_id => condition_id)
       end
       
       it "should send update_cache to the organization model on an update" do
         condition_id = 1
         review = FactoryGirl.create(:review, :organization => @organization, :condition_id => condition_id)
-        Organization.any_instance.should_receive(:update_cache!).with(condition_id)
+        @organization.should_receive(:update_cache!).with(condition_id).once
         review.rating = 2
         review.save!
       end
@@ -88,7 +88,7 @@ describe Review do
       it "should not send update_cache to the organization model on an update if the rating didn't change" do
         condition_id = 1
         review = FactoryGirl.create(:review, :organization => @organization, :condition_id => condition_id)
-        Organization.any_instance.should_not_receive(:update_cache!).with(condition_id)
+        @organization.should_not_receive(:update_cache!).with(condition_id)
         review.content = "foo"
         review.save!
       end
@@ -96,8 +96,20 @@ describe Review do
       it "should send update_cache to the organization model on destroy" do
         condition_id = 1
         review = FactoryGirl.create(:review, :organization => @organization, :condition_id => condition_id)
-        Organization.any_instance.should_receive(:update_cache!).with(condition_id)
+        @organization.should_receive(:update_cache!).with(condition_id).once
         review.destroy
+      end
+      
+      it "should send update_cahce to the organization model twice if the condition_id is changed" do
+        condition_id = 1
+        new_condition_id = 2
+        
+        review = FactoryGirl.create(:review, :organization => @organization, :condition_id => condition_id)
+        @organization.should_receive(:update_cache!).with(condition_id)
+        @organization.should_receive(:update_cache!).with(new_condition_id)
+        
+        review.condition_id = new_condition_id
+        review.save!
       end
     end
   end

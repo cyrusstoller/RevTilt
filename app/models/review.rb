@@ -29,12 +29,18 @@ class Review < ActiveRecord::Base
   
   scope :with_condition, Proc.new { |n| where(:condition_id => n) }
   
-  after_save :update_cache!, :if => :rating_changed?
+  after_save :update_cache!, :if => Proc.new { rating_changed? or condition_id_changed? }
   after_destroy :update_cache!
 
   private
   
   def update_cache!
-    organization.update_cache!(condition_id) unless organization.nil?
+    unless organization.nil?
+      organization.update_cache!(condition_id)
+    
+      if condition_id_changed?
+        organization.update_cache!(condition_id_was) unless condition_id_was.nil?
+      end
+    end
   end
 end
