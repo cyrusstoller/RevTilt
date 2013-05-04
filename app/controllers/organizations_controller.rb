@@ -8,11 +8,11 @@ class OrganizationsController < ApplicationController
     
     @organizations = Organization.paginate(:page => params[:page])
     @organizations = @organizations.where(:category_id => params[:category]) unless params[:category].blank?
-    @organizations = @organizations.near(params[:zipcode], 25) unless params[:zipcode].blank?
     @organizations = @organizations.joins(%(LEFT JOIN "cache_review_stats" ON "cache_review_stats"."organization_id" = "organizations"."id")).
                         where(%("cache_review_stats"."condition_id" = 0 OR "cache_review_stats"."condition_id" IS NULL)).
                         order(%("cache_review_stats"."avg_review" DESC NULLS LAST)).
                         order(%("cache_review_stats"."num_reviews" DESC))
+    @organizations = @organizations.near(params[:zipcode], 25) unless params[:zipcode].blank?
 
     respond_to do |format|
       format.html # index.html.erb
