@@ -35,6 +35,8 @@ class Organization < ActiveRecord::Base
   has_many :reviews, :class_name => "Review", :foreign_key => "organization_id"
   has_many :users, :through => :organization_user_relationships, :source => :user
   
+  has_many :cache_review_stats, :class_name => "Cache::ReviewStat", :foreign_key => "organization_id", :dependent => :destroy
+  
   # URL cleaning
   before_validation :clean_url
   
@@ -73,6 +75,19 @@ class Organization < ActiveRecord::Base
   # Instance Methods
   def category_text
     Organization.category_options.select { |k,v| v == category_id }.keys[0] rescue "MISC"
+  end
+  
+  def update_cache!(condition_id)
+    review_cache = cache_review_stats.with_condition(condition_id).first
+    
+    if review_cache.nil?
+      review_cache = cache_review_stats.create(:condition_id => condition_id)
+    end
+    
+    review_cache.num_reviews = reviews.with_condition(condition_id).count
+    review_cache.avg_review = reviews.with_condition(condition_id).average(:rating) || 0
+    
+    review_cache.save!
   end
   
   private

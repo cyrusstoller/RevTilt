@@ -26,4 +26,21 @@ class Review < ActiveRecord::Base
   # Database Relationships
   belongs_to :user, :class_name => "User", :foreign_key => "user_id"
   belongs_to :organization, :class_name => "Organization", :foreign_key => "organization_id"
+  
+  scope :with_condition, Proc.new { |n| where(:condition_id => n) }
+  
+  after_save :update_cache!, :if => Proc.new { rating_changed? or condition_id_changed? }
+  after_destroy :update_cache!
+
+  private
+  
+  def update_cache!
+    unless organization.nil?
+      organization.update_cache!(condition_id)
+    
+      if condition_id_changed?
+        organization.update_cache!(condition_id_was) unless condition_id_was.nil?
+      end
+    end
+  end
 end

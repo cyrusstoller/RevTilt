@@ -17,8 +17,11 @@
           <% end %>
         </td>
         <td>
-          <%= content_tag :div, :class => "stars inline", "data-score" => organization.reviews.average(:rating), "data-readonly" => true do end %>
-          <span class="one-line"><%= pluralize organization.reviews.count, "Review" %></span>
+          <% num_reviews = organization.cache_review_stats.with_condition(0).first.num_reviews rescue 0 %>
+          <% avg_review =  organization.cache_review_stats.with_condition(0).first.avg_review rescue 0 %>
+          
+          <%= content_tag :div, :class => "stars inline", "data-score" => avg_review, "data-readonly" => true do end %>
+          <span class="one-line"><%= pluralize num_reviews, "Review" %></span>
         </td>
         <% if signed_in? %>
           <td>
