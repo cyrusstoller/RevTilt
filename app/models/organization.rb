@@ -77,7 +77,7 @@ class Organization < ActiveRecord::Base
     Organization.category_options.select { |k,v| v == category_id }.keys[0] rescue "MISC"
   end
   
-  def update_cache(condition_id)
+  def update_cache!(condition_id)
     review_cache = cache_review_stats.with_condition(condition_id).first
     
     if review_cache.nil?

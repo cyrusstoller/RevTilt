@@ -111,16 +111,16 @@ describe Organization do
   end
 
   describe "instance methods" do
-    describe "update cache" do
-      it "should respond_to update_cache" do
-        FactoryGirl.build(:organization).should respond_to(:update_cache)
+    describe "update_cache!" do
+      it "should respond_to update_cache!" do
+        FactoryGirl.build(:organization).should respond_to(:update_cache!)
       end
       
       it "should create a new Cache::ReviewStat" do
         organization = FactoryGirl.create(:organization)
         condition_id = 1
         expect {
-          organization.update_cache(condition_id)
+          organization.update_cache!(condition_id)
         }.to change(Cache::ReviewStat, :count).by(1)
         Cache::ReviewStat.last.condition_id.should eq(condition_id)
       end
@@ -130,7 +130,7 @@ describe Organization do
         condition_id = 1
         review_cache = FactoryGirl.create(:cache_review_stat, :organization => organization, :condition_id => condition_id)
         expect {
-          organization.update_cache(condition_id)
+          organization.update_cache!(condition_id)
         }.to_not change(Cache::ReviewStat, :count)
       end
     end
