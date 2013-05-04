@@ -63,4 +63,35 @@ describe Review do
       Review.with_condition(1).should eq([r1])
     end
   end
+  
+  describe "callbacks" do
+    
+    describe "update_cache!" do
+      before(:each) do
+        @organization = FactoryGirl.create(:organization)
+      end
+      
+      it "should send update_cache to the organization model" do
+        condition_id = 1
+        Organization.any_instance.should_receive(:update_cache!).with(condition_id)
+        FactoryGirl.create(:review, :organization => @organization, :condition_id => condition_id)
+      end
+      
+      it "should send update_cache to the organization model on an update" do
+        condition_id = 1
+        review = FactoryGirl.create(:review, :organization => @organization, :condition_id => condition_id)
+        Organization.any_instance.should_receive(:update_cache!).with(condition_id)
+        review.rating = 2
+        review.save!
+      end
+      
+      it "should not send update_cache to the organization model on an update if the rating didn't change" do
+        condition_id = 1
+        review = FactoryGirl.create(:review, :organization => @organization, :condition_id => condition_id)
+        Organization.any_instance.should_not_receive(:update_cache!).with(condition_id)
+        review.content = "foo"
+        review.save!
+      end
+    end
+  end
 end

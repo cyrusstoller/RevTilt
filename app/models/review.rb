@@ -28,4 +28,12 @@ class Review < ActiveRecord::Base
   belongs_to :organization, :class_name => "Organization", :foreign_key => "organization_id"
   
   scope :with_condition, Proc.new { |n| where(:condition_id => n) }
+  
+  after_save :update_cache!, :if => :rating_changed?
+
+  private
+  
+  def update_cache!
+    organization.update_cache!(condition_id) unless organization.nil?
+  end
 end
