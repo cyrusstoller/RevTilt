@@ -64,6 +64,7 @@ class Organization < ActiveRecord::Base
              "doctors" => 4, 
              "education" => 7, 
              "haircut / salons" => 5, 
+             "non-profit resource" => 13,
              "restaurants" => 6, 
              "therapy - cognitive behavioral" => 10,
              "therapy - occupational" => 9,
