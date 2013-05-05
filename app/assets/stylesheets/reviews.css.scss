@@ -32,3 +32,9 @@ div.review-item{
 .review_iframe{
 	margin-top:15px;
 }
+
+p.review_content {
+	&:last-child{
+		margin-bottom:0;
+	}
+}
