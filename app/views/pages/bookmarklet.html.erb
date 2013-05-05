@@ -1,3 +1,35 @@
-<h1>Bookmarklet</h1>
+<h2>Bookmarklet</h2>
 
-<%= link_to "Yelp Bookmarklet", bookmarklet_javascript("yelp") %>
+<div class="row">
+  <div class="span8">
+    <p>
+      Here are some bookmarklets to automate the process of uploading information to RevTilt.
+    </p>
+    
+    <p>
+      Clicking the bookmarklet will take you to the <code>share an organization</code> form with as many fields filled out as possible.
+    </p>
+    
+    <div class="alert alert-info alert-box">
+      <span class="label label-info">Heads up</span>
+      The category dropdown menu still needs to be set manually since the tags on Yelp do not directly map to the RevTilt categories.
+    </div>
+    
+    <p>
+      To install a <code>bookmarklet</code> drag one of the links below to your browser's toolbar.
+    </p>
+    
+    <%= link_to "RevTilt - Yelp Bookmarklet", bookmarklet_javascript("yelp") %>
+    <br />
+    <%= link_to "RevTilt - Yelp Bookmarklet (new window)", bookmarklet_javascript("yelp", true) %>
+  </div>
+  
+  <div class="span4">
+    <div class="well">
+      If you find a bug, please either file a 
+      <%= link_to "github issue", APP_CONFIG["github_repo"] + "/issues/new", :target => "_blank" %>
+      or email <%= link_to "revtilt@gmail.com", "mailto:revtilt@gmail.com?subject=[Bookmarklet Issue]" %>
+      with a description of the problem.
+    </div>
+  </div>
+</div>
