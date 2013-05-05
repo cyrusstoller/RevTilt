@@ -4,6 +4,9 @@
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'text_field span6' %>
+      <span class="help-block">
+        Check out our <%= link_to "bookmarklet", bookmarklet_path, :target => "_blank" %> if you don't want to copy and paste!
+      </span>
     </div>
   </div>
   <div class="control-group">
