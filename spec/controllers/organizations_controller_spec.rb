@@ -142,6 +142,21 @@ describe OrganizationsController do
           response.should render_template("new")
         end
       end
+      
+      describe "organization with that url already exists" do
+        it "should redirect to that organization" do
+          organization = FactoryGirl.create(:organization)
+          post :create, { :organization => valid_attributes.merge(:url => organization.url) }
+          response.should redirect_to(organization)
+        end
+        
+        it "should not create a new organization" do
+          organization = FactoryGirl.create(:organization)
+          expect {
+            post :create, { :organization => valid_attributes.merge(:url => organization.url) } 
+          }.to_not change(Organization, :count)
+        end
+      end
     end
 
     describe "PUT update" do

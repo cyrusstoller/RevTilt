@@ -81,7 +81,14 @@ class OrganizationsController < ApplicationController
         format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
         format.json { render json: @organization, status: :created, location: @organization }
       else
-        format.html { @title = new_action_title; render action: "new" }
+        format.html {
+          existing_organization = Organization.with_url(@organization.url)
+          if existing_organization.nil?
+            @title = new_action_title; render action: "new"
+          else
+            redirect_to existing_organization, :notice => "Organization has already been submitted."
+          end
+        }
         format.json { render json: @organization.errors, status: :unprocessable_entity }
       end
     end
