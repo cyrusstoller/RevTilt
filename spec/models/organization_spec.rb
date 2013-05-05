@@ -110,6 +110,20 @@ describe Organization do
     end
   end
 
+  describe "class methods" do
+    describe "with_url" do
+      it "should return the organization with the same url" do
+        organization = FactoryGirl.create(:organization)
+        Organization.with_url(organization.url).should eq(organization)
+      end
+      
+      it "should return nil if there is no organization with that url" do
+        organization = FactoryGirl.create(:organization)
+        Organization.with_url(organization.url[0..-2]).should be_nil
+      end
+    end
+  end
+
   describe "instance methods" do
     describe "update_cache!" do
       it "should respond_to update_cache!" do
