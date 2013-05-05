@@ -11,5 +11,19 @@ require 'spec_helper'
 #   end
 # end
 describe PagesHelper do
-  # pending "add some examples to (or delete) #{__FILE__}"
+  describe "bookmarklet_javascript" do
+    it "should respond_to bookmarklet_javascript" do
+      helper.should respond_to(:bookmarklet_javascript)
+    end
+    
+    it "should return the a javascript string" do
+      js_string = %(javascript:(function(){__script=document.createElement('SCRIPT');__script.type='text/javascript';__script.src='http://test.host/bookmarklet.js?service=yelp';document.getElementsByTagName('head')[0].appendChild(__script);})();)
+      helper.bookmarklet_javascript("yelp").should eq(js_string)
+    end
+    
+    it "should return the a javascript string with a new_window argument" do
+      js_string = %(javascript:(function(){__script=document.createElement('SCRIPT');__script.type='text/javascript';__script.src='http://test.host/bookmarklet.js?new_window=true&service=yelp';document.getElementsByTagName('head')[0].appendChild(__script);})();)
+      helper.bookmarklet_javascript("yelp", true).should eq(js_string)
+    end
+  end
 end

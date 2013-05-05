@@ -1,3 +1,3 @@
 <h1>Bookmarklet</h1>
 
-<%= link_to "Yelp Bookmarklet", "javascript:(function(){__script=document.createElement('SCRIPT');__script.type='text/javascript';__script.src='#{bookmarklet_url(:service => "yelp", :format => :js)}';document.getElementsByTagName('head')[0].appendChild(__script);})();" %>
+<%= link_to "Yelp Bookmarklet", bookmarklet_javascript("yelp") %>
