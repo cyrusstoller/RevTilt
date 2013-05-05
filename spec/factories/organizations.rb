@@ -8,6 +8,7 @@ FactoryGirl.define do
     url
     url_type "MyString"
     homepage_url nil
+    address "500 college ave, Swarthmore PA 19081"
     latitude 1.5
     longitude 1.5
     category_id 1

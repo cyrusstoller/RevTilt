@@ -28,6 +28,7 @@ class Organization < ActiveRecord::Base
   validates_presence_of :url, :message => "must be a yelp URL"
   validates_uniqueness_of :url
   validates_format_of :homepage_url, with: UrlFormatter.url_regexp, message: "is not a valid URL", if: "homepage_url?"
+  validates_presence_of :address
   
   # Database Relationships
   has_many :organization_user_relationships, :class_name => "Relationships::OrganizationUser", :foreign_key => "organization_id", 
