@@ -47,7 +47,7 @@
       &nbsp;
       <%= f.label :rating, "Overall rating", :class => 'control-label' %>
       &nbsp;
-      <div class="stars inline"></div>
+      <%= content_tag :div, :class => "stars inline", "data-score" => @review.rating do end %>
     </div>
   </div>
 <% end %>
