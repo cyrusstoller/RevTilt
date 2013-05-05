@@ -1,0 +1,32 @@
+(function(){
+	name = document.getElementById("bizInfoHeader").getElementsByTagName('h1')[0].innerHTML.replace(/\s+/g,' ').replace(/(^ )|( $)/g,'');
+	url = location.href;
+	
+	try {
+		homepage_url = document.getElementById("bizUrl").getElementsByTagName('a')[0].innerHTML;
+	} catch(err) {
+		homepage_url = "";
+	}
+	
+	try {
+		address_element = document.getElementById("bizInfoContent").getElementsByTagName('address')[0];
+	
+		street = address_element.getElementsBySelector("span[itemprop=streetAddress]")[0].innerHTML.replace(/<br>/g,' ');
+		city = address_element.getElementsBySelector("span[itemprop=addressLocality]")[0].innerHTML;
+		state = address_element.getElementsBySelector("span[itemprop=addressRegion]")[0].innerHTML;
+		postal_code = address_element.getElementsBySelector("span[itemprop=postalCode]")[0].innerHTML;
+		address = street + ", " + city + ", " + state + " " + postal_code;
+	} catch(err) {
+		address = "";
+	}
+	
+	new_organization_url = "<%= new_organization_url %>?name=" + encodeURIComponent(name) + "&url=";
+	new_organization_url += encodeURIComponent(url) + "&homepage_url=" + encodeURIComponent(homepage_url);
+	new_organization_url += "&address=" + encodeURIComponent(address);
+	
+	<% if @new_window %>
+	window.open(new_organization_url);
+	<% else %>
+	location.href=new_organization_url;
+	<% end %>
+})();

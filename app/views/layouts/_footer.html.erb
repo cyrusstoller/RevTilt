@@ -4,6 +4,7 @@
       <li><%= link_to "About", about_path %></li>
       <li><%= link_to "Press", press_path %></li>
       <li><%= link_to "Twitter", APP_CONFIG["twitter_url"], :target => "_blank" %></li>
+      <li><%= link_to "Bookmarklet", bookmarklet_path %></li>
       <li><%= link_to "Github Repository", APP_CONFIG["github_repo"], :target => "_blank" %></li>
       <% unless Rails.env.production? %>
         <li><span class="label label-success"><%= Rails.env %></span></li>

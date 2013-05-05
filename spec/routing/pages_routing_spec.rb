@@ -7,6 +7,10 @@ describe PagesController do
       get("/about").should route_to("pages#about")
     end
     
+    it "routes to bookmarklet" do
+      get("/bookmarklet").should route_to("pages#bookmarklet")
+    end
+    
     it "routes to favorites" do
       get("/favorites").should route_to("pages#favorites")
     end

@@ -4,6 +4,7 @@ RevTilt::Application.routes.draw do
   devise_for :users
   
   get "/about" => "pages#about"
+  get "/bookmarklet" => "pages#bookmarklet"
   get "/favorites" => "pages#favorites"
   get "/press" => "pages#press"
   

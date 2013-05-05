@@ -5,6 +5,24 @@ class PagesController < ApplicationController
     @title = "About"
   end
   
+  def bookmarklet
+    @title = "Bookmarklet"
+    
+    respond_to do |format|
+      format.html
+      format.js {
+        service_string = params[:service].downcase rescue nil
+        @new_window = params[:new_window] || false
+        case service_string
+        when "yelp"
+          render "pages/bookmarklets/yelp_bookmarklet"
+        else
+          render "pages/bookmarklets/error_bookmarklet"
+        end
+      }
+    end
+  end
+  
   def favorites
     @organizations = current_user.favorite_organizations.paginate(:page => params[:page])
     if @organizations.count == 0
