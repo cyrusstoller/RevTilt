@@ -24,7 +24,7 @@
 		
 		try { // city and stats
 			address += address_element.getElementsBySelector("span[itemprop=addressLocality]")[0].innerHTML;
-			address += ", " + address_element.getElementsBySelector("span[itemprop=addressRegion]")[0].innerHTML; + " "
+			address += ", " + address_element.getElementsBySelector("span[itemprop=addressRegion]")[0].innerHTML + " "; 
 		} catch(err) { 
 			address += " "
 		}
