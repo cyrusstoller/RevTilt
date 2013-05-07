@@ -60,9 +60,9 @@ class Organization < ActiveRecord::Base
   # Class Methods
   def self.category_options
     return { "activities" => 1, 
-             "childcare" => 2, 
+             "childcare / home care" => 2,
              "dentist" => 3, 
-             "doctors" => 4, 
+             "doctors / medical center" => 4,
              "education" => 7, 
              "haircut / salons" => 5, 
              "non-profit resource" => 13,
