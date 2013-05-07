@@ -1,5 +1,6 @@
 (function(){
-	name = document.getElementById("bizInfoHeader").getElementsByTagName('h1')[0].innerHTML.replace(/\s+/g,' ').replace(/(^ )|( $)/g,'');
+	name = document.getElementById("bizInfoHeader").getElementsByTagName('h1')[0].innerHTML;
+	name = name.replace(/\s+/g,' ').replace(/(^ )|( $)/g,'').replace(/&amp;/g, '&');
 	url = location.href;
 	
 	try {
