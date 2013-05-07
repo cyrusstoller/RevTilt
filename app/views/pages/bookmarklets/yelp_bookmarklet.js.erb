@@ -6,7 +6,9 @@
 	url = location.href;
 	
 	try {
-		homepage_url = document.getElementById("bizUrl").getElementsByTagName('a')[0].innerHTML;
+		homepage_url = document.getElementById("bizUrl").getElementsByTagName('a')[0].attributes.href.value;
+		homepage_url = homepage_url.gsub(/^.*url=/,"").gsub(/&.*$/, "");
+		homepage_url = decodeURIComponent(homepage_url);
 	} catch(err) {
 		homepage_url = "";
 	}
