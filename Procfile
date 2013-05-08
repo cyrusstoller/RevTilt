@@ -1,1 +1,1 @@
-server: bundle exec rails server -p $PORT
+server: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
