@@ -1,3 +1,6 @@
+Geocoder::Configuration.lookup = :bing
+Geocoder::Configuration.api_key = ENV["BING_MAPS_API_KEY"]
+
 if Rails.env.test?
   Geocoder.configure(:lookup => :test)
 
