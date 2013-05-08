@@ -55,7 +55,7 @@ class Organization < ActiveRecord::Base
       obj.display_location = [geo.city, geo.state_code, geo.postal_code].join(", ")
     end
   end
-  after_validation :reverse_geocode
+  after_validation :reverse_geocode, :if => :address_changed?
   
   # Class Methods
   def self.category_options
