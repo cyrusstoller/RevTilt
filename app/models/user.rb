@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
   end
   
   def favorited?(organization)
-    favorite_organizations.include?(organization)
+    Relationships::OrganizationUser.where(:organization_id => organization.id, :user_id => self.id).first
   end
   
   protected
