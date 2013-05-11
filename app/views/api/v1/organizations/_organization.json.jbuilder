@@ -2,6 +2,7 @@ with_join_columns ||= false
 
 json.name organization.name
 json.revtilt_url organization_url(organization)
+json.revtitl_api_url api_v1_organization_url(organization, :format => :json)
 json.category_id organization.category_id
 json.category_text organization.category_text
 json.review_summary do
@@ -17,6 +18,9 @@ json.location do
   json.latitude organization.latitude
   json.longitude organization.longitude
   json.display_location organization.display_location
+  if organization.respond_to?(:distance)
+    json.distance organization.distance
+  end
 end
 json.url organization.url
 json.url_type organization.url_type

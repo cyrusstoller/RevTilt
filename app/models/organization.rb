@@ -75,6 +75,10 @@ class Organization < ActiveRecord::Base
              "therapy - other" => 11 }
   end
   
+  def self.category_text(q_category_id)
+    Organization.category_options.select { |k,v| v == q_category_id }.keys[0] rescue "MISC"
+  end
+  
   def self.with_url(q_url)
     where(:url => q_url).first
   end
