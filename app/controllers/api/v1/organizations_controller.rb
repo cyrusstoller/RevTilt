@@ -9,6 +9,8 @@ class Api::V1::OrganizationsController < Api::V1::ApplicationController
     
     if params[:latitude].present? and params[:longitude].present? and params[:radius]
       @organizations = @organizations.near([params[:latitude], params[:longitude]], params[:radius])
+    elsif params[:latitude].present? or params[:longitude].present? or params[:radius]
+      render :status => 500, :text => "Invalid API Call"
     end
   end
   
