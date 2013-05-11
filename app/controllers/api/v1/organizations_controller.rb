@@ -3,6 +3,7 @@ class Api::V1::OrganizationsController < Api::V1::ApplicationController
     @organizations = Organization.paginate(:page => params[:page])
     
     @organizations = @organizations.joins(%(LEFT JOIN "cache_review_stats" ON "cache_review_stats"."organization_id" = "organizations"."id")).
+                        select(%("organizations".*, "cache_review_stats"."num_reviews", "cache_review_stats"."avg_review")).
                         where(%("cache_review_stats"."condition_id" = 0 OR "cache_review_stats"."condition_id" IS NULL)).
                         order(%("cache_review_stats"."avg_review" DESC NULLS LAST)).
                         order(%("cache_review_stats"."num_reviews" DESC))
@@ -16,6 +17,6 @@ class Api::V1::OrganizationsController < Api::V1::ApplicationController
   
   def show
     @organization = Organization.find(params[:id])
-    @reviews = @organization.reviews.with_condition(0).paginate(:page => params[:page])
+    @reviews = @organization.reviews.with_condition(0).paginate(:page => params[:page]).includes(:user)
   end
 end

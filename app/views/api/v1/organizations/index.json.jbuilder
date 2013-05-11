@@ -6,5 +6,5 @@ json.pagination do
   json.total_entries @organizations.total_entries
 end
 json.organizations (@organizations) do |organization|
-  json.partial! organization
+  json.partial! "organization", :organization =>  organization, :with_join_columns => true
 end
