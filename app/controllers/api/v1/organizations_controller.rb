@@ -7,9 +7,9 @@ class Api::V1::OrganizationsController < Api::V1::ApplicationController
                         order(%("cache_review_stats"."avg_review" DESC NULLS LAST)).
                         order(%("cache_review_stats"."num_reviews" DESC))
     
-    if params[:latitude].present? and params[:longitude].present? and params[:radius]
+    if params[:latitude].present? and params[:longitude].present? and params[:radius].present?
       @organizations = @organizations.near([params[:latitude], params[:longitude]], params[:radius])
-    elsif params[:latitude].present? or params[:longitude].present? or params[:radius]
+    elsif params[:latitude].present? or params[:longitude].present? or params[:radius].present?
       render :status => 500, :text => "Invalid API Call"
     end
   end
