@@ -1,0 +1,66 @@
+<div class="span12">
+  <h3>Specific Organization</h3>
+</div>
+
+<div class="span8">
+<pre>
+[GET] /api/v1/organizations/:organization_id.json
+</pre>
+
+<h4>Parameters</h4>
+
+<p>
+  <code>organization_id</code> (required) the identifier for the organization
+</p>
+
+<p>
+  <code>page</code> (optional) each page will return up to 30 reviews [default = page 1]
+</p>
+
+<h5>Example</h5>
+
+<pre>
+http://revtilt.com/api/v1/organizations/309.json?page=1
+</pre>
+
+<h4>Payload Schema</h4>
+
+<pre>
+{
+  "conditionId": 0,
+  "organization": {
+    "name": "Imotion",
+    "revtiltUrl": "http://revtilt.com/organizations/309",
+    "revtitlApiUrl": "http://revtilt.com/api/v1/organizations/309.json",
+    "categoryId": 0,
+    "categoryText": "other",
+    "reviewSummary": {
+      "numReviews": 2,
+      "avgReview": 3.5
+    },
+    "location": {
+      "latitude": 37.3045312,
+      "longitude": -121.8624604,
+      "displayLocation": "San Jose, CA, 95125"
+    },
+    "url": "http://www.yelp.com/biz/imotion-san-jose",
+    "urlType": "yelp",
+    "homepage": "http://www.imotionphotos.com"
+  },
+  "pagination": {
+    "currentPage": 2,
+    "totalPages": 1,
+    "totalEntries": 2
+  },
+  "reviews": [
+    {
+      "username": "cyrus",
+      "rating": 4,
+      "content": "This place is great",
+      "createdAt": "2013-04-25T06:45:58Z"
+    }
+  ]
+}
+</pre>
+
+</div>

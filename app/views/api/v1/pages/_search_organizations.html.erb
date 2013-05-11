@@ -1,0 +1,90 @@
+<div class="span12">
+  <h3>Search Organizations</h3>
+</div>
+
+<div class="span8">
+<pre>
+[GET] /api/v1/organizations.json
+</pre>
+
+<h4>Parameters</h4>
+
+<p>
+  <code>category</code> (optional) that you want to return
+</p>
+
+<p>
+  <code>latitude</code> <code>longitude</code> <code>radius</code> (all or none) to search in a given location.
+  You must provide either all or none of these parameters. Radius is in miles.
+</p>
+
+<p>
+  <code>page</code> (optional) each page will return up to 30 organizations [default = page 1]
+</p>
+
+<h5>Example</h5>
+<pre>
+http://revtilt.com/api/v1/organizations.json?category=0&latitude=37.3045312&longitude=-121.8624604&radius=5
+</pre>
+
+<h4>Payload Schema</h4>
+
+<pre>
+{
+  "query": {
+    "conditionId": 0,
+    "latitude": null,
+    "longitude": null,
+    "radius": null,
+    "category": null,
+    "categoryText": "all"
+  },
+  "pagination": {
+    "currentPage": 1,
+    "totalPages": 39,
+    "totalEntries": 1100
+  },
+  "organizations": [
+    {
+      "name": "Imotion",
+      "revtiltUrl": "http://revtilt.com/organizations/309",
+      "revtitlApiUrl": "http://revtilt.com/api/v1/organizations/309.json",
+      "categoryId": 0,
+      "categoryText": "other",
+      "reviewSummary": {
+        "numReviews": 2,
+        "avgReview": 3.5
+      },
+      "location": {
+        "latitude": 37.3045312,
+        "longitude": -121.8624604,
+        "displayLocation": "San Jose, CA, 95125",
+        "distance": 0
+      },
+      "url": "http://www.yelp.com/biz/imotion-san-jose",
+      "urlType": "yelp",
+      "homepage": "http://www.imotionphotos.com"
+    }, ...
+  ]
+}
+</pre>
+</div>
+
+<div class="span4">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>category types</th>
+        <th>id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Organization.category_options.each do |k,v| %>
+        <tr>
+          <td><%= k %></td>
+          <td><%= v %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
