@@ -1,3 +1,5 @@
+<% with_join_columns ||= false %>
+
 <table class="table table-hover">
   <tbody>
     <% organizations.each do |organization| %>
@@ -17,8 +19,13 @@
           <% end %>
         </td>
         <td>
-          <% num_reviews = organization.cache_review_stats.with_condition(0).first.num_reviews rescue 0 %>
-          <% avg_review =  organization.cache_review_stats.with_condition(0).first.avg_review rescue 0 %>
+          <% if with_join_columns %>
+            <% num_reviews = organization.num_reviews || 0 %>
+            <% avg_review =  organization.avg_review || 0 %>
+          <% else %>
+            <% num_reviews = organization.cache_review_stats.with_condition(0).first.num_reviews rescue 0 %>
+            <% avg_review =  organization.cache_review_stats.with_condition(0).first.avg_review rescue 0 %>
+          <% end %>
           
           <%= content_tag :div, :class => "stars inline", "data-score" => avg_review, "data-readonly" => true do end %>
           <span class="one-line"><%= pluralize num_reviews, "Review" %></span>

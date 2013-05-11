@@ -13,5 +13,5 @@
     There are no organizations that meet these criteria yet! Be the first to contribute. Click <%= link_to "here", new_organization_path %>.
   </div>
 <% else %>
-  <%= render "table", :organizations => @organizations %>
+  <%= render "table", :organizations => @organizations, :with_join_columns => true %>
 <% end %>
