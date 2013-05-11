@@ -85,7 +85,7 @@ class Organization < ActiveRecord::Base
   
   # Instance Methods
   def category_text
-    Organization.category_options.select { |k,v| v == category_id }.keys[0] rescue "MISC"
+    Organization.category_text(category_id)
   end
   
   def update_cache!(condition_id)

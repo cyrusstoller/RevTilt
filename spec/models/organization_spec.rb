@@ -122,6 +122,12 @@ describe Organization do
         Organization.with_url(organization.url[0..-2]).should be_nil
       end
     end
+    
+    describe "category_text" do
+      it "should return 'other'" do
+        Organization.category_text(0).should == "other"
+      end
+    end
   end
 
   describe "instance methods" do
