@@ -2,7 +2,7 @@ with_join_columns ||= false
 
 json.name organization.name
 json.revtilt_url organization_url(organization)
-json.revtitl_api_url api_v1_organization_url(organization, :format => :json)
+json.revtilt_api_url api_v1_organization_url(organization, :format => :json)
 json.category_id organization.category_id
 json.category_text organization.category_text
 json.review_summary do
