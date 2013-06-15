@@ -1,4 +1,6 @@
 class Api::V1::OrganizationsController < Api::V1::ApplicationController
+  after_filter :track_google_analytics
+
   def index
     @organizations = Organization.paginate(:page => params[:page])
 
@@ -22,5 +24,14 @@ class Api::V1::OrganizationsController < Api::V1::ApplicationController
   def show
     @organization = Organization.find(params[:id])
     @reviews = @organization.reviews.with_condition(0).paginate(:page => params[:page]).includes(:user)
+  end
+  
+  private
+  
+  def track_google_analytics
+    unless Rails.env.test?
+      gabba = Gabba::Gabba.new(APP_CONFIG["google_analytics"][Rails.env], "revtilt.com")
+      gabba.page_view("api call", request.fullpath)
+    end
   end
 end
