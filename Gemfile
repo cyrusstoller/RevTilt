@@ -86,6 +86,9 @@ gem "geocoder"
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
 
+# Google Analytics
+gem "gabba", "~> 1.0.1"
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
