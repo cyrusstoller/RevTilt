@@ -26,7 +26,7 @@ describe Api::V1::OrganizationsController do
     end
   end
   
-  describe "GET 'index'" do
+  describe "GET 'show'" do
     it "returns http success" do
       organization = FactoryGirl.create(:organization)
       get 'show', :id => organization.to_param, :format => :json
