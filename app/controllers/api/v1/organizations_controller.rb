@@ -1,7 +1,11 @@
 class Api::V1::OrganizationsController < Api::V1::ApplicationController
   def index
     @organizations = Organization.paginate(:page => params[:page])
-    @organizations = @organizations.where(:category_id => params[:category]) unless params[:category].blank?
+
+    unless params[:category].blank? or params[:category].downcase == "all"
+      @organizations = @organizations.where(:category_id => params[:category])
+    end
+
     @organizations = @organizations.joins(%(LEFT JOIN "cache_review_stats" ON "cache_review_stats"."organization_id" = "organizations"."id")).
                         select(%("organizations".*, "cache_review_stats"."num_reviews", "cache_review_stats"."avg_review")).
                         where(%("cache_review_stats"."condition_id" = 0 OR "cache_review_stats"."condition_id" IS NULL)).
