@@ -37,7 +37,7 @@ don't have people duplicating work unnecessarily.
 
 ## Where did this all get started?
 
-Cyrus and Ryan won first place at the AT&T Hackathon on Hacking Autism in April 2013.
+*RevTilt* (then called Puzzled) won first place at the [AT&T Hackathon on Hacking Autism](https://mobileappassf-eorg.eventbrite.com/) in April 2013.
 
 ### Press
 
