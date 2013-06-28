@@ -26,3 +26,5 @@
 
 # rvm
 .rvmrc
+.ruby-gemset
+.ruby-version
