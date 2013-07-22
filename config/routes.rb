@@ -1,5 +1,5 @@
 RevTilt::Application.routes.draw do
-  root :to => "organizations#index"
+  root :to => "pages#about"
   
   devise_for :users
   
