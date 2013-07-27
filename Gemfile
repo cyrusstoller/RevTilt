@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
 ruby '1.9.3'
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.14'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # gem 'thin'
-gem 'unicorn'
+gem 'unicorn', "~> 4.6.3"
 
 gem 'pg'
 gem 'nokogiri'
@@ -67,10 +67,10 @@ end
 gem 'foreman'
 
 # authentication
-gem "devise", "~> 2.2.3"
+gem "devise", "~> 2.2.4"
 
 # authorization
-gem "cancan", "~> 1.6.8"
+gem "cancan", "~> 1.6.10"
 
 gem "url_formatter", "~> 0.0.1"
 
