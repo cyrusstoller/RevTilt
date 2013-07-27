@@ -66,7 +66,7 @@ class Organization < ActiveRecord::Base
              "hair salon / barber" => 5, 
              "healthcare" => 4,
              "housing" => 14,
-             "non-profit resource" => 13,
+             "non-profit / government resource" => 13,
              "other" => 0,
              "restaurants" => 6, 
              "therapy - cognitive behavioral" => 10,
