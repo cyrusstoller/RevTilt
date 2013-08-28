@@ -85,6 +85,10 @@ class Organization < ActiveRecord::Base
   end
   
   # Instance Methods
+  def to_param
+    "#{id}-#{name}".parameterize
+  end
+  
   def category_text
     Organization.category_text(category_id)
   end
