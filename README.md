@@ -1,5 +1,7 @@
 # RevTilt
 
+[![Build Status](https://travis-ci.org/cyrusstoller/RevTilt.png)](https://travis-ci.org/cyrusstoller/RevTilt)
+
 ## Goal
 
 This is a platform to collect information and reviews about whether businesses are accommodating of customers with special needs.
