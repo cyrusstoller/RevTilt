@@ -90,7 +90,10 @@ gem 'jbuilder'
 # Google Analytics
 gem "gabba", "~> 1.0.1"
 
-gem "rails_12factor", "~> 0.0.2"
+group :production, :staging do
+  gem "rails_12factor", "~> 0.0.2"
+end
+
 gem "newrelic_rpm", "~> 3.6.7.159"
 
 # Use unicorn as the app server
