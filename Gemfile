@@ -91,6 +91,7 @@ gem 'jbuilder'
 gem "gabba", "~> 1.0.1"
 
 gem "rails_12factor", "~> 0.0.2"
+gem "newrelic_rpm", "~> 3.6.7.159"
 
 # Use unicorn as the app server
 # gem 'unicorn'

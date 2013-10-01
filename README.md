@@ -59,6 +59,7 @@ SMTP_DOMAIN=gmail.com
 SMTP_USERNAME=*sending gmail address*
 SMTP_PASSWORD=*sending gmail password*
 BING_MAPS_API_KEY=*key from the bingmpasportal*
+NEWRELIC_LICENSE_KEY=*key from new relic*
 ```
 
 add these variables to Heroku with `heroku config:add`.
@@ -66,6 +67,7 @@ add these variables to Heroku with `heroku config:add`.
 ## API Keys
 
 - Bing Maps API: https://www.bingmapsportal.com/application/
+- New Relic API: http://newrelic.com/
 
 ## Install gems and setup your database
 
