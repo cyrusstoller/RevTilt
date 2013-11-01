@@ -34,16 +34,17 @@ describe ApplicationHelper do
   end
   
   describe "title_helper" do
-    it "should return 'Hazelnut'" do
+    let(:base) { "RevTilt" }
+    it "should return 'Revtilt'" do
       @title = nil
-      helper.title.should == "RevTilt"
+      helper.title.should == base
       @title = ""
-      helper.title.should == "RevTilt"
+      helper.title.should == base
     end
     
     it "should return 'RevTilt | Home'" do
       @title = "Home"
-      helper.title.should == "RevTilt | Home"
+      helper.title.should == "#{base} | Home"
     end
   end
 end
