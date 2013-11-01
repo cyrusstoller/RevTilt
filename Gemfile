@@ -9,7 +9,7 @@ gem 'rails', '3.2.15'
 # gem 'thin'
 gem 'unicorn', "~> 4.6.3"
 
-gem 'pg'
+gem 'pg', "~> 0.17.0"
 gem 'nokogiri'
 
 # model annotation
