@@ -1,6 +1,4 @@
-# RevTilt
-
-[![Build Status](https://travis-ci.org/cyrusstoller/RevTilt.png)](https://travis-ci.org/cyrusstoller/RevTilt)
+# RevTilt [![Build Status](https://travis-ci.org/cyrusstoller/RevTilt.png)](https://travis-ci.org/cyrusstoller/RevTilt)
 
 ## Goal
 
