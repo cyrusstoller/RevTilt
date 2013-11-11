@@ -38,6 +38,7 @@ group :development, :test do
   
   gem "guard-spork", "~> 1.5.1"
   gem "spork", "~> 0.9.2"
+  gem 'dotenv-rails', "~> 0.9.0"
 end
 
 group :development do
@@ -67,7 +68,7 @@ end
 gem 'foreman'
 
 # authentication
-gem "devise", "~> 2.2.4"
+gem "devise", "~> 3.2.0"
 
 # authorization
 gem "cancan", "~> 1.6.10"

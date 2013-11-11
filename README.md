@@ -49,6 +49,7 @@ Click [here](http://www.revtilt.com/press) for a complete list.
 You will need to create a `.env` file in the `RevTilt` directory. You should have the following variables defined.
 ```
 SECRET_TOKEN=*SOME HEX STRING*
+DEVISE_SECRET_TOKEN=*A DIFFERENT HEX STRING*
 admin_user=cyrus
 admin_password=p455w0rd
 SMTP_DEV_EMAIL=*where all development emails should be sent*
