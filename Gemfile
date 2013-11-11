@@ -7,7 +7,7 @@ gem 'rails', '3.2.15'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # gem 'thin'
-gem 'unicorn', "~> 4.6.3"
+gem 'unicorn', "~> 4.7.0"
 
 gem 'pg', "~> 0.17.0"
 gem 'nokogiri'
@@ -31,24 +31,24 @@ group :assets do
 end
 
 group :development, :test do
-  gem "rspec-rails", "~> 2.12.1"
-  gem "guard-rspec", "~> 2.3.3"
-  gem "factory_girl_rails", "~> 4.2.1"
+  gem "rspec-rails", "~> 2.14.0"
+  gem "guard-rspec", "~> 4.0.4"
+  gem "factory_girl_rails", "~> 4.3.0"
   gem "faker"
   
-  gem "guard-spork", "~> 1.4.3"
+  gem "guard-spork", "~> 1.5.1"
   gem "spork", "~> 0.9.2"
 end
 
 group :development do
-  gem "twitter-bootstrap-rails", "2.2.0"
+  gem "twitter-bootstrap-rails", "~> 2.2.8"
 end
 
 gem 'jquery-rails'
 
 group :test do
   gem 'webmock'
-  gem 'capybara', '1.1.2'
+  gem 'capybara', '~> 2.1.0'
 
   # Test gems on Macintosh OS X
   gem 'rb-fsevent', '~> 0.9.1', :require => false
@@ -94,7 +94,7 @@ group :production, :staging do
   gem "rails_12factor", "~> 0.0.2"
 end
 
-gem "newrelic_rpm", "~> 3.6.7.159"
+gem "newrelic_rpm", "~> 3.6.9.171"
 
 # Use unicorn as the app server
 # gem 'unicorn'
