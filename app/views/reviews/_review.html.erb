@@ -14,7 +14,7 @@
   <% end %>
   &nbsp;
   <% if can? :destroy, review %>
-    <%= link_to "delete", review_path(review), :class => "muted", :method => :delete, :confirm => "Are you sure?" %>
+    <%= link_to "delete", review_path(review), :class => "muted", :method => :delete, :data => { :confirm => "Are you sure?" } %>
   <% end %>
   
   <br /><br />
