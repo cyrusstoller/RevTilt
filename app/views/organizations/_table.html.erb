@@ -14,7 +14,8 @@
           <% end %>
           <% if can? :destroy, organization %>
             <span class="one-line muted">
-              | <%= link_to "destroy", organization_path(organization), :method => :delete, :confirm => "Are you sure?", :class => "muted" %>
+              | <%= link_to "destroy", organization_path(organization), :method => :delete, :data => { :confirm => "Are you sure?" }, 
+                    :class => "muted" %>
             </span>
           <% end %>
         </td>

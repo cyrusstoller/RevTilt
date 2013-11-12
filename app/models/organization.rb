@@ -20,7 +20,7 @@
 require "open-uri"
 
 class Organization < ActiveRecord::Base
-  attr_accessible :address, :category_id, :homepage_url, :latitude, :longitude, :name, :url
+  # attr_accessible :address, :category_id, :homepage_url, :latitude, :longitude, :name, :url
 
   # Validations
   validates_presence_of :category_id

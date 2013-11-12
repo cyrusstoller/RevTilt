@@ -97,6 +97,11 @@ describe ReviewsController do
           assigns(:review).should be_a(Review)
           assigns(:review).should be_persisted
         end
+        
+        it "assigns the user_id to the signed in user even if another user_id is provided" do
+          post :create, {:review => valid_attributes.merge({"user_id" => @user.id + 1 })}
+          assigns(:review).user_id.should eq(@user.id)
+        end
 
         it "redirects to the created review" do
           post :create, {:review => valid_attributes.merge({"organization_id" => @organization.to_param })}

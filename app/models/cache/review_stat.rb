@@ -13,7 +13,7 @@
 #
 
 class Cache::ReviewStat < ActiveRecord::Base
-  attr_accessible :avg_review, :condition_id, :num_reviews, :organization_id
+  # attr_accessible :avg_review, :condition_id, :num_reviews, :organization_id
   
   # Validations
   validates_presence_of :organization_id

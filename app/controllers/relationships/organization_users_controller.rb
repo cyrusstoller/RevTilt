@@ -50,7 +50,7 @@ class Relationships::OrganizationUsersController < ApplicationController
   # POST /relationships/organization_users
   # POST /relationships/organization_users.json
   def create
-    @relationships_organization_user = Relationships::OrganizationUser.new(params[:relationships_organization_user])
+    @relationships_organization_user = Relationships::OrganizationUser.new(permitted_params)
 
     authorize! :create, @relationships_organization_user
 
@@ -73,7 +73,7 @@ class Relationships::OrganizationUsersController < ApplicationController
     authorize! :update, @relationships_organization_user
 
     respond_to do |format|
-      if @relationships_organization_user.update_attributes(params[:relationships_organization_user])
+      if @relationships_organization_user.update_attributes(permitted_params)
         format.html { redirect_to @relationships_organization_user, notice: 'Organization user was successfully updated.' }
         format.json { head :no_content }
       else
@@ -124,5 +124,11 @@ class Relationships::OrganizationUsersController < ApplicationController
       format.json { render json: @relationships_organization_user, status: :created }
       format.js
     end
+  end
+  
+  protected
+  
+  def permitted_params
+    params.require(:relationships_organization_user).permit(:organization_id, :user_id)
   end
 end
