@@ -17,7 +17,7 @@ class PagesController < ApplicationController
         when "yelp"
           render "pages/bookmarklets/yelp_bookmarklet"
         else
-          render "pages/bookmarklets/error_bookmarklet"
+          render "pages/bookmarklets/error_bookmarklet", :status => 404
         end
       }
     end
