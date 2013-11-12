@@ -14,7 +14,7 @@
 #
 
 class Review < ActiveRecord::Base
-  attr_accessible :condition_id, :content, :organization_id, :rating
+  # attr_accessible :condition_id, :content, :organization_id, :rating
   
   # Validations
   validates_presence_of :condition_id

@@ -11,7 +11,7 @@
 #
 
 class Relationships::OrganizationUser < ActiveRecord::Base
-  attr_accessible :organization_id, :user_id
+  # attr_accessible :organization_id, :user_id
   
   validates_presence_of :organization_id
   validates_presence_of :user_id

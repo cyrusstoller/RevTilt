@@ -73,7 +73,7 @@ class OrganizationsController < ApplicationController
   # POST /organizations
   # POST /organizations.json
   def create
-    @organization = Organization.new(params[:organization])
+    @organization = Organization.new(permitted_params)
 
     authorize! :create, @organization
 
@@ -103,7 +103,7 @@ class OrganizationsController < ApplicationController
     authorize! :update, @organization
 
     respond_to do |format|
-      if @organization.update_attributes(params[:organization])
+      if @organization.update_attributes(permitted_params)
         format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
         format.json { head :no_content }
       else
@@ -129,6 +129,10 @@ class OrganizationsController < ApplicationController
   end
   
   protected
+  
+  def permitted_params
+    params.require(:organization).permit(:address, :category_id, :homepage_url, :latitude, :longitude, :name, :url)
+  end
   
   def new_action_title
     "Share an Organization"

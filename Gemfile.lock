@@ -133,8 +133,6 @@ GEM
     orm_adapter (0.4.0)
     pg (0.17.0)
     polyglot (0.3.3)
-    protected_attributes (1.0.5)
-      activemodel (>= 4.0.1, < 5.0)
     pry (0.9.12.3)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -255,7 +253,6 @@ DEPENDENCIES
   newrelic_rpm (~> 3.6.9.171)
   nokogiri
   pg (~> 0.17.0)
-  protected_attributes
   rails (= 4.0.1)
   rails_12factor (~> 0.0.2)
   rb-fsevent (~> 0.9.1)

@@ -55,7 +55,7 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(params[:review])
+    @review = Review.new(permitted_params)
     @review.user = current_user
     
     authorize! :create, @review
@@ -79,7 +79,7 @@ class ReviewsController < ApplicationController
     authorize! :update, @review
 
     respond_to do |format|
-      if @review.update_attributes(params[:review])
+      if @review.update_attributes(permitted_params)
         format.html { redirect_to @review.organization || @review, notice: 'Review was successfully updated.' }
         format.json { head :no_content }
       else
@@ -105,6 +105,10 @@ class ReviewsController < ApplicationController
   end
   
   protected
+  
+  def permitted_params
+    params.require(:review).permit(:condition_id, :content, :organization_id, :rating)
+  end
   
   def new_action_title
     "New Review"
