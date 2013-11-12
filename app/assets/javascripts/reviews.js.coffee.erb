@@ -10,6 +10,6 @@ jQuery ->
 			$(this).attr('data-readonly')
 		score: ->
 			$(this).attr('data-score')
-		starHalf: "/assets/PuzzleHalf.png"
-		starOn:   "/assets/PuzzleOn.png"
-		starOff:  "/assets/PuzzleOff.png"
+		starHalf: "<%= asset_path 'PuzzleHalf.png' %>"
+		starOn:   "<%= asset_path 'PuzzleOn.png' %>"
+		starOff:  "<%= asset_path 'PuzzleOff.png' %>"
