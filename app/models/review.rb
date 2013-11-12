@@ -28,6 +28,7 @@ class Review < ActiveRecord::Base
   belongs_to :organization, :class_name => "Organization", :foreign_key => "organization_id"
   
   scope :with_condition, Proc.new { |n| where(:condition_id => n) }
+  scope :reverse_chronological, -> { order(%("reviews"."id" DESC))}
   
   after_save :update_cache!, :if => Proc.new { rating_changed? or condition_id_changed? }
   after_destroy :update_cache!

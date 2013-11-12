@@ -28,7 +28,7 @@ class OrganizationsController < ApplicationController
     
     authorize! :show, @organization
     
-    @reviews = @organization.reviews.paginate(:page => params[:page])
+    @reviews = @organization.reviews.reverse_chronological.paginate(:page => params[:page])
 
     @review = Review.new
     @review.organization = @organization

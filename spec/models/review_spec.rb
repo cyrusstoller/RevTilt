@@ -57,6 +57,10 @@ describe Review do
       Review.should respond_to(:with_condition)
     end
     
+    it "should respond to reverse_chronological" do
+      Review.should respond_to(:reverse_chronological)
+    end
+    
     it "should return only the Cache::ReviewStat with that condition" do
       r1 = FactoryGirl.create(:review, :condition_id => 1)
       r2 = FactoryGirl.create(:review, :condition_id => 2)
