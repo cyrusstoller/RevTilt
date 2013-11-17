@@ -100,7 +100,12 @@ gem "newrelic_rpm", "~> 3.6.9.171"
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+group :development do
+  gem "capistrano", "~> 3.0.1"
+  gem 'capistrano-rbenv', github: "capistrano/rbenv", ref: "master"
+  gem "capistrano-bundler", "~> 1.0.0"
+  gem "capistrano-rails", "~> 1.1.0"
+end
 
 # To use debugger
 # gem 'debugger'
