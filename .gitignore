@@ -10,6 +10,7 @@
 /lib/capistrano/templates/env*
 !/lib/capistrano/templates/env.example
 /lib/capistrano/templates/database.yml.erb
+!/lib/capistrano/templates/database.yml.erb.example
 
 # Log files
 /log/*

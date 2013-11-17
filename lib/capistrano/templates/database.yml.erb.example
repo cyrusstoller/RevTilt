@@ -1,0 +1,8 @@
+<%= fetch(:default_env)[:rails_env] %>:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: <%= fetch :application %>_<%= fetch(:default_env)[:rails_env] %>
+  pool: 25
+  username: deployer
+  password: 
