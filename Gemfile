@@ -34,8 +34,9 @@ group :development, :test do
   
   gem "guard-spork", "~> 1.5.1"
   gem "spork-rails", "~> 4.0.0"
-  gem 'dotenv-rails', "~> 0.9.0"
 end
+
+gem 'dotenv-rails', "~> 0.9.0"
 
 group :development do
   gem "twitter-bootstrap-rails", "~> 2.2.8"
