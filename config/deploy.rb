@@ -24,11 +24,12 @@ set :nginx_conf_path, -> { shared_path.join("config/nginx.conf") }
 
 namespace :deploy do
 
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
+  %w[start stop restart].each do |command|
+    desc "#{command} unicorn server"
+    task command do
+      on roles(:app), in: :sequence, wait: 5, except: { no_release: true } do
+        execute :sudo, "/etc/init.d/unicorn_#{fetch(:application)}.sh", "#{command}"
+      end
     end
   end
 

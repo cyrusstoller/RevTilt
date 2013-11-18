@@ -6,6 +6,8 @@ namespace :deploy do
   task :setup do
     invoke "deploy:check:make_linked_dirs"
     invoke "deploy:setup:database"
+    invoke "nginx:setup"
+    invoke "unicorn:setup"
   end
   
   namespace :setup do
