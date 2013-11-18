@@ -1,4 +1,4 @@
-worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
+worker_processes 3
 root_path = "<%= current_path %>"
 listen "<%= shared_path %>/tmp/sockets/unicorn.sock", :backlog => 64
 
