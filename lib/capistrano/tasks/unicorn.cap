@@ -1,0 +1,66 @@
+require_relative "helper"
+
+namespace :unicorn do
+  
+  #########################################
+  ##                                     ##
+  ##     Unicorn system configuration    ##
+  ##                                     ##
+  #########################################
+  
+  desc "placing the logrotate.d conf file for unicorn"
+  task :logrotate_d do
+    on roles(:app), in: :sequence, wait: 5 do |host|
+      info "copying the unicorn logrotate.d conf file"
+      logrotate_conf = ERB.new(template("unicorn_log_rotate.conf.erb")).result(binding)
+
+      tmp_path = Pathname.new("#{shared_path}/config/unicorn_log_rotate.conf")
+      final_path = "/etc/logrotate.d/unicorn_#{fetch(:application)}"
+
+      upload! StringIO.new(logrotate_conf), tmp_path
+      execute :chmod, 644, tmp_path
+      execute :sudo, :mv, tmp_path, final_path
+      execute :sudo, :chown, "root.root", final_path
+    end
+  end
+  
+  desc "boot unicorn on system boot"
+  task :on_boot do
+    on roles(:app), in: :parallel do |host|
+      execute :sudo, "update-rc.d", "unicorn_#{fetch(:application)}.sh", "defaults"
+    end
+  end
+  
+  #########################################
+  ##                                     ##
+  ##   Uploading unicorn configuration   ##
+  ##                                     ##
+  #########################################
+  
+  desc "uploading the unicorn config"
+  task :app_config do
+    on roles(:app), in: :parallel do |host|
+      info "copying the unicorn config"
+      unicorn_config = ERB.new(template("unicorn.rb.erb")).result(binding)
+      server_unicorn_config = "#{release_path}/config/unicorn.rb"
+      execute :rm, server_unicorn_config
+      upload! StringIO.new(unicorn_config), server_unicorn_config
+    end
+  end
+  before "deploy:publishing", "unicorn:app_config"
+  
+  desc "uploading the init.d for unicorn"
+  task :initd do
+    on roles(:app), in: :parallel do |host|
+      info "copying the unicorn init.d script"
+      unicorn_initd = ERB.new(template("unicorn_init.sh.erb")).result(binding)
+      tmp_path = "#{shared_path}/tmp/unicorn_init.sh"
+      upload! StringIO.new(unicorn_initd), tmp_path
+      execute :chmod, 775, tmp_path
+      execute :chown, "#{host.user}.deployers", tmp_path
+      execute :sudo, :mv, tmp_path, "/etc/init.d/unicorn_#{fetch(:application)}.sh"
+    end
+  end
+  before "deploy:publishing", "unicorn:initd"
+  
+end
