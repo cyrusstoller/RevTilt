@@ -8,6 +8,15 @@ namespace :unicorn do
     invoke "unicorn:on_boot"
     invoke "unicorn:logrotate_d"
   end
+  
+  %w[start stop restart].each do |command|
+    desc "#{command} unicorn server"
+    task command do
+      on roles(:app), in: :sequence, wait: 5, except: { no_release: true } do
+        execute :sudo, "/etc/init.d/unicorn_#{fetch(:application)}.sh", "#{command}"
+      end
+    end
+  end
 
   #########################################
   ##                                     ##

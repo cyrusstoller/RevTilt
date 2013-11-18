@@ -23,14 +23,10 @@ set :bundle_flags, "--deployment" # removing the --quiet flag
 set :nginx_conf_path, -> { shared_path.join("config/nginx.conf") }
 
 namespace :deploy do
-
-  %w[start stop restart].each do |command|
-    desc "#{command} unicorn server"
-    task command do
-      on roles(:app), in: :sequence, wait: 5, except: { no_release: true } do
-        execute :sudo, "/etc/init.d/unicorn_#{fetch(:application)}.sh", "#{command}"
-      end
-    end
+  
+  desc "Restart application"
+  task :restart do
+    invoke "unicorn:restart"
   end
 
   after :restart, :clear_cache do
