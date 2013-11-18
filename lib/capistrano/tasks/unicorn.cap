@@ -9,7 +9,7 @@ namespace :unicorn do
     invoke "unicorn:logrotate_d"
   end
   
-  %w[start stop restart].each do |command|
+  %w[start stop restart reload].each do |command|
     desc "#{command} unicorn server"
     task command do
       on roles(:app), in: :sequence, wait: 5, except: { no_release: true } do

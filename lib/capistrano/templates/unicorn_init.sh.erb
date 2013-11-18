@@ -39,7 +39,12 @@ force-stop)
         sig TERM && exit 0
         echo >&2 "Not running"
         ;;
-restart|reload)
+restart)
+        sig USR2 && echo reloaded OK && exit 0
+        echo >&2 "Couldn't restart, starting '$CMD' instead"
+        su -c "$CMD" - <%= host.user %>
+        ;;
+reload)
         sig HUP && echo reloaded OK && exit 0
         echo >&2 "Couldn't reload, starting '$CMD' instead"
         su -c "$CMD" - <%= host.user %>
