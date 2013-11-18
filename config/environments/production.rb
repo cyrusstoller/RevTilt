@@ -82,7 +82,7 @@ RevTilt::Application.configure do
   # Actually send emails
   config.action_mailer.perform_deliveries = true
   
-  # Unicorn logging on Heroku - http://help.papertrailapp.com/discussions/questions/116-logging-from-heroku-apps-using-unicorn
-  config.logger = Logger.new(STDOUT)
-  config.logger.level = Logger.const_get(ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'INFO')
+  # # Unicorn logging on Heroku - http://help.papertrailapp.com/discussions/questions/116-logging-from-heroku-apps-using-unicorn
+  # config.logger = Logger.new(STDOUT)
+  # config.logger.level = Logger.const_get(ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'INFO')
 end
