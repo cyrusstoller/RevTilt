@@ -70,7 +70,7 @@ namespace :unicorn do
     on roles(:app), in: :parallel do |host|
       info "copying the unicorn init.d script"
       unicorn_initd = ERB.new(template("unicorn_init.sh.erb")).result(binding)
-      tmp_path = "#{shared_path}/tmp/unicorn_init.sh"
+      tmp_path = "#{shared_path}/config/unicorn_init.sh"
       upload! StringIO.new(unicorn_initd), tmp_path
       execute :chmod, 775, tmp_path
       execute :chown, "#{host.user}.deployers", tmp_path
