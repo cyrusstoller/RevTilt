@@ -1,6 +1,14 @@
 require_relative "helper"
 
 namespace :nginx do
+  
+  desc "setting up nginx for initial deploy"
+  task :setup do
+    invoke "nginx:copy_conf"
+    invoke "nginx:symlink"
+    invoke "nginx:reload"
+  end
+  
   %w[start stop restart reload status].each do |command|
     desc "#{command} nginx server"
     task command do
@@ -30,6 +38,6 @@ namespace :nginx do
   desc "rebuild nginx for this application"
   task :rebuild do
     invoke "nginx:copy_conf"
-    invoke "nginx:restart"
+    invoke "nginx:reload"
   end
 end

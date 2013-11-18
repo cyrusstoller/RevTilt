@@ -2,6 +2,13 @@ require_relative "helper"
 
 namespace :unicorn do
   
+  desc "setting up unicorn for initial deploy"
+  task :setup do
+    invoke "unicorn:initd"
+    invoke "unicorn:on_boot"
+    invoke "unicorn:logrotate_d"
+  end
+
   #########################################
   ##                                     ##
   ##     Unicorn system configuration    ##
