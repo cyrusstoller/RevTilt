@@ -5,7 +5,12 @@
 *~
 
 # Sensitive info
-.env
+.env*
+!.env.example
+/lib/capistrano/templates/env*
+!/lib/capistrano/templates/env.example
+/lib/capistrano/templates/database.yml.erb
+!/lib/capistrano/templates/database.yml.erb.example
 
 # Log files
 /log/*
@@ -24,7 +29,7 @@
 # rspec
 .rspec
 
-# rvm
+# rvm/rbenv
 .rvmrc
 .ruby-gemset
-.ruby-version
+# .ruby-version

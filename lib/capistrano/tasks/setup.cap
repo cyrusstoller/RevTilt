@@ -1,0 +1,28 @@
+require_relative "helper"
+
+namespace :deploy do
+  
+  desc "setting up files that need to be in place for deployment to work"
+  task :setup do
+    invoke "deploy:check:make_linked_dirs"
+    invoke "deploy:setup:database"
+    invoke "env:upload"
+    invoke "nginx:setup"
+    invoke "unicorn:setup"
+  end
+  
+  namespace :setup do
+
+    desc "placing the database.yml"
+    task :database do
+      on roles(:app, :worker), in: :parallel do |host|
+        info "configuring the database.yml"
+        database_config = ERB.new(template("database.yml.erb")).result(binding)
+        destination_path = Pathname.new("#{shared_path}/config/database.yml")
+        upload! StringIO.new(database_config), destination_path
+      end
+    end
+    
+  end
+  
+end

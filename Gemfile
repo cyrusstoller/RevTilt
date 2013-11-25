@@ -65,7 +65,7 @@ end
 gem 'foreman'
 
 # authentication
-gem "devise", "~> 3.2.0"
+gem "devise", "~> 3.2.1"
 
 # authorization
 gem "cancan", "~> 1.6.10"
@@ -88,9 +88,11 @@ gem 'jbuilder'
 # Google Analytics
 gem "gabba", "~> 1.0.1"
 
-group :production, :staging do
-  gem "rails_12factor", "~> 0.0.2"
-end
+# # Only for Heroku Deployments
+# # Uncomment if you want logging on Heroku
+# group :production, :staging do
+#   gem "rails_12factor", "~> 0.0.2"
+# end
 
 gem "newrelic_rpm", "~> 3.6.9.171"
 
@@ -98,7 +100,12 @@ gem "newrelic_rpm", "~> 3.6.9.171"
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+group :development do
+  gem "capistrano", "~> 3.0.1"
+  gem 'capistrano-rbenv', github: "capistrano/rbenv", ref: "master"
+  gem "capistrano-bundler", "~> 1.0.0"
+  gem "capistrano-rails", "~> 1.1.0"
+end
 
 # To use debugger
 # gem 'debugger'

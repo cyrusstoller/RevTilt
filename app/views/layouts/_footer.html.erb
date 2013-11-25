@@ -1,24 +1,29 @@
 <div class="container">
-  <div class="footer">
-    <ul class="horizontal">
-      <li><%= link_to "About", about_path %></li>
-      <li><%= link_to "Press", press_path %></li>
-      <li><%= link_to "Twitter", APP_CONFIG["twitter_url"], :target => "_blank" %></li>
-      <li><%= link_to "Bookmarklet", bookmarklet_path %></li>
-      <li><%= link_to "API", api_v1_documentation_path %></li>
-      <li><%= link_to "Github Repository", APP_CONFIG["github_repo"], :target => "_blank" %></li>
-      <% unless Rails.env.production? %>
-        <li><span class="label label-success"><%= Rails.env %></span></li>
-      <% end %>
-      <li><span id="copyright">Copyright © 2013</span></li>
+  <ul class="horizontal">
+    <li><%= link_to "About", about_path %></li>
+    <li><%= link_to "Email", "mailto:revtilt@gmail.com?subject=[Website] Hello" %></li>
+    <li><%= link_to "Press", press_path %></li>
+    <li><%= link_to "Twitter", APP_CONFIG["twitter_url"], :target => "_blank" %></li>
+    <li><%= link_to "Bookmarklet", bookmarklet_path %></li>
+    <li><%= link_to "API", api_v1_documentation_path %></li>
+    <li><%= link_to "Github Repository", APP_CONFIG["github_repo"], :target => "_blank" %></li>
+    <% unless Rails.env.production? %>
+      <li><span class="label label-success"><%= Rails.env %></span></li>
+    <% end %>
 
-      <li class="pull-right">
-        <iframe src="http://ghbtns.com/github-btn.html?user=cyrusstoller&repo=revtilt&type=watch&count=true"
-          allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="20"></iframe>
-      </li>
-      <li class="pull-right">
-        <iframe src="http://ghbtns.com/github-btn.html?user=cyrusstoller&amp;type=follow" allowtransparency="true" frameborder="0" scrolling="0" width="140px" height="20px"></iframe>
-      </li>
-    </ul>
+    <li class="pull-right">
+      <iframe src="http://ghbtns.com/github-btn.html?user=cyrusstoller&repo=revtilt&type=watch&count=true"
+        allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="20"></iframe>
+    </li>
+    <li class="pull-right">
+      <iframe src="http://ghbtns.com/github-btn.html?user=cyrusstoller&amp;type=follow" allowtransparency="true" frameborder="0" scrolling="0" width="140px" height="20px"></iframe>
+    </li>
+  </ul>
+</div>
+
+<div class="container">
+  <div class="footer">
+    Hosted by <%= link_to "Digital Ocean", "https://www.digitalocean.com/?utm_source=revtilt.com" %> &star;
+    Copyright © 2013
   </div>
 </div>

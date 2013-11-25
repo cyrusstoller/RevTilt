@@ -1,0 +1,43 @@
+require_relative "helper"
+
+namespace :nginx do
+  
+  desc "setting up nginx for initial deploy"
+  task :setup do
+    invoke "nginx:copy_conf"
+    invoke "nginx:symlink"
+    invoke "nginx:reload"
+  end
+  
+  %w[start stop restart reload status].each do |command|
+    desc "#{command} nginx server"
+    task command do
+      on roles(:web), in: :sequence, wait: 5 do
+        execute :sudo, "/etc/init.d/nginx #{command}"
+      end
+    end
+  end
+  
+  desc "copy nginx.conf file"
+  task :copy_conf do
+    on roles(:web), in: :sequence, wait: 5 do |host|
+      info "copying the nginx.conf"
+      nginx_config = ERB.new(template("nginx.conf.erb")).result(binding)
+      upload! StringIO.new(nginx_config), fetch(:nginx_conf_path)
+    end
+  end
+  
+  desc "symlinking the nginx.conf file"
+  task :symlink do
+    on roles(:web), in: :sequence, wait: 5 do |host|
+      info "symlinking the nginx.conf"
+      execute :ln, "-nfs", fetch(:nginx_conf_path), "/etc/nginx/sites-enabled/#{fetch(:application)}.conf"
+    end
+  end
+  
+  desc "rebuild nginx for this application"
+  task :rebuild do
+    invoke "nginx:copy_conf"
+    invoke "nginx:reload"
+  end
+end

@@ -61,8 +61,6 @@ BING_MAPS_API_KEY=*key from the bingmpasportal*
 NEWRELIC_LICENSE_KEY=*key from new relic*
 ```
 
-add these variables to Heroku with `heroku config:add`.
-
 ## API Keys
 
 - Bing Maps API: https://www.bingmapsportal.com/application/
@@ -78,3 +76,23 @@ $ rake db:test:prepare
 $ foreman start
 $ bundle exec guard # to run spork and tests
 ```
+
+# Deployment
+
+## Virtual Private Server (like Digital Ocean or Linode)
+
+- Provision a new server using the Puppet manifests, which will be published shortly.
+- If you prefer to write your own provisioning using something like Chef, you need to have [PostgreSQL](http://www.postgresql.org/), [Nginx](http://nginx.com/), [Node.js](http://nodejs.org/), and [Ruby v2.0.0](https://www.ruby-lang.org/) installed.
+- Once everything has been provisioned you need to create a few files that are not included in this repository because they contain sensitive information.
+- Create your database on your server.
+- Create a `lib/capistrano/templates/database.yml.erb` by copying `lib/capistrano/templates/database.yml.erb.example` and including the appropriate database credentials.
+- Create a `lib/capistrano/templates/env.production` and `lib/capistrano/templates/env.vagrant` using the same values that you have in your `.env` file.
+- Change the IP address(es) in the `config/deploy/production.rb` and `config/deploy/vagrant.rb` to match your server(s).
+- For your first deploy to production use `$ cap production deploy:setup deploy`, be sure to answer 'yes' when asked whether you would like to overwrite the .env file on your server.
+- From then on you should only need to use `$ cap production deploy`
+
+## Heroku
+
+- Add the variables in `.env` to Heroku using `heroku config:add`. You can find further explanation [here](https://devcenter.heroku.com/articles/config-vars).
+- For logging be sure to uncomment the last lines in the `config/environments/production.rb`
+- Then to deploy use `$ git push heroku master`, assuming you have configured your Heroku remote.
