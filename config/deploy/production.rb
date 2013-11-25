@@ -5,9 +5,11 @@ set :stage, :production
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-role :app, %w{deploy@example.com}
-role :web, %w{deploy@example.com}
-role :db,  %w{deploy@example.com}
+role :app, %w{deployer@162.243.47.109}
+role :web, %w{deployer@162.243.47.109}
+role :db,  %w{deployer@162.243.47.109}
+
+set :rails_env, :production
 
 # Extended Server Syntax
 # ======================
@@ -39,4 +41,4 @@ role :db,  %w{deploy@example.com}
 #   }
 # setting per server overrides global ssh_options
 
-# fetch(:default_env).merge!(rails_env: :production)
+fetch(:default_env).merge!(rails_env: :production)
