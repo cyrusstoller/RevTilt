@@ -1,7 +1,7 @@
 <%= link_to unfavorite_relationships_organization_users_path(:organization_id => organization.to_param), 
             :class => "favorite-btn unfavorite btn btn-success", :method => :delete, :remote => true do %>
-  <i class="icon-ok icon-white default"></i>
-  <i class="icon-remove icon-white hover hide"></i>
+  <i class="glyphicon glyphicon-ok default"></i>
+  <i class="glyphicon glyphicon-remove hover hide"></i>
   <span class="message default">Favorite</span>
   <span class="message hover hide">Unfavorite</span>
 <% end %>
