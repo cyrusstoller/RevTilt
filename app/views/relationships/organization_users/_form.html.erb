@@ -1,19 +1,19 @@
 <%= form_for @relationships_organization_user, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="form-group">
-    <%= f.label :organization_id, :class => 'control-label col-md-2' %>
-    <div class="col-md-5">
+    <%= f.label :organization_id, :class => 'control-label col-xs-2' %>
+    <div class="col-xs-5">
       <%= f.number_field :organization_id, :class => 'form-control number_field' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :user_id, :class => 'control-label col-md-2' %>
-    <div class="col-md-5">
+    <%= f.label :user_id, :class => 'control-label col-xs-2' %>
+    <div class="col-xs-5">
       <%= f.number_field :user_id, :class => 'form-control number_field' %>
     </div>
   </div>
 
   <div class="form-group">
-    <div class="col-md-5 col-md-offset-2">
+    <div class="col-xs-5 col-xs-offset-2">
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                   relationships_organization_users_path, :class => 'btn btn-default' %>
