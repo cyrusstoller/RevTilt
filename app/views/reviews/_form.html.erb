@@ -43,7 +43,7 @@
     <div class="controls">
       <%= f.submit "Leave review", :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  @review.organization || root_path, :class => 'btn' %>
+                  @review.organization || root_path, :class => 'btn btn-default' %>
       &nbsp;
       <%= f.label :rating, "Overall rating", :class => 'control-label' %>
       &nbsp;
