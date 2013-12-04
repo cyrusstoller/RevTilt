@@ -15,7 +15,7 @@ guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' }, :wait => 60 do
   watch(%r{^spec/support/.+\.rb$})
 end
 
-guard 'rspec', :all_after_pass => false, :focus_on_failed => false do
+guard 'rspec', :all_after_pass => false, :failed_mode => :none do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
