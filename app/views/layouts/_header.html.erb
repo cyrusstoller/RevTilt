@@ -4,7 +4,7 @@
       <span class="text-muted">
         Hi <%= link_to (current_user.username || current_user.email), edit_user_registration_path, :class => "text-muted" %>! 
         <% if current_user.admin? %>
-          <span class="label">admin</span>
+          <span class="label label-default">admin</span>
         <% end %>
         &nbsp; | &nbsp;
       </span>

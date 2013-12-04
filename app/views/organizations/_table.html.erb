@@ -5,7 +5,7 @@
     <% organizations.each do |organization| %>
       <tr>
         <td class="col-md-7">
-          <span class="label"><%= organization.category_text %></span>&nbsp;
+          <span class="label label-default"><%= organization.category_text %></span>&nbsp;
           <%= link_to organization.name, organization %> <span class="text-muted one-line"><%= organization.display_location %></span>
           <% if can? :edit, organization %>
             <span class="one-line text-muted">
