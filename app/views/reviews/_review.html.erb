@@ -6,15 +6,15 @@
     <%= review.user.username rescue "N/A" %>
   </span>
   &nbsp;
-  <span class="muted">written: <%= review.created_at.strftime("%b %d, %Y") %></span>
+  <span class="text-muted">written: <%= review.created_at.strftime("%b %d, %Y") %></span>
 
   &nbsp;
   <% if can? :edit, review %>
-    <%= link_to "edit", edit_review_path(review), :class => "muted" %>
+    <%= link_to "edit", edit_review_path(review), :class => "text-muted" %>
   <% end %>
   &nbsp;
   <% if can? :destroy, review %>
-    <%= link_to "delete", review_path(review), :class => "muted", :method => :delete, :data => { :confirm => "Are you sure?" } %>
+    <%= link_to "delete", review_path(review), :class => "text-muted", :method => :delete, :data => { :confirm => "Are you sure?" } %>
   <% end %>
   
   <br /><br />
