@@ -13,7 +13,7 @@ gem 'pg', "~> 0.17.0"
 gem 'nokogiri'
 
 # model annotation
-gem 'annotate', "~> 2.5.0"
+gem 'annotate', "~> 2.6.0"
 
 gem 'sass-rails',   '~> 4.0.1'
 gem 'coffee-rails', '~> 4.0.1'
@@ -21,14 +21,14 @@ gem 'coffee-rails', '~> 4.0.1'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby
 
-gem 'uglifier', '~> 2.3.1'
+gem 'uglifier', '~> 2.3.2'
 
 gem 'bootstrap-sass', '~> 2.3.2.2'
 # gem 'compass'
 
 group :development, :test do
   gem "rspec-rails", "~> 2.14.0"
-  gem "guard-rspec", "~> 4.0.4"
+  gem "guard-rspec", "~> 4.1.0"
   gem "factory_girl_rails", "~> 4.3.0"
   gem "faker"
   
@@ -45,8 +45,8 @@ end
 gem 'jquery-rails'
 
 group :test do
-  gem 'webmock'
-  gem 'capybara', '~> 2.1.0'
+  gem 'webmock', "~> 1.16.0"
+  gem 'capybara', '~> 2.2.0'
 
   # Test gems on Macintosh OS X
   gem 'rb-fsevent', '~> 0.9.1', :require => false
@@ -65,7 +65,7 @@ end
 gem 'foreman'
 
 # authentication
-gem "devise", "~> 3.2.1"
+gem "devise", "~> 3.2.2"
 
 # authorization
 gem "cancan", "~> 1.6.10"
@@ -83,7 +83,7 @@ gem "geocoder"
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
-gem 'jbuilder'
+gem 'jbuilder', "~> 1.5.3"
 
 # Google Analytics
 gem "gabba", "~> 1.0.1"
