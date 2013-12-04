@@ -1,47 +1,54 @@
 <h2><%= resource_name.to_s.humanize %> Account Settings</h2>
 <br />
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), 
+    :html => { :method => :put, :class => "form-horizontal" }) do |f| %>
   <%= render "shared/error_messages", :object => f.object %>
 
-  <div class="control-group">
-    <%= f.label :username, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :username, :class => 'text_field' %>
+  <div class="form-group">
+    <%= f.label :username, :class => 'control-label col-md-2' %>
+    <div class="col-md-4">
+      <%= f.text_field :username, :class => 'form-control text_field' %>
     </div>
   </div>
 
-  <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.email_field :email, :class => 'email_field' %>
+  <div class="form-group">
+    <%= f.label :email, :class => 'control-label col-md-2' %>
+    <div class="col-md-4">
+      <%= f.email_field :email, :class => 'form-control email_field' %>
     </div>
   </div>
 
-  <div class="control-group">
-    <%= f.label :current_password, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :current_password, :class => 'password_field', :autocomplete => "off" %>
-      <span class="help-inline"><i>(we need your current password to confirm your changes)</i></span>
+  <div class="form-group">
+    <%= f.label :current_password, :class => 'control-label col-md-2' %>
+    <div class="col-md-4">
+      <%= f.password_field :current_password, :class => 'form-control password_field', :autocomplete => "off" %>
+    </div>
+    <div class="col-md-6">
+      <span class="help-block"><i>(we need your current password to confirm your changes)</i></span>
     </div>
   </div>
 
-  <div class="control-group">
-    <%= f.label :password, :class => 'control-label' %> 
-    <div class="controls">
-      <%= f.password_field :password, :class => 'password_field', :autocomplete => "off" %>
-      <span class="help-inline"><i>(leave blank if you don't want to change it)</i></span>
+  <div class="form-group">
+    <%= f.label :password, :class => 'control-label col-md-2' %> 
+    <div class="col-md-4">
+      <%= f.password_field :password, :class => 'form-control password_field', :autocomplete => "off" %>
+    </div>
+    <div class="col-md-6">
+      <span class="help-block"><i>(leave blank if you don't want to change it)</i></span>
     </div>
   </div>
 
-  <div class="control-group">
-    <%= f.label :password_confirmation, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password_confirmation, :class => 'password_confirmation' %>
+  <div class="form-group">
+    <%= f.label :password_confirmation, :class => 'control-label col-md-2' %>
+    <div class="col-md-4">
+      <%= f.password_field :password_confirmation, :class => 'form-control password_confirmation' %>
     </div>
   </div>
 
-  <div>
-    <%= f.submit "Update account", :class => 'btn btn-primary' %>
+  <div class="form-group">
+    <div class="col-md-4 col-md-offset-2">
+      <%= f.submit "Update account", :class => 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>

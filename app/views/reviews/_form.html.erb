@@ -1,53 +1,46 @@
-<%= form_for @review, :html => { :class => 'form-inline' } do |f| %>
+<%= form_for @review, :html => { :class => 'form-vertical' } do |f| %>
   <%= render "shared/error_messages", :object => f.object %>
   
-  <div class="control-group">
-    <div class="controls">
-      Organization Name
-      <%= text_field_tag nil, (@review.organization.name rescue "N/A"), :disabled => "disabled" %>
-      &nbsp;
-      <%= @review.organization.display_location rescue nil %>
-    </div>
+  <div class="form-group">
+    <%= f.label nil, "Organization Name" %>
+    <%= text_field_tag nil, (@review.organization.name rescue "N/A"), :disabled => "disabled", :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label nil, "Location" %>
+    <%= text_field_tag nil, (@review.organization.display_location rescue nil), :disabled => "disabled", :class => "form-control" %>
   </div>
 
-  <div class="control-group">
+  <div class="form-group">
     <%= f.label :content, "My Review" %>
-    <div class="controls">
-      <%= f.text_area :content, :class => 'text_area col-md-12', :rows => 5, :placeholder => "Write your review here" %>
-    </div>
+    <%= f.text_area :content, :class => 'text_area form-control', :rows => 5, :placeholder => "Write your review here" %>
   </div>
   <%= f.hidden_field :rating, :class => "rating" %>
   
   <% if current_user.admin? %>
-    <div class="control-group">
+    <div class="form-group">
       <%= f.label :condition_id %>
-      <div class="controls">
-        <%= f.number_field :condition_id %>
-        <span class"inline-helper">Only edit this if you're sure of what you're doing</span>
-      </div>
+      <%= f.number_field :condition_id, :class => "form-control" %>
+      <span class"helper-block">Only edit this if you're sure of what you're doing</span>
     </div>
     
-    <div class="control-group">
+    <div class="form-group">
       <%= f.label :organization_id %>
-      <div class="controls">
-        <%= f.number_field :organization_id %>
-        <span class"inline-helper">Only edit this if you're sure of what you're doing</span>
-      </div>
+      <%= f.number_field :organization_id, :class => "form-control" %>
+      <span class"helper-block">Only edit this if you're sure of what you're doing</span>
     </div>
   <% else %>
     <%= f.hidden_field :condition_id %>
     <%= f.hidden_field :organization_id %>
   <% end %>
   
-  <div class="control-group">
-    <div class="controls">
-      <%= f.submit "Leave review", :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  @review.organization || root_path, :class => 'btn btn-default' %>
-      &nbsp;
-      <%= f.label :rating, "Overall rating", :class => 'control-label' %>
-      &nbsp;
-      <%= content_tag :div, :class => "stars inline", "data-score" => @review.rating do end %>
-    </div>
+  <div class="form-group">
+    <%= f.submit "Leave review", :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                @review.organization || root_path, :class => 'btn btn-default' %>
+    &nbsp;
+    <%= f.label :rating, "Overall rating", :class => 'control-label' %>
+    &nbsp;
+    <%= content_tag :div, :class => "stars inline", "data-score" => @review.rating do end %>
   </div>
 <% end %>

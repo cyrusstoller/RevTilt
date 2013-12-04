@@ -1,10 +1,8 @@
 <% redirect ||= nil %>
 
-<%= form_for @review, :html => { :class => 'form-inline' } do |f| %>
-  <div class="control-group">
-    <div class="controls">
-      <%= f.text_area :content, :class => 'text_area col-md-12', :rows => 5, :placeholder => "Write your review here" %>
-    </div>
+<%= form_for @review, :html => { :class => 'form-vertical' } do |f| %>
+  <div class="form-group">
+    <%= f.text_area :content, :class => 'text_area form-control', :rows => 5, :placeholder => "Write your review here" %>
   </div>
   <%= f.hidden_field :condition_id %>
   <%= f.hidden_field :organization_id %>
@@ -14,13 +12,11 @@
     <%= hidden_field_tag :redirect, redirect %>
   <% end %>
   
-  <div class="control-group">
-    <div class="controls">
-      <%= f.submit "Leave review", :class => 'btn btn-primary' %>
-      &nbsp;
-      <%= f.label :rating, "Overall rating", :class => 'control-label' %>
-      &nbsp;
-      <div class="stars inline"></div>
-    </div>
+  <div class="form-group">
+    <%= f.submit "Leave review", :class => 'btn btn-primary' %>
+    &nbsp;
+    <%= f.label :rating, "Overall rating", :class => 'control-label' %>
+    &nbsp;
+    <div class="stars inline"></div>
   </div>
 <% end %>

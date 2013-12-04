@@ -1,37 +1,36 @@
-<h2>Sign in</h2>
-<br />
+<div class="row">
+  <div class="col-md-4">
+    <h2>Sign in</h2>
+    <br />
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form-vertical' }) do |f| %>
-  <%= render 'shared/error_messages', :object => f.object %>
-  
-  <div class="control-group">
-    <%= f.label :login, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :login, :class => 'login_field' %>
-    </div>
-  </div>
-  
-  <div class="control-group">
-    <%= f.label :password, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password, :class => 'password_field' %>
-    </div>
-  </div>
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form-vertical' }) do |f| %>
+      <%= render 'shared/error_messages', :object => f.object %>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="control-group">
-      <div class="controls">
-        <label class="checkbox">
-          <%= f.check_box :remember_me %>
-          Remember me
-        </label>
+      <div class="form-group">
+        <%= f.label :login, :class => 'control-label' %>
+        <%= f.text_field :login, :class => 'form-control login_field' %>
       </div>
-    </div>  
-  <% end -%>
 
-  <div>
-    <%= f.submit "Sign in", :class => 'btn btn-primary' %>
+      <div class="form-group">
+        <%= f.label :password, :class => 'control-label' %>
+        <%= f.password_field :password, :class => 'form-control password_field' %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="form-group">
+          <label class="checkbox">
+            <%= f.check_box :remember_me %>
+            Remember me
+          </label>
+        </div>  
+      <% end -%>
+
+      <div>
+        <%= f.submit "Sign in", :class => 'btn btn-primary' %>
+      </div>
+    <% end %>
+
+    <br />
+    <%= render "devise/shared/links" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
