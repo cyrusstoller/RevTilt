@@ -48,7 +48,7 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
-    bootstrap-sass (2.3.2.2)
+    bootstrap-sass (3.0.2.1)
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.10)
       will_paginate
@@ -231,11 +231,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.2.8)
-      actionpack (>= 3.1)
-      execjs
-      rails (>= 3.1)
-      railties (>= 3.1)
     tzinfo (0.3.38)
     uglifier (2.3.2)
       execjs (>= 0.3.0)
@@ -258,7 +253,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (~> 2.6.0)
-  bootstrap-sass (~> 2.3.2.2)
+  bootstrap-sass (~> 3.0.2.1)
   bootstrap-will_paginate (~> 0.0.9)
   cancan (~> 1.6.10)
   capistrano (~> 3.0.1)
@@ -287,7 +282,6 @@ DEPENDENCIES
   rspec-rails (~> 2.14.0)
   sass-rails (~> 4.0.1)
   spork-rails (~> 4.0.0)
-  twitter-bootstrap-rails (~> 2.2.8)
   uglifier (~> 2.3.2)
   unicorn (~> 4.7.0)
   url_formatter!
