@@ -13,11 +13,19 @@
     </div>
     
     <div class="col-md-5">
-      <%= form_tag organizations_path, :method => :get, :class => "form-inline" do %>
-        <%= select_tag "category", options_for_select({ "all types" => nil }.merge(Organization.category_options), 
-                        params[:category]), :class => "span5" %>
-        <%= text_field_tag "zipcode", params[:zipcode], :placeholder => "Enter Zipcode", :class => "span4" %>
-        <%= submit_tag "Search", :class => "btn btn-primary" %>
+      <%= form_tag organizations_path, :method => :get, :class => "form-horizontal" do %>
+        <div class="form-group">
+          <div class="col-md-5 small-padding">
+            <%= select_tag "category", options_for_select({ "all types" => nil }.merge(Organization.category_options), 
+                            params[:category]), :class => "form-control" %>
+          </div>
+          <div class="col-md-4 small-padding">
+            <%= text_field_tag "zipcode", params[:zipcode], :placeholder => "Enter Zipcode", :class => "form-control" %>
+          </div>
+          <div class="col-md-2 small-padding">
+            <%= submit_tag "Search", :class => "btn btn-default" %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

@@ -13,7 +13,7 @@
 .welcome-question {
 	font-family: Arial;
 	font-size: 28px;
-	padding-top: 6px;
+	margin-top: -3px;
 	padding-left: 35px;
 	color: #FAFAFA;
 }
@@ -34,4 +34,9 @@
 .slogan {
 	font-size:18px;
 	font-style: italic;
+}
+
+.small-padding {
+  padding-left: 3px !important;
+  padding-right: 3px !important;
 }
