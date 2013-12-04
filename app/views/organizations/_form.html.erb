@@ -3,7 +3,7 @@
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'text_field span6' %>
+      <%= f.text_field :name, :class => 'text_field col-md-6' %>
       <span class="help-block">
         Check out our <%= link_to "bookmarklet", bookmarklet_path, :target => "_blank" %> if you don't want to copy and paste!
       </span>
@@ -12,27 +12,27 @@
   <div class="control-group">
     <%= f.label :category_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :category_id, Organization.category_options.map { |k,v| [k, v] }, {}, :class => "span6" %>
+      <%= f.select :category_id, Organization.category_options.map { |k,v| [k, v] }, {}, :class => "col-md-6" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :url, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :url, :class => 'text_field span6', :placeholder => "e.g. 'www.yelp.com/biz/...'" %>
+      <%= f.text_field :url, :class => 'text_field col-md-6', :placeholder => "e.g. 'www.yelp.com/biz/...'" %>
     </div>
   </div>
   
   <div class="control-group">
     <%= f.label :homepage_url, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :homepage_url, :class => 'text_field span6', :placeholder => "optional" %>
+      <%= f.text_field :homepage_url, :class => 'text_field col-md-6', :placeholder => "optional" %>
     </div>
   </div>
   
   <div class="control-group">
     <%= f.label :address, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :address, :class => 'text_field span6', :placeholder => "e.g. 1600 Pennsylvania Ave NW, Washington DC, 20006" %>
+      <%= f.text_field :address, :class => 'text_field col-md-6', :placeholder => "e.g. 1600 Pennsylvania Ave NW, Washington DC, 20006" %>
     </div>
   </div>
   

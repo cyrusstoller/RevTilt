@@ -3,7 +3,7 @@
 <%= form_for @review, :html => { :class => 'form-inline' } do |f| %>
   <div class="control-group">
     <div class="controls">
-      <%= f.text_area :content, :class => 'text_area span12', :rows => 5, :placeholder => "Write your review here" %>
+      <%= f.text_area :content, :class => 'text_area col-md-12', :rows => 5, :placeholder => "Write your review here" %>
     </div>
   </div>
   <%= f.hidden_field :condition_id %>

@@ -1,18 +1,18 @@
 <div class="add-small-top header_bar">
   <div class="row">
-    <div class="span2">
+    <div class="col-md-2">
       <%= link_to root_path do %>
         <%= image_tag "logo.png", :id => "header_logo" %>
       <% end %>
     </div>
     
-    <div class="span5">
+    <div class="col-md-5">
       <div class="welcome-question">
         What are you looking for?
       </div>
     </div>
     
-    <div class="span5">
+    <div class="col-md-5">
       <%= form_tag organizations_path, :method => :get, :class => "form-inline" do %>
         <%= select_tag "category", options_for_select({ "all types" => nil }.merge(Organization.category_options), 
                         params[:category]), :class => "span5" %>

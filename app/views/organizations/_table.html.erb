@@ -4,7 +4,7 @@
   <tbody>
     <% organizations.each do |organization| %>
       <tr>
-        <td class="span7">
+        <td class="col-md-7">
           <span class="label"><%= organization.category_text %></span>&nbsp;
           <%= link_to organization.name, organization %> <span class="muted one-line"><%= organization.display_location %></span>
           <% if can? :edit, organization %>
