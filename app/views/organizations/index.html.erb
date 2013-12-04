@@ -8,7 +8,7 @@
 <br />
 
 <% if @organizations.blank? %>
-  <div class="alert alert-box alert-error">
+  <div class="alert alert-box alert-danger">
     <span class="label label-important">Uh oh!</span>
     There are no organizations that meet these criteria yet! Be the first to contribute. Click <%= link_to "here", new_organization_path %>.
   </div>
