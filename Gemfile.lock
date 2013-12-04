@@ -1,10 +1,11 @@
 GIT
   remote: git://github.com/capistrano/rbenv.git
-  revision: 362dbc02ef963c91425767e09b4848ff7be5132b
+  revision: 9576473fc95d9f7539eb01b13574ac03f52a8dcd
   ref: master
   specs:
-    capistrano-rbenv (0.0.1)
-      capistrano
+    capistrano-rbenv (2.0.0)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2.0)
 
 GIT
   remote: git://github.com/cyrusstoller/url_formatter.git
@@ -57,8 +58,9 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 0.0.23)
-    capistrano-bundler (1.0.0)
-      capistrano (>= 3.0.0.pre)
+    capistrano-bundler (1.1.1)
+      capistrano (~> 3.0)
+      sshkit (>= 1.2.0)
     capistrano-rails (1.1.0)
       capistrano (>= 3.0.0)
       capistrano-bundler (>= 1.0.0)
@@ -214,8 +216,8 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sshkit (1.1.0)
-      net-scp
+    sshkit (1.2.0)
+      net-scp (>= 1.1.2)
       net-ssh
       term-ansicolor
     term-ansicolor (1.2.2)
@@ -260,7 +262,7 @@ DEPENDENCIES
   bootstrap-will_paginate (~> 0.0.9)
   cancan (~> 1.6.10)
   capistrano (~> 3.0.1)
-  capistrano-bundler (~> 1.0.0)
+  capistrano-bundler (~> 1.1.0)
   capistrano-rails (~> 1.1.0)
   capistrano-rbenv!
   capybara (~> 2.2.0)
