@@ -2,6 +2,7 @@ set :application, 'revtilt'
 set :repo_url, 'git@github.com:cyrusstoller/RevTilt.git'
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+set :branch, proc { ENV["REVISION"] || ENV["BRANCH_NAME"] || "master" }
 
 set :deploy_to, '/var/www/revtilt'
 set :scm, :git
