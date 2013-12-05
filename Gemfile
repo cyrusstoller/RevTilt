@@ -23,7 +23,7 @@ gem 'coffee-rails', '~> 4.0.1'
 
 gem 'uglifier', '~> 2.3.2'
 
-gem 'bootstrap-sass', '~> 3.0.2.1'
+gem 'bootstrap-sass', '~> 3.0.3.0'
 # gem 'compass'
 
 group :development, :test do
