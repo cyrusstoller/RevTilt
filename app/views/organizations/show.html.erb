@@ -5,9 +5,9 @@
 
 <%= content_for :above_iframe do %>
   <div class="add-small-top pull-right">
-    <%= render "relationships/organization_users/favorite_form", :organization => @organization %>  
+    <%= render "relationships/organization_users/favorite_form", :organization => @organization %>
   </div>
-  <div class="pull-right add-small-top">
+  <div class="pull-right add-medium-top">
     <%= content_tag :div, :class => "stars inline", "data-score" => avg_review, "data-readonly" => true do end %>
     &nbsp;
     ( <%= pluralize num_reviews, "Review" %> )
