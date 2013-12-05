@@ -13,7 +13,6 @@
 .welcome-question {
 	font-family: Arial;
 	font-size: 28px;
-	margin-top: -3px;
 	padding-left: 35px;
 	color: #FAFAFA;
 }
@@ -21,13 +20,19 @@
 .header_bar {
 	background-color: #52a8ff;
 	padding-top: 20px;
-	margin-bottom: 15px;
+	margin-bottom: 0px;
+}
+
+.form-horizontal.search-bar {
+  padding-right: 10px;
+  padding-bottom: 5px;
 }
 
 #header_logo {
 	height: 46px;
+	width: 140px;
 	position: relative;
-	top: -8px;
+	top: -7px;
 	left: 20px;
 }
 
