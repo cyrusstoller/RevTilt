@@ -50,3 +50,8 @@ ul.horizontal{
 		}
 	}
 }
+
+code {
+  border: 1px solid lighten($subtle_grey, 20%) !important;
+  font-size: $font-size-base * .85 !important;
+}
