@@ -28,7 +28,7 @@ gem 'bootstrap-sass', '~> 3.0.2.1'
 
 group :development, :test do
   gem "rspec-rails", "~> 2.14.0"
-  gem "guard-rspec", "~> 4.1.0"
+  gem "guard-rspec", "~> 4.2.0"
   gem "factory_girl_rails", "~> 4.3.0"
   gem "faker"
   
