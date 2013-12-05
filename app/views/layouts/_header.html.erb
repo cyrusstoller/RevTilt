@@ -1,25 +1,25 @@
 <div class="masthead">
   <div class="pull-right auth_links">
     <% if user_signed_in? %>
-      <span class="muted">
-        Hi <%= link_to (current_user.username || current_user.email), edit_user_registration_path, :class => "muted" %>! 
+      <span class="text-muted">
+        Hi <%= link_to (current_user.username || current_user.email), edit_user_registration_path, :class => "text-muted" %>! 
         <% if current_user.admin? %>
-          <span class="label">admin</span>
+          <span class="label label-default">admin</span>
         <% end %>
         &nbsp; | &nbsp;
       </span>
     <% end %>
-    <%= link_to "Share an Organization", new_organization_path, :class => 'muted' %><span class="muted"> &nbsp; | &nbsp;</span>
-    <span class="label label-info">Autism</span>
-    <span class="muted">&nbsp; | &nbsp;</span>
+    <%= link_to "Share an Organization", new_organization_path, :class => 'text-muted' %><span class="text-muted"> &nbsp; | &nbsp;</span>
+    <span class="label label-primary">Autism</span>
+    <span class="text-muted">&nbsp; | &nbsp;</span>
     <% if user_signed_in? %>
-      <%= link_to "Favorites", favorites_path, :class => "muted" %>
-      <span class="muted">&nbsp; | &nbsp;</span>
-      <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => "muted" %>
+      <%= link_to "Favorites", favorites_path, :class => "text-muted" %>
+      <span class="text-muted">&nbsp; | &nbsp;</span>
+      <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => "text-muted" %>
     <% else %>
-      <%= link_to "Sign Up", new_user_registration_path, :class => "muted" %>
-      <span class="muted">&nbsp; | &nbsp;</span>
-      <%= link_to "Sign In", new_user_session_path, :class => "muted" %>
+      <%= link_to "Sign Up", new_user_registration_path, :class => "text-muted" %>
+      <span class="text-muted">&nbsp; | &nbsp;</span>
+      <%= link_to "Sign In", new_user_session_path, :class => "text-muted" %>
     <% end %>
   </div>
   

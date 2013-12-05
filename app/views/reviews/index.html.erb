@@ -29,14 +29,14 @@
         <td>
           <% if can? :edit, review %>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                        edit_review_path(review), :class => 'btn btn-mini' %>
+                        edit_review_path(review), :class => 'btn btn-default btn-xs' %>
           <% end %>
           <% if can? :destroy, review %>
             <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                         review_path(review),
                         :method => :delete,
                         :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                        :class => 'btn btn-mini btn-danger' %>
+                        :class => 'btn btn-xs btn-danger' %>
           <% end %>
         </td>
       </tr>

@@ -18,9 +18,9 @@
 
 $(function(){
 	// handling form errors
-	$("label[data-error]").parent().addClass("error");
-	$("input[data-error]").parent().addClass("error");
-	$("textarea[data-error]").parent().addClass("error");
+	$("label[data-error]").parent().addClass("has-error");
+	$("input[data-error]").parent().addClass("has-error");
+	$("textarea[data-error]").parent().addClass("has-error");
 	$(".with_popover").popover();
 	$(".disabled").click(function(e){
 		e.preventDefault();

@@ -1,23 +1,29 @@
-<div class="add-small-top header_bar">
-  <div class="row-fluid">
-    <div class="span2">
+<div class="header_bar">
+  <div class="row">
+    <div class="col-xs-7">
       <%= link_to root_path do %>
         <%= image_tag "logo.png", :id => "header_logo" %>
       <% end %>
-    </div>
-    
-    <div class="span5">
-      <div class="welcome-question">
+      
+      <div class="welcome-question inline">
         What are you looking for?
       </div>
     </div>
     
-    <div class="span5">
-      <%= form_tag organizations_path, :method => :get, :class => "form-inline" do %>
-        <%= select_tag "category", options_for_select({ "all types" => nil }.merge(Organization.category_options), 
-                        params[:category]), :class => "span5" %>
-        <%= text_field_tag "zipcode", params[:zipcode], :placeholder => "Enter Zipcode", :class => "span4" %>
-        <%= submit_tag "Search", :class => "btn btn-primary" %>
+    <div class="col-xs-5">
+      <%= form_tag organizations_path, :method => :get, :class => "form-horizontal search-bar" do %>
+        <div class="form-group">
+          <div class="col-xs-6 small-padding">
+            <%= select_tag "category", options_for_select({ "all types" => nil }.merge(Organization.category_options), 
+                            params[:category]), :class => "form-control" %>
+          </div>
+          <div class="col-xs-3 small-padding">
+            <%= text_field_tag "zipcode", params[:zipcode], :placeholder => "Zipcode", :class => "form-control" %>
+          </div>
+          <div class="col-xs-2 small-padding">
+            <%= submit_tag "Search", :class => "btn btn-default" %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

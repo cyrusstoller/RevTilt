@@ -23,7 +23,7 @@ gem 'coffee-rails', '~> 4.0.1'
 
 gem 'uglifier', '~> 2.3.2'
 
-gem 'bootstrap-sass', '~> 2.3.2.2'
+gem 'bootstrap-sass', '~> 3.0.2.1'
 # gem 'compass'
 
 group :development, :test do
@@ -37,10 +37,6 @@ group :development, :test do
 end
 
 gem 'dotenv-rails', "~> 0.9.0"
-
-group :development do
-  gem "twitter-bootstrap-rails", "~> 2.2.8"
-end
 
 gem 'jquery-rails'
 

@@ -4,18 +4,18 @@
   <tbody>
     <% organizations.each do |organization| %>
       <tr>
-        <td class="span7">
-          <span class="label"><%= organization.category_text %></span>&nbsp;
-          <%= link_to organization.name, organization %> <span class="muted one-line"><%= organization.display_location %></span>
+        <td class="col-xs-7">
+          <span class="label label-default"><%= organization.category_text %></span>&nbsp;
+          <%= link_to organization.name, organization %> <span class="text-muted one-line"><%= organization.display_location %></span>
           <% if can? :edit, organization %>
-            <span class="one-line muted">
-              | <%= link_to "edit", edit_organization_path(organization), :class => "muted" %>
+            <span class="one-line text-muted">
+              | <%= link_to "edit", edit_organization_path(organization), :class => "text-muted" %>
             </span>
           <% end %>
           <% if can? :destroy, organization %>
-            <span class="one-line muted">
+            <span class="one-line text-muted">
               | <%= link_to "destroy", organization_path(organization), :method => :delete, :data => { :confirm => "Are you sure?" }, 
-                    :class => "muted" %>
+                    :class => "text-muted" %>
             </span>
           <% end %>
         </td>

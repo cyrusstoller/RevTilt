@@ -12,14 +12,14 @@ require 'spec_helper'
 # end
 describe ApplicationHelper do
   describe "bootstrap_alert_type" do
-    it "should return 'error' when given 'alert'" do
-      helper.bootstrap_alert_type("alert").should == "error"
-      helper.bootstrap_alert_type(:alert).should == "error"
+    it "should return 'danger' when given 'alert'" do
+      helper.bootstrap_alert_type("alert").should == "danger"
+      helper.bootstrap_alert_type(:alert).should == "danger"
     end
 
-    it "should return 'error' when given 'error'" do
-      helper.bootstrap_alert_type("error").should == "error"
-      helper.bootstrap_alert_type(:error).should == "error"      
+    it "should return 'danger' when given 'error'" do
+      helper.bootstrap_alert_type("error").should == "danger"
+      helper.bootstrap_alert_type(:error).should == "danger"
     end
 
     it "should return 'warning' when given 'notice'" do

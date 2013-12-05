@@ -1,59 +1,66 @@
 <%= form_for @organization, :html => { :class => 'form-horizontal' } do |f| %>
   <%= render "shared/error_messages", :object => f.object %>
-  <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :name, :class => 'text_field span6' %>
-      <span class="help-block">
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-xs-2' %>
+    <div class="col-xs-6">
+      <%= f.text_field :name, :class => 'form-control text_field' %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-xs-6 col-xs-offset-2">
+      <span class="text-muted">
         Check out our <%= link_to "bookmarklet", bookmarklet_path, :target => "_blank" %> if you don't want to copy and paste!
       </span>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :category_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :category_id, Organization.category_options.map { |k,v| [k, v] }, {}, :class => "span6" %>
+  <div class="form-group">
+    <%= f.label :category_id, :class => 'control-label col-xs-2' %>
+    <div class="col-xs-6">
+      <%= f.select :category_id, Organization.category_options.map { |k,v| [k, v] }, {}, :class => "form-control" %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :url, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :url, :class => 'text_field span6', :placeholder => "e.g. 'www.yelp.com/biz/...'" %>
-    </div>
-  </div>
-  
-  <div class="control-group">
-    <%= f.label :homepage_url, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :homepage_url, :class => 'text_field span6', :placeholder => "optional" %>
+  <div class="form-group">
+    <%= f.label :url, :class => 'control-label col-xs-2' %>
+    <div class="col-xs-6">
+      <%= f.text_field :url, :class => 'form-control text_field', :placeholder => "e.g. 'www.yelp.com/biz/...'" %>
     </div>
   </div>
   
-  <div class="control-group">
-    <%= f.label :address, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :address, :class => 'text_field span6', :placeholder => "e.g. 1600 Pennsylvania Ave NW, Washington DC, 20006" %>
+  <div class="form-group">
+    <%= f.label :homepage_url, :class => 'control-label col-xs-2' %>
+    <div class="col-xs-6">
+      <%= f.text_field :homepage_url, :class => 'form-control text_field', :placeholder => "optional" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :address, :class => 'control-label col-xs-2' %>
+    <div class="col-xs-6">
+      <%= f.text_field :address, :class => 'form-control text_field', :placeholder => "e.g. 1600 Pennsylvania Ave NW, Washington DC, 20006" %>
     </div>
   </div>
   
   <% if can? :manage, :all %>
-    <div class="control-group">
-      <%= f.label :latitude, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :latitude, :class => 'text_field' %>
+    <div class="form-group">
+      <%= f.label :latitude, :class => 'control-label col-xs-2' %>
+      <div class="col-xs-6">
+        <%= f.text_field :latitude, :class => 'form-control text_field' %>
       </div>
     </div>
-    <div class="control-group">
-      <%= f.label :longitude, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :longitude, :class => 'text_field' %>
+    <div class="form-group">
+      <%= f.label :longitude, :class => 'control-label col-xs-2' %>
+      <div class="col-xs-6">
+        <%= f.text_field :longitude, :class => 'form-control text_field' %>
       </div>
     </div>
   <% end %>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                organizations_path, :class => 'btn' %>
+  <div class="form-group">
+    <div class="col-xs-6 col-xs-offset-2">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  organizations_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>

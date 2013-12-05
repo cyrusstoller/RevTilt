@@ -1,6 +1,6 @@
 <% if object.errors.any? %>
   <div class="error-messages">
-    <div class="alert alert-error">
+    <div class="alert alert-danger">
       <h4>
         <%= pluralize(object.errors.count, "error")%>
         prohibited this <%= object.class.to_s.underscore.humanize.downcase %> from being saved:

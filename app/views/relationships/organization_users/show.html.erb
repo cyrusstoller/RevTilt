@@ -12,9 +12,9 @@
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              relationships_organization_users_path, :class => 'btn'  %>
+              relationships_organization_users_path, :class => 'btn btn-default'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_relationships_organization_user_path(@relationships_organization_user), :class => 'btn' %>
+              edit_relationships_organization_user_path(@relationships_organization_user), :class => 'btn btn-default' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               relationships_organization_user_path(@relationships_organization_user),
               :method => 'delete',

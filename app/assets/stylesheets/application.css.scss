@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require disable_responsive
  *= require_tree .
  */
 
@@ -23,7 +24,7 @@
 }
 
 .add-small-top{
-	margin-top: 7px;
+	margin-top: 22px;
 }
 
 .footer{
@@ -40,6 +41,7 @@ $subtle_grey_hover:#555;
 ul.horizontal{
 	list-style-type: none;
 	margin:0;
+	padding:0;
 	li{
 		display: inline;
 		padding-left: 10px;
@@ -47,4 +49,14 @@ ul.horizontal{
 			padding-left:0px;
 		}
 	}
+}
+
+code {
+  border: 1px solid lighten($subtle_grey, 20%) !important;
+  font-size: $font-size-base * .85 !important;
+}
+
+.flash.alert {
+  margin-bottom: 0px !important;
+  margin-top: 20px !important;
 }
