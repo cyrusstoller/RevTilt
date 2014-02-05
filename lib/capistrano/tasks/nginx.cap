@@ -31,7 +31,7 @@ namespace :nginx do
   task :symlink do
     on roles(:web), in: :sequence, wait: 5 do |host|
       info "symlinking the nginx.conf"
-      execute :ln, "-nfs", fetch(:nginx_conf_path), "/etc/nginx/sites-enabled/#{fetch(:application)}.conf"
+      execute :sudo, :ln, "-nfs", fetch(:nginx_conf_path), "/etc/nginx/sites-enabled/#{fetch(:application)}.conf"
     end
   end
   
