@@ -24,7 +24,7 @@
   try {
     var address_element = document.getElementsByClassName("mapbox-text")[0].getElementsByTagName("address")[0];
     var components = address_element.getElementsByTagName("span");
-    address = toArray(components).map(function(i) { return i.innerHTML; } ).join(", ");
+    address = toArray(components).map(function(i) { return i.innerHTML.replace(/<br.*/,""); } ).join(", ");
   } catch(err) {
     address = "";
   }
