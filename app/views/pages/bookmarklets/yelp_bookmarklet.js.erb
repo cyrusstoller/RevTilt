@@ -1,50 +1,41 @@
 (function(){
-	var name, url, homepage_url, address, new_organization_url;
-	
-	name = document.getElementById("bizInfoHeader").getElementsByTagName('h1')[0].innerHTML;
-	name = name.replace(/\s+/g,' ').replace(/(^ )|( $)/g,'').replace(/&amp;/g, '&');
-	url = location.href;
-	
-	try {
-		homepage_url = document.getElementById("bizUrl").getElementsByTagName('a')[0].attributes.href.value;
-		homepage_url = homepage_url.gsub(/^.*url=/,"").gsub(/&.*$/, "");
-		homepage_url = decodeURIComponent(homepage_url);
-	} catch(err) {
-		homepage_url = "";
-	}
-	
-	try {
-		var address_element = document.getElementById("bizInfoContent").getElementsByTagName('address')[0];
-
-		try { // street
-			address = address_element.getElementsBySelector("span[itemprop=streetAddress]")[0].innerHTML.replace(/<br>/g,' ') + ", ";
-		} catch(err) {
-			address = ""
-		}
-		
-		try { // city and stats
-			address += address_element.getElementsBySelector("span[itemprop=addressLocality]")[0].innerHTML;
-			address += ", " + address_element.getElementsBySelector("span[itemprop=addressRegion]")[0].innerHTML + " "; 
-		} catch(err) { 
-			address += " "
-		}
-		
-		try { //postal code
-			address += address_element.getElementsBySelector("span[itemprop=postalCode]")[0].innerHTML;
-		} catch(err) {
-			address = address.gsub(/ $/g, "");
-		}
-	} catch(err) {
-		address = "";
-	}
-	
-	new_organization_url = "<%= new_organization_url %>?name=" + encodeURIComponent(name) + "&url=";
-	new_organization_url += encodeURIComponent(url) + "&homepage_url=" + encodeURIComponent(homepage_url);
-	new_organization_url += "&address=" + encodeURIComponent(address);
-	
-	<% if @new_window %>
-	window.open(new_organization_url);
-	<% else %>
-	location.href=new_organization_url;
-	<% end %>
+  var name, url, homepage_url, address, new_organization_url;
+  
+  var toArray = function(obj) {
+    var array = [];
+    // iterate backwards ensuring that length is an UInt32
+    for (var i = obj.length >>> 0; i--;) { 
+      array[i] = obj[i];
+    }
+    return array;
+  }
+  
+  name = document.getElementsByClassName("biz-page-title")[0].innerText;
+  name = name.replace(/\s+/g,' ').replace(/(^ )|( $)/g,'').replace(/&amp;/g, '&');
+  url = location.href;
+  
+  try {
+    homepage_url = document.getElementsByClassName("biz-website")[0].getElementsByTagName('a')[0].innerText;
+    homepage_url = decodeURIComponent(homepage_url);
+  } catch(err) {
+    homepage_url = "";
+  }
+  
+  try {
+    var address_element = document.getElementsByClassName("mapbox-text")[0].getElementsByTagName("address")[0];
+    var components = address_element.getElementsByTagName("span");
+    address = toArray(components).map(function(i) { return i.innerHTML; } ).join(", ");
+  } catch(err) {
+    address = "";
+  }
+  
+  new_organization_url = "<%= new_organization_url %>?name=" + encodeURIComponent(name) + "&url=";
+  new_organization_url += encodeURIComponent(url) + "&homepage_url=" + encodeURIComponent(homepage_url);
+  new_organization_url += "&address=" + encodeURIComponent(address);
+  
+  <% if @new_window %>
+  window.open(new_organization_url);
+  <% else %>
+  location.href=new_organization_url;
+  <% end %>
 }).call(this);
