@@ -5,9 +5,9 @@ set :stage, :vagrant
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-role :app, %w{deployer@192.168.33.10}
-role :web, %w{deployer@192.168.33.10}
-role :db,  %w{deployer@192.168.33.10}
+role :app, %w{deployer@192.168.33.11}
+role :web, %w{deployer@192.168.33.11}
+role :db,  %w{deployer@192.168.33.11}
 
 set :rails_env, :production
 
