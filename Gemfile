@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
 ruby '2.0.0'
-gem 'rails', '4.0.2'
+gem 'rails', '4.0.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # gem 'thin'
-gem 'unicorn', "~> 4.7.0"
+gem 'unicorn', "~> 4.8.2"
 
 gem 'pg', "~> 0.17.0"
 gem 'nokogiri'
@@ -21,15 +21,15 @@ gem 'coffee-rails', '~> 4.0.1'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby
 
-gem 'uglifier', '~> 2.3.2'
+gem 'uglifier', '~> 2.4.0'
 
-gem 'bootstrap-sass', '~> 3.0.3.0'
+gem 'bootstrap-sass', '~> 3.1.1.0'
 # gem 'compass'
 
 group :development, :test do
   gem "rspec-rails", "~> 2.14.0"
   gem "guard-rspec", "~> 4.2.0"
-  gem "factory_girl_rails", "~> 4.3.0"
+  gem "factory_girl_rails", "~> 4.4.0"
   gem "faker"
   
   gem "guard-spork", "~> 1.5.1"
@@ -79,7 +79,7 @@ gem "geocoder"
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
-gem 'jbuilder', "~> 1.5.3"
+gem 'jbuilder', "~> 2.0.3"
 
 # Google Analytics
 gem "gabba", "~> 1.0.1"
@@ -90,14 +90,14 @@ gem "gabba", "~> 1.0.1"
 #   gem "rails_12factor", "~> 0.0.2"
 # end
 
-gem "newrelic_rpm", "~> 3.6.9.171"
+gem "newrelic_rpm", "~> 3.7.2.195"
 
 # Use unicorn as the app server
 # gem 'unicorn'
 
 # Deploy with Capistrano
 group :development do
-  gem "capistrano", "~> 3.0.1"
+  gem "capistrano", "~> 3.1.0"
   gem 'capistrano-rbenv', github: "capistrano/rbenv", ref: "master"
   gem "capistrano-bundler", "~> 1.1.0"
   gem "capistrano-rails", "~> 1.1.0"
