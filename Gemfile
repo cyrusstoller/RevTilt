@@ -98,7 +98,7 @@ gem "newrelic_rpm", "~> 3.7.2.195"
 # Deploy with Capistrano
 group :development do
   gem "capistrano", "~> 3.1.0"
-  gem 'capistrano-rbenv', github: "capistrano/rbenv", ref: "master"
+  gem 'capistrano-rbenv', '~> 2.0'
   gem "capistrano-bundler", "~> 1.1.0"
   gem "capistrano-rails", "~> 1.1.0"
 end
