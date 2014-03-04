@@ -43,7 +43,7 @@ describe User do
     end
 
     it "should not be valid with a username that has whitespace" do
-      FactoryGirl.build(:user, :username => " abe").should_not be_valid
+      FactoryGirl.build(:user, :username => "be cool").should_not be_valid
     end
   end
   
