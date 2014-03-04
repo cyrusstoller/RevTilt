@@ -36,6 +36,15 @@ describe User do
     it "should not be valid without a username" do
       FactoryGirl.build(:user, :username => nil).should_not be_valid
     end
+
+    it "should not be valid with a username that has already been taken" do
+      user1 = FactoryGirl.create(:user)
+      FactoryGirl.build(:user, :username => user1.username).should_not be_valid
+    end
+
+    it "should not be valid with a username that has whitespace" do
+      FactoryGirl.build(:user, :username => " abe").should_not be_valid
+    end
   end
   
   describe "database relationships" do

@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
   # Validations
   validates_presence_of :username
   validates_uniqueness_of :username, :case_sensitive => false
+  validates_format_of :username, :with => /\A[\w]+\z/, :on => :create, :message => "cannot have whitespace"
   
   # Database Relationships
   has_many :organization_user_relationships, :class_name => "Relationships::OrganizationUser", :foreign_key => "user_id", :dependent => :destroy
