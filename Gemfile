@@ -21,7 +21,7 @@ gem 'coffee-rails', '~> 4.0.1'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby
 
-gem 'uglifier', '~> 2.4.0'
+gem 'uglifier', '~> 2.5.0'
 
 gem 'bootstrap-sass', '~> 3.1.1.0'
 # gem 'compass'
@@ -36,7 +36,7 @@ group :development, :test do
   gem "spork-rails", "~> 4.0.0"
 end
 
-gem 'dotenv-rails', "~> 0.9.0"
+gem 'dotenv-rails', "~> 0.10.0"
 
 gem 'jquery-rails'
 
@@ -90,7 +90,7 @@ gem "gabba", "~> 1.0.1"
 #   gem "rails_12factor", "~> 0.0.2"
 # end
 
-gem "newrelic_rpm", "~> 3.7.2.195"
+gem "newrelic_rpm", "~> 3.7.3.204"
 
 # Use unicorn as the app server
 # gem 'unicorn'
