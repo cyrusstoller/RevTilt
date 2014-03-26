@@ -240,6 +240,8 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    unicorn-worker-killer (0.4.2)
+      unicorn (~> 4)
     warden (1.2.3)
       rack (>= 1.0)
     webmock (1.16.1)
@@ -285,6 +287,7 @@ DEPENDENCIES
   spork-rails (~> 4.0.0)
   uglifier (~> 2.5.0)
   unicorn (~> 4.8.2)
+  unicorn-worker-killer (~> 0.4.2)
   url_formatter!
   webmock (~> 1.16.0)
   will_paginate (~> 3.0)

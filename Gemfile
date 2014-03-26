@@ -8,6 +8,7 @@ gem 'rails', '4.0.4'
 
 # gem 'thin'
 gem 'unicorn', "~> 4.8.2"
+gem 'unicorn-worker-killer', "~> 0.4.2"
 
 gem 'pg', "~> 0.17.0"
 gem 'nokogiri'
