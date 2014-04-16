@@ -79,6 +79,9 @@ gem "geocoder"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'turbolinks'
+
 # To use Jbuilder templates for JSON
 gem 'jbuilder', "~> 2.0.3"
 

@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-jQuery ->
+ready = ->
 	$(".stars").raty
 		click: (score, evt) ->
 			$("input[type=hidden].rating").val(score)
@@ -13,3 +13,6 @@ jQuery ->
 		starHalf: "<%= asset_path 'PuzzleHalf.png' %>"
 		starOn:   "<%= asset_path 'PuzzleOn.png' %>"
 		starOff:  "<%= asset_path 'PuzzleOff.png' %>"
+
+$(document).ready(ready)
+$(document).on('page:load', ready)

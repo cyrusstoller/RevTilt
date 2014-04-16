@@ -17,5 +17,5 @@
 			$(this).addClass("btn-success")
 	)
 
-jQuery ($) ->
-	unfavorite_button_hover()
+$(document).ready(unfavorite_button_hover)
+$(document).on('page:load', unfavorite_button_hover)

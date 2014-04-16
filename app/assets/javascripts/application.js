@@ -14,15 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require raty
+//= require turbolinks
 //= require_tree .
-
-$(function(){
-	// handling form errors
-	$("label[data-error]").parent().addClass("has-error");
-	$("input[data-error]").parent().addClass("has-error");
-	$("textarea[data-error]").parent().addClass("has-error");
-	$(".with_popover").popover();
-	$(".disabled").click(function(e){
-		e.preventDefault();
-	});
-});
