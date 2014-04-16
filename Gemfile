@@ -16,7 +16,7 @@ gem 'nokogiri'
 # model annotation
 gem 'annotate', "~> 2.6.0"
 
-gem 'sass-rails',   '~> 4.0.1'
+gem 'sass-rails',   '~> 4.0.3'
 gem 'coffee-rails', '~> 4.0.1'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -42,7 +42,7 @@ gem 'dotenv-rails', "~> 0.10.0"
 gem 'jquery-rails'
 
 group :test do
-  gem 'webmock', "~> 1.16.0"
+  gem 'webmock', "~> 1.17.4"
   gem 'capybara', '~> 2.2.0'
 
   # Test gems on Macintosh OS X
@@ -96,9 +96,11 @@ gem "newrelic_rpm", "~> 3.7.3.204"
 # Use unicorn as the app server
 # gem 'unicorn'
 
+gem 'psych', '~> 2.0.5'
+
 # Deploy with Capistrano
 group :development do
-  gem "capistrano", "~> 3.1.0"
+  gem "capistrano", "~> 3.2.0"
   gem 'capistrano-rbenv', '~> 2.0'
   gem "capistrano-bundler", "~> 1.1.0"
   gem "capistrano-rails", "~> 1.1.0"
