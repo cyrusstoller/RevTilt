@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.0.0'
-gem 'rails', '4.0.4'
+gem 'rails', '4.0.5'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -24,7 +24,7 @@ gem 'coffee-rails', '~> 4.0.1'
 
 gem 'uglifier', '~> 2.5.0'
 
-gem 'bootstrap-sass', '~> 3.1.1.0'
+gem 'bootstrap-sass', '~> 3.1.1.1'
 # gem 'compass'
 
 group :development, :test do
@@ -37,7 +37,7 @@ group :development, :test do
   gem "spork-rails", "~> 4.0.0"
 end
 
-gem 'dotenv-rails', "~> 0.10.0"
+gem 'dotenv-rails', "~> 0.11.0"
 
 gem 'jquery-rails'
 
@@ -83,7 +83,7 @@ gem "geocoder"
 gem 'turbolinks'
 
 # To use Jbuilder templates for JSON
-gem 'jbuilder', "~> 2.0.3"
+gem 'jbuilder', "~> 2.0.7"
 
 # Google Analytics
 gem "gabba", "~> 1.0.1"
@@ -94,7 +94,7 @@ gem "gabba", "~> 1.0.1"
 #   gem "rails_12factor", "~> 0.0.2"
 # end
 
-gem "newrelic_rpm", "~> 3.7.3.204"
+gem "newrelic_rpm", "~> 3.8.0.218"
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -103,7 +103,7 @@ gem 'psych', '~> 2.0.5'
 
 # Deploy with Capistrano
 group :development do
-  gem "capistrano", "~> 3.2.0"
+  gem "capistrano", "~> 3.2.1"
   gem 'capistrano-rbenv', '~> 2.0'
   gem "capistrano-bundler", "~> 1.1.0"
   gem "capistrano-rails", "~> 1.1.0"
