@@ -42,8 +42,8 @@ gem 'dotenv-rails', "~> 0.11.0"
 gem 'jquery-rails'
 
 group :test do
-  gem 'webmock', "~> 1.17.4"
-  gem 'capybara', '~> 2.2.0'
+  gem 'webmock', "~> 1.18.0"
+  gem 'capybara', '~> 2.3.0'
 
   # Test gems on Macintosh OS X
   gem 'rb-fsevent', '~> 0.9.1', :require => false
@@ -83,7 +83,7 @@ gem "geocoder"
 gem 'turbolinks'
 
 # To use Jbuilder templates for JSON
-gem 'jbuilder', "~> 2.0.7"
+gem 'jbuilder', "~> 2.1.1"
 
 # Google Analytics
 gem "gabba", "~> 1.0.1"
@@ -94,7 +94,7 @@ gem "gabba", "~> 1.0.1"
 #   gem "rails_12factor", "~> 0.0.2"
 # end
 
-gem "newrelic_rpm", "~> 3.8.0.218"
+gem "newrelic_rpm", "~> 3.8.1.221"
 
 # Use unicorn as the app server
 # gem 'unicorn'
