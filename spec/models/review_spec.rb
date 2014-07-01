@@ -13,7 +13,7 @@
 #  updated_at      :datetime         not null
 #
 
-require 'spec_helper'
+require 'rails_helper'
 
 describe Review do
   describe "validations" do

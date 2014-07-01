@@ -21,7 +21,7 @@
 #  admin                  :boolean          default(FALSE)
 #
 
-require 'spec_helper'
+require 'rails_helper'
 
 describe User do
   describe "validations" do

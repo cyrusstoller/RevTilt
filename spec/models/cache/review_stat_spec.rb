@@ -12,7 +12,7 @@
 #  updated_at      :datetime         not null
 #
 
-require 'spec_helper'
+require 'rails_helper'
 
 describe Cache::ReviewStat do
   describe "validations" do

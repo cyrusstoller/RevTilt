@@ -17,7 +17,7 @@
 #  homepage_url     :string(255)
 #
 
-require 'spec_helper'
+require 'rails_helper'
 
 describe Organization do
   describe "validation" do
