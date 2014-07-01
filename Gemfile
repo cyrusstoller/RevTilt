@@ -28,8 +28,8 @@ gem 'bootstrap-sass', '~> 3.1.1.1'
 # gem 'compass'
 
 group :development, :test do
-  gem "rspec-rails", "~> 2.14.0"
-  gem "guard-rspec", "~> 4.2.0"
+  gem "rspec-rails", "~> 3.0.1"
+  gem "guard-rspec", "~> 4.2.10"
   gem "factory_girl_rails", "~> 4.4.0"
   gem "faker"
   
