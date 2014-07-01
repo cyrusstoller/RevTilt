@@ -12,38 +12,38 @@
 #  updated_at      :datetime         not null
 #
 
-require 'spec_helper'
+require 'rails_helper'
 
-describe Cache::ReviewStat do
+describe Cache::ReviewStat, :type => :model do
   describe "validations" do
     it "should be valid" do
-      FactoryGirl.build(:cache_review_stat).should be_valid
+      expect(FactoryGirl.build(:cache_review_stat)).to be_valid
     end
     
     it "should not be valid without an organization_id" do
-      FactoryGirl.build(:cache_review_stat, :organization_id => nil).should_not be_valid
+      expect(FactoryGirl.build(:cache_review_stat, :organization_id => nil)).not_to be_valid
     end
     
     it "should not be valid without a condition_id" do
-      FactoryGirl.build(:cache_review_stat, :condition_id => nil).should_not be_valid
+      expect(FactoryGirl.build(:cache_review_stat, :condition_id => nil)).not_to be_valid
     end
   end
   
   describe "database relationships" do
     it "should respond to organization" do
-      FactoryGirl.build(:cache_review_stat).should respond_to(:organization)
+      expect(FactoryGirl.build(:cache_review_stat)).to respond_to(:organization)
     end
   end
   
   describe "scopes" do
     it "should respond to with_condition" do
-      Cache::ReviewStat.should respond_to(:with_condition)
+      expect(Cache::ReviewStat).to respond_to(:with_condition)
     end
     
     it "should return only the Cache::ReviewStat with that condition" do
       rc1 = FactoryGirl.create(:cache_review_stat, :condition_id => 1)
       rc2 = FactoryGirl.create(:cache_review_stat, :condition_id => 2)
-      Cache::ReviewStat.with_condition(1).should eq([rc1])
+      expect(Cache::ReviewStat.with_condition(1)).to eq([rc1])
     end
   end
 end

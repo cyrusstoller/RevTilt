@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 # Specs in this file have access to a helper object that includes
 # the PagesHelper. For example:
@@ -10,26 +10,26 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe ApplicationHelper do
+describe ApplicationHelper, :type => :helper do
   describe "bootstrap_alert_type" do
     it "should return 'danger' when given 'alert'" do
-      helper.bootstrap_alert_type("alert").should == "danger"
-      helper.bootstrap_alert_type(:alert).should == "danger"
+      expect(helper.bootstrap_alert_type("alert")).to eq("danger")
+      expect(helper.bootstrap_alert_type(:alert)).to eq("danger")
     end
 
     it "should return 'danger' when given 'error'" do
-      helper.bootstrap_alert_type("error").should == "danger"
-      helper.bootstrap_alert_type(:error).should == "danger"
+      expect(helper.bootstrap_alert_type("error")).to eq("danger")
+      expect(helper.bootstrap_alert_type(:error)).to eq("danger")
     end
 
     it "should return 'warning' when given 'notice'" do
-      helper.bootstrap_alert_type("notice").should == "warning"
-      helper.bootstrap_alert_type(:notice).should == "warning"
+      expect(helper.bootstrap_alert_type("notice")).to eq("warning")
+      expect(helper.bootstrap_alert_type(:notice)).to eq("warning")
     end
 
     it "should return 'success' when given 'success'" do
-      helper.bootstrap_alert_type("success").should == "success"
-      helper.bootstrap_alert_type(:success).should == "success"
+      expect(helper.bootstrap_alert_type("success")).to eq("success")
+      expect(helper.bootstrap_alert_type(:success)).to eq("success")
     end
   end
   
@@ -37,14 +37,14 @@ describe ApplicationHelper do
     let(:base) { "RevTilt" }
     it "should return 'Revtilt'" do
       @title = nil
-      helper.title.should == base
+      expect(helper.title).to eq(base)
       @title = ""
-      helper.title.should == base
+      expect(helper.title).to eq(base)
     end
     
     it "should return 'RevTilt | Home'" do
       @title = "Home"
-      helper.title.should == "#{base} | Home"
+      expect(helper.title).to eq("#{base} | Home")
     end
   end
 end

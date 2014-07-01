@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 require "cancan/matchers"
 
 describe Ability do
@@ -9,7 +9,7 @@ describe Ability do
     end
     
     subject { @ability }
-    it { should be_able_to(:manage, :all) }
+    it { is_expected.to be_able_to(:manage, :all) }
   end
   
   describe "Reviews" do
@@ -19,8 +19,8 @@ describe Ability do
       end
       subject { @ability }
       
-      it { should be_able_to(:show, FactoryGirl.build(:review)) }
-      it { should_not be_able_to(:manage, FactoryGirl.build(:review)) }
+      it { is_expected.to be_able_to(:show, FactoryGirl.build(:review)) }
+      it { is_expected.not_to be_able_to(:manage, FactoryGirl.build(:review)) }
     end
     
     describe "signed in user" do
@@ -30,9 +30,9 @@ describe Ability do
       end
       subject { @ability }
       
-      it { should be_able_to(:show, FactoryGirl.build(:review)) }
-      it { should be_able_to(:manage, FactoryGirl.build(:review, :user => @user)) }
-      it { should_not be_able_to(:manage, FactoryGirl.build(:review, :user_id => @user.id - 1)) }
+      it { is_expected.to be_able_to(:show, FactoryGirl.build(:review)) }
+      it { is_expected.to be_able_to(:manage, FactoryGirl.build(:review, :user => @user)) }
+      it { is_expected.not_to be_able_to(:manage, FactoryGirl.build(:review, :user_id => @user.id - 1)) }
     end
   end
   
@@ -43,9 +43,9 @@ describe Ability do
       end
       subject { @ability }
       
-      it { should be_able_to(:show, FactoryGirl.build(:organization)) }
-      it { should_not be_able_to(:create, Organization) }
-      it { should_not be_able_to(:manage, FactoryGirl.build(:organization)) }
+      it { is_expected.to be_able_to(:show, FactoryGirl.build(:organization)) }
+      it { is_expected.not_to be_able_to(:create, Organization) }
+      it { is_expected.not_to be_able_to(:manage, FactoryGirl.build(:organization)) }
     end
     
     describe "signed in user" do
@@ -55,20 +55,20 @@ describe Ability do
       end
       subject { @ability }
       
-      it { should be_able_to(:show, FactoryGirl.build(:organization)) }
-      it { should be_able_to(:create, FactoryGirl.build(:organization)) }
-      it { should be_able_to(:manage, FactoryGirl.build(:organization)) }
+      it { is_expected.to be_able_to(:show, FactoryGirl.build(:organization)) }
+      it { is_expected.to be_able_to(:create, FactoryGirl.build(:organization)) }
+      it { is_expected.to be_able_to(:manage, FactoryGirl.build(:organization)) }
       
       it "should not be able to manage an organization if it has reviews" do
         organization = FactoryGirl.create(:organization)
         review = FactoryGirl.create(:review, :organization => organization)
-        should_not be_able_to(:manage, organization)
+        is_expected.not_to be_able_to(:manage, organization)
       end
       
       it "should be able to manage an organization if it only has one review and it is by the user" do
         organization = FactoryGirl.create(:organization)
         review = FactoryGirl.create(:review, :organization => organization, :user => @user)
-        should be_able_to(:manage, organization)
+        is_expected.to be_able_to(:manage, organization)
       end
     end
   end
@@ -81,9 +81,9 @@ describe Ability do
       end
       subject { @ability }
       
-      it { should_not be_able_to(:update, FactoryGirl.build(:relationships_organization_user)) }
-      it { should_not be_able_to(:show, FactoryGirl.build(:relationships_organization_user)) }
-      it { should_not be_able_to(:manage, FactoryGirl.build(:relationships_organization_user)) }
+      it { is_expected.not_to be_able_to(:update, FactoryGirl.build(:relationships_organization_user)) }
+      it { is_expected.not_to be_able_to(:show, FactoryGirl.build(:relationships_organization_user)) }
+      it { is_expected.not_to be_able_to(:manage, FactoryGirl.build(:relationships_organization_user)) }
     end
   end
 end

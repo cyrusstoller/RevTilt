@@ -1,40 +1,40 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe PagesController do
+describe PagesController, :type => :controller do
   render_views
   
   describe "GET 'about'" do
     it "returns http success" do
       get 'about'
-      response.should be_success
+      expect(response).to be_success
     end
   end
   
   describe "GET 'bookmarklet'" do
     it "returns http success" do
       get 'bookmarklet'
-      response.should be_success
+      expect(response).to be_success
     end
     
     describe "js" do
       it "should return the yelp bookmarklet" do
         get 'bookmarklet', :format => :js, :service => "Yelp"
-        response.should render_template("pages/bookmarklets/yelp_bookmarklet")
+        expect(response).to render_template("pages/bookmarklets/yelp_bookmarklet")
       end
 
       it "should set @new_window to false" do
         get 'bookmarklet', :format => :js, :service => "Yelp"
-        assigns(:new_window).should be_false
+        expect(assigns(:new_window)).to eq(false)
       end
       
       it "should set @new_window to true" do
         get 'bookmarklet', :format => :js, :service => "Yelp", :new_window => "true"
-        assigns(:new_window).should be_true
+        expect(assigns(:new_window)).to eq("true")
       end
       
       it "should render the error bookmarklet if the service is no good" do
         get 'bookmarklet', :format => :js
-        response.should render_template("pages/bookmarklets/error_bookmarklet")
+        expect(response).to render_template("pages/bookmarklets/error_bookmarklet")
       end
     end
   end
@@ -47,21 +47,21 @@ describe PagesController do
     
     it "should redirect to root_path" do
       get 'favorites'
-      response.should redirect_to(root_path)
+      expect(response).to redirect_to(root_path)
     end
     
     it "should be successful" do
       @organization = FactoryGirl.create(:organization)
       @user.favorite!(@organization)
       get 'favorites'
-      response.should be_successful
+      expect(response).to be_successful
     end
   end
   
   describe "GET 'press'" do
     it "returns http success" do
       get 'press'
-      response.should be_success
+      expect(response).to be_success
     end
   end
 

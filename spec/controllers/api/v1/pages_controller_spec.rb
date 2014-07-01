@@ -1,12 +1,12 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Api::V1::PagesController do
+describe Api::V1::PagesController, :type => :controller do
   render_views
   
   describe "GET 'documentation'" do
     it "returns http success" do
       get 'documentation'
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
