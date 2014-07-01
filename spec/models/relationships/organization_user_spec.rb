@@ -12,28 +12,28 @@
 
 require 'rails_helper'
 
-describe Relationships::OrganizationUser do
+describe Relationships::OrganizationUser, :type => :model do
   describe "validations" do
     it "should be valid" do
-      FactoryGirl.build(:relationships_organization_user).should be_valid
+      expect(FactoryGirl.build(:relationships_organization_user)).to be_valid
     end
     
     it "should not be valid without an organization_id" do
-      FactoryGirl.build(:relationships_organization_user, :organization_id => nil).should_not be_valid
+      expect(FactoryGirl.build(:relationships_organization_user, :organization_id => nil)).not_to be_valid
     end
     
     it "should not be valid without a user_id" do
-      FactoryGirl.build(:relationships_organization_user, :user_id => nil).should_not be_valid
+      expect(FactoryGirl.build(:relationships_organization_user, :user_id => nil)).not_to be_valid
     end
   end
   
   describe "database relationships" do
     it "should respond_to :organization" do
-      FactoryGirl.build(:relationships_organization_user).should respond_to(:organization)
+      expect(FactoryGirl.build(:relationships_organization_user)).to respond_to(:organization)
     end
     
     it "should respond_to :user" do
-      FactoryGirl.build(:relationships_organization_user).should respond_to(:user)
+      expect(FactoryGirl.build(:relationships_organization_user)).to respond_to(:user)
     end
   end
 end

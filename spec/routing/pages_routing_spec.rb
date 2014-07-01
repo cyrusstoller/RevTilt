@@ -1,22 +1,22 @@
 require "rails_helper"
 
-describe PagesController do
+describe PagesController, :type => :routing do
   describe "routing" do
 
     it "routes to about" do
-      get("/about").should route_to("pages#about")
+      expect(get("/about")).to route_to("pages#about")
     end
     
     it "routes to bookmarklet" do
-      get("/bookmarklet").should route_to("pages#bookmarklet")
+      expect(get("/bookmarklet")).to route_to("pages#bookmarklet")
     end
     
     it "routes to favorites" do
-      get("/favorites").should route_to("pages#favorites")
+      expect(get("/favorites")).to route_to("pages#favorites")
     end
     
     it "routes to press" do
-      get("/press").should route_to("pages#press")
+      expect(get("/press")).to route_to("pages#press")
     end
     
   end

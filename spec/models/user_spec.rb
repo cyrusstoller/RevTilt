@@ -23,37 +23,37 @@
 
 require 'rails_helper'
 
-describe User do
+describe User, :type => :model do
   describe "validations" do
     it "should be valid" do
-      FactoryGirl.build(:user).should be_valid
+      expect(FactoryGirl.build(:user)).to be_valid
     end
     
     it "should not be valid without an email" do
-      FactoryGirl.build(:user, :email => nil).should_not be_valid
+      expect(FactoryGirl.build(:user, :email => nil)).not_to be_valid
     end
     
     it "should not be valid without a username" do
-      FactoryGirl.build(:user, :username => nil).should_not be_valid
+      expect(FactoryGirl.build(:user, :username => nil)).not_to be_valid
     end
 
     it "should not be valid with a username that has already been taken" do
       user1 = FactoryGirl.create(:user)
-      FactoryGirl.build(:user, :username => user1.username).should_not be_valid
+      expect(FactoryGirl.build(:user, :username => user1.username)).not_to be_valid
     end
 
     it "should not be valid with a username that has whitespace" do
-      FactoryGirl.build(:user, :username => "be cool").should_not be_valid
+      expect(FactoryGirl.build(:user, :username => "be cool")).not_to be_valid
     end
   end
   
   describe "database relationships" do
     it "should respond to organization_user_relationships" do
-      FactoryGirl.build(:user).should respond_to(:organization_user_relationships)
+      expect(FactoryGirl.build(:user)).to respond_to(:organization_user_relationships)
     end
     
     it "should respond to favorite_organizations" do
-      FactoryGirl.build(:user).should respond_to(:favorite_organizations)
+      expect(FactoryGirl.build(:user)).to respond_to(:favorite_organizations)
     end
   end
   
@@ -61,15 +61,15 @@ describe User do
     describe "favorite organizations" do
       describe "method existance" do
         it "should respond to favorite!" do
-          FactoryGirl.build(:user).should respond_to(:favorite!)
+          expect(FactoryGirl.build(:user)).to respond_to(:favorite!)
         end
 
         it "should respond to unfavorite!" do
-          FactoryGirl.build(:user).should respond_to(:unfavorite!)
+          expect(FactoryGirl.build(:user)).to respond_to(:unfavorite!)
         end
 
         it "should respond to favorited?" do
-          FactoryGirl.build(:user).should respond_to(:favorited?)
+          expect(FactoryGirl.build(:user)).to respond_to(:favorited?)
         end
       end
 

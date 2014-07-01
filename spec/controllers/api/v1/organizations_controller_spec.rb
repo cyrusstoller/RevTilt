@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Api::V1::OrganizationsController do
+describe Api::V1::OrganizationsController, :type => :controller do
   render_views
   
   describe "GET 'index'" do
@@ -10,19 +10,19 @@ describe Api::V1::OrganizationsController do
     
     it "returns http success" do
       get 'index', :format => :json
-      response.should be_success
+      expect(response).to be_success
     end
     
     it "should return 500 if only latitude, longitude and no radius" do
       get 'index', :latitude => @organization.latitude, :longitude => @organization.longitude, :format => :json
-      response.should_not be_success
-      response.status.should == 500
+      expect(response).not_to be_success
+      expect(response.status).to eq(500)
     end
     
     it "should be successful if given all of latitude, longitude, and radius" do
       get 'index', :latitude => @organization.latitude, :longitude => @organization.longitude, :radius => 20, :format => :json
-      response.should be_success
-      assigns(:organizations).should include(@organization)
+      expect(response).to be_success
+      expect(assigns(:organizations)).to include(@organization)
     end
   end
   
@@ -30,7 +30,7 @@ describe Api::V1::OrganizationsController do
     it "returns http success" do
       organization = FactoryGirl.create(:organization)
       get 'show', :id => organization.to_param, :format => :json
-      response.should be_success
+      expect(response).to be_success
     end
   end
 

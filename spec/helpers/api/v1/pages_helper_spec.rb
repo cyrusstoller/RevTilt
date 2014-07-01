@@ -10,6 +10,6 @@ require 'rails_helper'
 #     end
 #   end
 # end
-describe Api::V1::PagesHelper do
+describe Api::V1::PagesHelper, :type => :helper do
   # pending "add some examples to (or delete) #{__FILE__}"
 end

@@ -18,7 +18,7 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe Relationships::OrganizationUsersController do
+describe Relationships::OrganizationUsersController, :type => :controller do
   render_views
   
   # This should return the minimal set of attributes required to create a valid
@@ -44,7 +44,7 @@ describe Relationships::OrganizationUsersController do
     it "assigns all relationships_organization_users as @relationships_organization_users" do
       organization_user = FactoryGirl.create(:relationships_organization_user)
       get :index, {}
-      assigns(:relationships_organization_users).should eq([organization_user])
+      expect(assigns(:relationships_organization_users)).to eq([organization_user])
     end
   end
 
@@ -52,14 +52,14 @@ describe Relationships::OrganizationUsersController do
     it "assigns the requested relationships_organization_user as @relationships_organization_user" do
       organization_user = FactoryGirl.create(:relationships_organization_user)
       get :show, {:id => organization_user.to_param}
-      assigns(:relationships_organization_user).should eq(organization_user)
+      expect(assigns(:relationships_organization_user)).to eq(organization_user)
     end
   end
 
   describe "GET new" do
     it "assigns a new relationships_organization_user as @relationships_organization_user" do
       get :new, {}
-      assigns(:relationships_organization_user).should be_a_new(Relationships::OrganizationUser)
+      expect(assigns(:relationships_organization_user)).to be_a_new(Relationships::OrganizationUser)
     end
   end
 
@@ -67,7 +67,7 @@ describe Relationships::OrganizationUsersController do
     it "assigns the requested relationships_organization_user as @relationships_organization_user" do
       organization_user = FactoryGirl.create(:relationships_organization_user)
       get :edit, {:id => organization_user.to_param}
-      assigns(:relationships_organization_user).should eq(organization_user)
+      expect(assigns(:relationships_organization_user)).to eq(organization_user)
     end
   end
 
@@ -81,29 +81,29 @@ describe Relationships::OrganizationUsersController do
 
       it "assigns a newly created relationships_organization_user as @relationships_organization_user" do
         post :create, {:relationships_organization_user => valid_attributes}
-        assigns(:relationships_organization_user).should be_a(Relationships::OrganizationUser)
-        assigns(:relationships_organization_user).should be_persisted
+        expect(assigns(:relationships_organization_user)).to be_a(Relationships::OrganizationUser)
+        expect(assigns(:relationships_organization_user)).to be_persisted
       end
 
       it "redirects to the created relationships_organization_user" do
         post :create, {:relationships_organization_user => valid_attributes}
-        response.should redirect_to(Relationships::OrganizationUser.last)
+        expect(response).to redirect_to(Relationships::OrganizationUser.last)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved relationships_organization_user as @relationships_organization_user" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Relationships::OrganizationUser.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Relationships::OrganizationUser).to receive(:save).and_return(false)
         post :create, {:relationships_organization_user => { "organization_id" => "invalid value" }}
-        assigns(:relationships_organization_user).should be_a_new(Relationships::OrganizationUser)
+        expect(assigns(:relationships_organization_user)).to be_a_new(Relationships::OrganizationUser)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Relationships::OrganizationUser.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Relationships::OrganizationUser).to receive(:save).and_return(false)
         post :create, {:relationships_organization_user => { "organization_id" => "invalid value" }}
-        response.should render_template("new")
+        expect(response).to render_template("new")
       end
     end
   end
@@ -116,20 +116,20 @@ describe Relationships::OrganizationUsersController do
         # specifies that the Relationships::OrganizationUser created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Relationships::OrganizationUser.any_instance.should_receive(:update_attributes).with({ "organization_id" => "1" })
+        expect_any_instance_of(Relationships::OrganizationUser).to receive(:update_attributes).with({ "organization_id" => "1" })
         put :update, {:id => organization_user.to_param, :relationships_organization_user => { "organization_id" => "1" }}
       end
 
       it "assigns the requested relationships_organization_user as @relationships_organization_user" do
         organization_user = FactoryGirl.create(:relationships_organization_user)
         put :update, {:id => organization_user.to_param, :relationships_organization_user => valid_attributes}
-        assigns(:relationships_organization_user).should eq(organization_user)
+        expect(assigns(:relationships_organization_user)).to eq(organization_user)
       end
 
       it "redirects to the relationships_organization_user" do
         organization_user = FactoryGirl.create(:relationships_organization_user)
         put :update, {:id => organization_user.to_param, :relationships_organization_user => valid_attributes}
-        response.should redirect_to(organization_user)
+        expect(response).to redirect_to(organization_user)
       end
     end
 
@@ -137,17 +137,17 @@ describe Relationships::OrganizationUsersController do
       it "assigns the relationships_organization_user as @relationships_organization_user" do
         organization_user = FactoryGirl.create(:relationships_organization_user)
         # Trigger the behavior that occurs when invalid params are submitted
-        Relationships::OrganizationUser.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Relationships::OrganizationUser).to receive(:save).and_return(false)
         put :update, {:id => organization_user.to_param, :relationships_organization_user => { "organization_id" => "invalid value" }}
-        assigns(:relationships_organization_user).should eq(organization_user)
+        expect(assigns(:relationships_organization_user)).to eq(organization_user)
       end
 
       it "re-renders the 'edit' template" do
         organization_user = FactoryGirl.create(:relationships_organization_user)
         # Trigger the behavior that occurs when invalid params are submitted
-        Relationships::OrganizationUser.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Relationships::OrganizationUser).to receive(:save).and_return(false)
         put :update, {:id => organization_user.to_param, :relationships_organization_user => { "organization_id" => "invalid value" }}
-        response.should render_template("edit")
+        expect(response).to render_template("edit")
       end
     end
   end
@@ -163,7 +163,7 @@ describe Relationships::OrganizationUsersController do
     it "redirects to the relationships_organization_users list" do
       organization_user = FactoryGirl.create(:relationships_organization_user)
       delete :destroy, {:id => organization_user.to_param}
-      response.should redirect_to(relationships_organization_users_url)
+      expect(response).to redirect_to(relationships_organization_users_url)
     end
   end
   
@@ -179,18 +179,18 @@ describe Relationships::OrganizationUsersController do
     end
     
     it "should call favorite! on the user model" do
-      User.any_instance.should_receive(:favorite!).with(@organization)
+      expect_any_instance_of(User).to receive(:favorite!).with(@organization)
       post :favorite, { :organization_id => @organization.to_param }
     end
     
     it "should redirect to the organization" do
       post :favorite, { :organization_id => @organization.to_param }
-      response.should redirect_to(@organization)
+      expect(response).to redirect_to(@organization)
     end
     
     it "should be successful when given a js call" do
       post :favorite, { :organization_id => @organization.to_param, :format => :js }
-      response.should be_successful
+      expect(response).to be_successful
     end
   end
   
@@ -207,18 +207,18 @@ describe Relationships::OrganizationUsersController do
     end
     
     it "should call favorite! on the user model" do
-      User.any_instance.should_receive(:unfavorite!).with(@organization)
+      expect_any_instance_of(User).to receive(:unfavorite!).with(@organization)
       delete :unfavorite, { :organization_id => @organization.to_param }
     end
     
     it "should redirect to the organization" do
       delete :unfavorite, { :organization_id => @organization.to_param }
-      response.should redirect_to(@organization)
+      expect(response).to redirect_to(@organization)
     end
     
     it "should be successful when given a js call" do
       delete :unfavorite, { :organization_id => @organization.to_param, :format => :js }
-      response.should be_successful
+      expect(response).to be_successful
     end
   end
 

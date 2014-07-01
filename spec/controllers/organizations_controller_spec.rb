@@ -18,7 +18,7 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe OrganizationsController do
+describe OrganizationsController, :type => :controller do
   render_views
 
   # This should return the minimal set of attributes required to create a valid
@@ -39,13 +39,13 @@ describe OrganizationsController do
     it "assigns all organizations as @organizations" do
       organization = FactoryGirl.create(:organization)
       get :index, {}
-      assigns(:organizations).should eq([organization])
+      expect(assigns(:organizations)).to eq([organization])
     end
     
     it "should not show the organization because of the filter" do
       organization = FactoryGirl.create(:organization)
       get :index, { :category => organization.category_id + 1 }
-      assigns(:organizations).should eq([])
+      expect(assigns(:organizations)).to eq([])
     end
   end
 
@@ -56,19 +56,19 @@ describe OrganizationsController do
     
     it "assigns the requested organization as @organization" do
       get :show, {:id => @organization.to_param}
-      assigns(:organization).should eq(@organization)
+      expect(assigns(:organization)).to eq(@organization)
     end
     
     it "should assign a new review to review" do
       get :show, {:id => @organization.to_param}
-      assigns(:review).organization.should eq(@organization)
-      assigns(:review).should be_new_record
+      expect(assigns(:review).organization).to eq(@organization)
+      expect(assigns(:review)).to be_new_record
     end
     
     it "should assign the reviews" do
       prev_review = FactoryGirl.create(:review, :organization => @organization)
       get :show, {:id => @organization.to_param}
-      assigns(:reviews).should eq([prev_review])
+      expect(assigns(:reviews)).to eq([prev_review])
     end
   end
 
@@ -81,7 +81,7 @@ describe OrganizationsController do
     describe "GET new" do
       it "assigns a new organization as @organization" do
         get :new, {}
-        assigns(:organization).should be_a_new(Organization)
+        expect(assigns(:organization)).to be_a_new(Organization)
       end
       
       it "should set name, url, homepage_url, and address from url parameters" do
@@ -92,10 +92,10 @@ describe OrganizationsController do
 
         get :new, { :name => name, :url => url, :homepage_url => homepage_url, :address => address }
 
-        assigns(:organization).name.should eq(name)
-        assigns(:organization).url.should eq(url)
-        assigns(:organization).homepage_url.should eq(homepage_url)
-        assigns(:organization).address.should eq(address)
+        expect(assigns(:organization).name).to eq(name)
+        expect(assigns(:organization).url).to eq(url)
+        expect(assigns(:organization).homepage_url).to eq(homepage_url)
+        expect(assigns(:organization).address).to eq(address)
       end
     end
 
@@ -103,7 +103,7 @@ describe OrganizationsController do
       it "assigns the requested organization as @organization" do
         organization = FactoryGirl.create(:organization)
         get :edit, {:id => organization.to_param}
-        assigns(:organization).should eq(organization)
+        expect(assigns(:organization)).to eq(organization)
       end
     end
 
@@ -117,29 +117,29 @@ describe OrganizationsController do
 
         it "assigns a newly created organization as @organization" do
           post :create, {:organization => valid_attributes}
-          assigns(:organization).should be_a(Organization)
-          assigns(:organization).should be_persisted
+          expect(assigns(:organization)).to be_a(Organization)
+          expect(assigns(:organization)).to be_persisted
         end
 
         it "redirects to the created organization" do
           post :create, {:organization => valid_attributes}
-          response.should redirect_to(Organization.last)
+          expect(response).to redirect_to(Organization.last)
         end
       end
 
       describe "with invalid params" do
         it "assigns a newly created but unsaved organization as @organization" do
           # Trigger the behavior that occurs when invalid params are submitted
-          Organization.any_instance.stub(:save).and_return(false)
+          allow_any_instance_of(Organization).to receive(:save).and_return(false)
           post :create, {:organization => { "name" => "invalid value" }}
-          assigns(:organization).should be_a_new(Organization)
+          expect(assigns(:organization)).to be_a_new(Organization)
         end
 
         it "re-renders the 'new' template" do
           # Trigger the behavior that occurs when invalid params are submitted
-          Organization.any_instance.stub(:save).and_return(false)
+          allow_any_instance_of(Organization).to receive(:save).and_return(false)
           post :create, {:organization => { "name" => "invalid value" }}
-          response.should render_template("new")
+          expect(response).to render_template("new")
         end
       end
       
@@ -147,7 +147,7 @@ describe OrganizationsController do
         it "should redirect to that organization" do
           organization = FactoryGirl.create(:organization)
           post :create, { :organization => valid_attributes.merge(:url => organization.url) }
-          response.should redirect_to(organization)
+          expect(response).to redirect_to(organization)
         end
         
         it "should not create a new organization" do
@@ -167,20 +167,20 @@ describe OrganizationsController do
           # specifies that the Organization created on the previous line
           # receives the :update_attributes message with whatever params are
           # submitted in the request.
-          Organization.any_instance.should_receive(:update_attributes).with({ "name" => "MyString" })
+          expect_any_instance_of(Organization).to receive(:update_attributes).with({ "name" => "MyString" })
           put :update, {:id => organization.to_param, :organization => { "name" => "MyString" }}
         end
 
         it "assigns the requested organization as @organization" do
           organization = FactoryGirl.create(:organization)
           put :update, {:id => organization.to_param, :organization => valid_attributes}
-          assigns(:organization).should eq(organization)
+          expect(assigns(:organization)).to eq(organization)
         end
 
         it "redirects to the organization" do
           organization = FactoryGirl.create(:organization)
           put :update, {:id => organization.to_param, :organization => valid_attributes}
-          response.should redirect_to(organization)
+          expect(response).to redirect_to(organization)
         end
       end
 
@@ -188,17 +188,17 @@ describe OrganizationsController do
         it "assigns the organization as @organization" do
           organization = FactoryGirl.create(:organization)
           # Trigger the behavior that occurs when invalid params are submitted
-          Organization.any_instance.stub(:save).and_return(false)
+          allow_any_instance_of(Organization).to receive(:save).and_return(false)
           put :update, {:id => organization.to_param, :organization => { "name" => "invalid value" }}
-          assigns(:organization).should eq(organization)
+          expect(assigns(:organization)).to eq(organization)
         end
 
         it "re-renders the 'edit' template" do
           organization = FactoryGirl.create(:organization)
           # Trigger the behavior that occurs when invalid params are submitted
-          Organization.any_instance.stub(:save).and_return(false)
+          allow_any_instance_of(Organization).to receive(:save).and_return(false)
           put :update, {:id => organization.to_param, :organization => { "name" => "invalid value" }}
-          response.should render_template("edit")
+          expect(response).to render_template("edit")
         end
       end
     end
@@ -214,7 +214,7 @@ describe OrganizationsController do
       it "redirects to the organizations list" do
         organization = FactoryGirl.create(:organization)
         delete :destroy, {:id => organization.to_param}
-        response.should redirect_to(organizations_url)
+        expect(response).to redirect_to(organizations_url)
       end
     end
   end

@@ -10,6 +10,6 @@ require 'rails_helper'
 #     end
 #   end
 # end
-describe Relationships::OrganizationUsersHelper do
+describe Relationships::OrganizationUsersHelper, :type => :helper do
   # pending "add some examples to (or delete) #{__FILE__}"
 end
