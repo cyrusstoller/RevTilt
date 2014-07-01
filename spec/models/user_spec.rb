@@ -109,11 +109,13 @@ describe User do
         
         it "should return true if the user has favorited an @organization" do
           @user.favorite!(@organization)
-          @user.favorited?(@organization).should be_true
+          res = @user.favorited?(@organization)
+          expect(!!res).to eq(true)
         end
         
         it "should return false if the user has not favorited an @organization" do
-          @user.favorited?(@organization).should be_false
+          res = @user.favorited?(@organization)
+          expect(!!res).to eq(false)
         end
       end
     end

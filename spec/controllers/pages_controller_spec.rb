@@ -24,12 +24,12 @@ describe PagesController do
 
       it "should set @new_window to false" do
         get 'bookmarklet', :format => :js, :service => "Yelp"
-        assigns(:new_window).should be_false
+        expect(assigns(:new_window)).to eq(false)
       end
       
       it "should set @new_window to true" do
         get 'bookmarklet', :format => :js, :service => "Yelp", :new_window => "true"
-        assigns(:new_window).should be_true
+        expect(assigns(:new_window)).to eq("true")
       end
       
       it "should render the error bookmarklet if the service is no good" do
