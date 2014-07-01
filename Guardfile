@@ -1,20 +1,6 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
-guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' }, :wait => 60 do
-  watch('config/application.rb')
-  watch('config/environment.rb')
-  watch('config/routes.rb')
-  watch(%r{^config/environments/.+\.rb$})
-  watch(%r{^config/initializers/.+\.rb$})
-  watch('Gemfile')
-  watch('Gemfile.lock')
-  watch('spec/spec_helper.rb')
-  watch(%r{^spec/factories/.+\.rb$})
-  watch('test/test_helper.rb')
-  watch(%r{^spec/support/.+\.rb$})
-end
-
 guard 'rspec', :all_after_pass => false, :failed_mode => :none do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }

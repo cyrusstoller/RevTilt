@@ -33,8 +33,8 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.4.0"
   gem "faker"
   
-  gem "guard-spork", "~> 1.5.1"
-  gem "spork-rails", "~> 4.0.0"
+  gem 'spring', '~> 1.1.3'
+  gem "spring-commands-rspec"
 end
 
 gem 'dotenv-rails', "~> 0.11.0"
@@ -98,8 +98,6 @@ gem "newrelic_rpm", "~> 3.8.1.221"
 
 # Use unicorn as the app server
 # gem 'unicorn'
-
-gem 'psych', '~> 2.0.5'
 
 # Deploy with Capistrano
 group :development do
