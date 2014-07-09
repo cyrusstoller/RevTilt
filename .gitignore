@@ -26,9 +26,6 @@
 /vendor/bundle
 /.bundle
 
-# rspec
-.rspec
-
 # rvm/rbenv
 .rvmrc
 .ruby-gemset
