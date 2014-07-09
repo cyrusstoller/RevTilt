@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.0.0'
-gem 'rails', '4.0.8'
+gem 'rails', '4.1.4'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -70,7 +70,7 @@ gem 'cancancan', '~> 1.8.4'
 gem "url_formatter", :github => "cyrusstoller/url_formatter", :ref => "master"
 
 # pagination
-gem "will_paginate", "~> 3.0"
+gem "will_paginate", "~> 3.0.7"
 gem "bootstrap-will_paginate", "~> 0.0.9"
 
 # geolocation
@@ -83,7 +83,7 @@ gem "geocoder"
 gem 'turbolinks'
 
 # To use Jbuilder templates for JSON
-gem 'jbuilder', "~> 2.1.1"
+gem 'jbuilder', "~> 2.1.2"
 
 # Google Analytics
 gem "gabba", "~> 1.0.1"

@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   before_filter :authenticate_user!, :only => [:favorites]
-  
+  skip_before_action :verify_authenticity_token, :only => [:bookmarklet]
+
   def about
     @title = "About"
   end
