@@ -47,7 +47,8 @@ group :test do
 
   # Test gems on Macintosh OS X
   gem 'rb-fsevent', '~> 0.9.1', :require => false
-  gem "growl", "~> 1.0.3"
+  gem 'terminal-notifier-guard'
+  # gem "growl", "~> 1.0.3"
   
   # # Test gems for Linux
   # gem 'rb-inotify', '0.8.8'
