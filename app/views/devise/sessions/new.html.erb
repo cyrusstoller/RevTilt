@@ -18,11 +18,8 @@
 
       <% if devise_mapping.rememberable? -%>
         <div class="form-group">
-          <label class="checkbox">
-            <%= f.check_box :remember_me %>
-            Remember me
-          </label>
-        </div>  
+          <%= f.check_box :remember_me %> &nbsp; <%= f.label :remember_me, :class => "control-label" %>
+        </div>
       <% end -%>
 
       <div>
