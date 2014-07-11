@@ -105,7 +105,7 @@ GEM
       thor (~> 0.19.1)
     formatador (0.2.5)
     gabba (1.0.1)
-    geocoder (1.2.2)
+    geocoder (1.2.3)
     guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -268,7 +268,7 @@ DEPENDENCIES
   faker
   foreman
   gabba (~> 1.0.1)
-  geocoder
+  geocoder (~> 1.2.3)
   guard-rspec (~> 4.2.10)
   jbuilder (~> 2.1.2)
   jquery-rails
