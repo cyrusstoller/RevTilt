@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.0.0'
-gem 'rails', '4.1.4'
+gem 'rails', '4.1.5'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -29,7 +29,7 @@ gem 'bootstrap-sass', '~> 3.1.1.1'
 
 group :development, :test do
   gem "rspec-rails", "~> 3.0.1"
-  gem "guard-rspec", "~> 4.2.10"
+  gem "guard-rspec", "~> 4.3.1"
   gem "factory_girl_rails", "~> 4.4.0"
   gem "faker"
   
@@ -66,7 +66,7 @@ gem 'foreman'
 gem "devise", "~> 3.2.2"
 
 # authorization
-gem 'cancancan', '~> 1.8.4'
+gem 'cancancan', '~> 1.9.2'
 
 gem "url_formatter", :github => "cyrusstoller/url_formatter", :ref => "master"
 
