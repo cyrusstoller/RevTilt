@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.0.0'
-gem 'rails', '4.1.5'
+gem 'rails', '4.1.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -43,7 +43,7 @@ gem 'jquery-rails'
 
 group :test do
   gem 'webmock', "~> 1.18.0"
-  gem 'capybara', '~> 2.3.0'
+  gem 'capybara', '~> 2.4.1'
 
   # Test gems on Macintosh OS X
   gem 'rb-fsevent', '~> 0.9.1', :require => false
@@ -63,7 +63,7 @@ end
 gem 'foreman'
 
 # authentication
-gem "devise", "~> 3.2.2"
+gem "devise", "~> 3.3.0"
 
 # authorization
 gem 'cancancan', '~> 1.9.2'
@@ -95,7 +95,7 @@ gem "gabba", "~> 1.0.1"
 #   gem "rails_12factor", "~> 0.0.2"
 # end
 
-gem "newrelic_rpm", "~> 3.8.1.221"
+gem "newrelic_rpm", "~> 3.9.4.245"
 
 # Use unicorn as the app server
 # gem 'unicorn'
