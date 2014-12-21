@@ -18,7 +18,7 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 set :keep_releases, 10
 
 set :rbenv_type, :user
-set :rbenv_ruby, '2.0.0-p481'
+set :rbenv_ruby, '2.1.2'
 set :bundle_flags, "--deployment" # removing the --quiet flag
 
 set :nginx_conf_path, -> { shared_path.join("config/nginx.conf") }
