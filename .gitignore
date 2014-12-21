@@ -30,3 +30,5 @@
 .rvmrc
 .ruby-gemset
 # .ruby-version
+
+.capistrano/*
