@@ -5,9 +5,9 @@ set :stage, :production
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-role :app, %w{deployer@162.243.47.109}
-role :web, %w{deployer@162.243.47.109}
-role :db,  %w{deployer@162.243.47.109}
+role :app, %w{deployer@alpha.revtilt.com}
+role :web, %w{deployer@alpha.revtilt.com}
+role :db,  %w{deployer@alpha.revtilt.com}
 
 set :rails_env, :production
 
