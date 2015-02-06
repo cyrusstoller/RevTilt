@@ -8,9 +8,9 @@ gem 'rails', '4.2.0'
 
 # gem 'thin'
 gem 'unicorn', "~> 4.8.2"
-gem 'unicorn-worker-killer', "~> 0.4.2"
+gem 'unicorn-worker-killer', "~> 0.4.3"
 
-gem 'pg', "~> 0.17.0"
+gem 'pg', "~> 0.18.1"
 gem 'nokogiri'
 
 # model annotation
@@ -22,13 +22,13 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby
 
-gem 'uglifier', '~> 2.6.0'
+gem 'uglifier', '~> 2.7.0'
 
 gem 'bootstrap-sass', '~> 3.1.1.1'
 # gem 'compass'
 
 group :development, :test do
-  gem "rspec-rails", "~> 3.1.0"
+  gem "rspec-rails", "~> 3.2.0"
   gem "guard-rspec", "~> 4.5.0"
   gem "factory_girl_rails", "~> 4.5.0"
   gem "faker"
@@ -66,7 +66,7 @@ gem 'foreman'
 gem "devise", "~> 3.4.1"
 
 # authorization
-gem 'cancancan', '~> 1.9.2'
+gem 'cancancan', '~> 1.10.1'
 
 gem "url_formatter", :github => "cyrusstoller/url_formatter", :ref => "master"
 
@@ -95,7 +95,7 @@ gem "gabba", "~> 1.0.1"
 #   gem "rails_12factor", "~> 0.0.2"
 # end
 
-gem "newrelic_rpm", "~> 3.9.8.273"
+gem "newrelic_rpm", "~> 3.9.9.275"
 
 # Use unicorn as the app server
 # gem 'unicorn'
