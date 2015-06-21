@@ -1,43 +1,43 @@
 source 'https://rubygems.org'
 
 ruby '2.1.2'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # gem 'thin'
-gem 'unicorn', "~> 4.8.2"
+gem 'unicorn', "~> 4.9.0"
 gem 'unicorn-worker-killer', "~> 0.4.3"
 
-gem 'pg', "~> 0.18.1"
+gem 'pg', "~> 0.18.2"
 gem 'nokogiri'
 
 # model annotation
-gem 'annotate', "~> 2.6.0"
+gem 'annotate', "~> 2.6.10"
 
-gem 'sass-rails',   '~> 5.0.0'
+gem 'sass-rails',   '~> 5.0.3'
 gem 'coffee-rails', '~> 4.1.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby
 
-gem 'uglifier', '~> 2.7.0'
+gem 'uglifier', '~> 2.7.1'
 
 gem 'bootstrap-sass', '~> 3.1.1.1'
 # gem 'compass'
 
 group :development, :test do
-  gem "rspec-rails", "~> 3.2.0"
-  gem "guard-rspec", "~> 4.5.0"
+  gem "rspec-rails", "~> 3.3.2"
+  gem "guard-rspec", "~> 4.5.2"
   gem "factory_girl_rails", "~> 4.5.0"
   gem "faker"
   
-  gem 'spring', '~> 1.2.0'
+  gem 'spring', '~> 1.3.6'
   gem "spring-commands-rspec"
 end
 
-gem 'dotenv-rails', "~> 0.11.0"
+gem 'dotenv-rails', "~> 2.0.2"
 
 gem 'jquery-rails'
 
@@ -63,10 +63,10 @@ end
 gem 'foreman'
 
 # authentication
-gem "devise", "~> 3.4.1"
+gem "devise", "~> 3.5.1"
 
 # authorization
-gem 'cancancan', '~> 1.10.1'
+gem 'cancancan', '~> 1.11.0'
 
 gem "url_formatter", :github => "cyrusstoller/url_formatter", :ref => "master"
 
@@ -84,7 +84,7 @@ gem "geocoder", "~> 1.2.3"
 gem 'turbolinks'
 
 # To use Jbuilder templates for JSON
-gem 'jbuilder', "~> 2.2.6"
+gem 'jbuilder', "~> 2.3.0"
 
 # Google Analytics
 gem "gabba", "~> 1.0.1"
@@ -95,7 +95,7 @@ gem "gabba", "~> 1.0.1"
 #   gem "rails_12factor", "~> 0.0.2"
 # end
 
-gem "newrelic_rpm", "~> 3.9.9.275"
+gem "newrelic_rpm", "~> 3.12.0.288"
 
 # Use unicorn as the app server
 # gem 'unicorn'
