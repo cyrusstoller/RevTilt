@@ -102,7 +102,7 @@ gem "newrelic_rpm", "~> 3.12.0.288"
 
 # Deploy with Capistrano
 group :development do
-  gem "capistrano", "~> 3.3.5"
+  gem "capistrano", "~> 3.4.0"
   gem 'capistrano-rbenv', '~> 2.0'
   gem "capistrano-bundler", "~> 1.1.0"
   gem "capistrano-rails", "~> 1.1.0"
