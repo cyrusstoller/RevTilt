@@ -29,7 +29,7 @@ gem 'bootstrap-sass', '~> 3.1.1.1'
 
 group :development, :test do
   gem "rspec-rails", "~> 3.3.2"
-  gem "guard-rspec", "~> 4.5.2"
+  gem "guard-rspec", "~> 4.6.4"
   gem "factory_girl_rails", "~> 4.5.0"
   gem "faker"
   
@@ -42,8 +42,8 @@ gem 'dotenv-rails', "~> 2.0.2"
 gem 'jquery-rails'
 
 group :test do
-  gem 'webmock', "~> 1.20.4"
-  gem 'capybara', '~> 2.4.1'
+  gem 'webmock', "~> 1.21.0"
+  gem 'capybara', '~> 2.5.0'
 
   # Test gems on Macintosh OS X
   gem 'rb-fsevent', '~> 0.9.1', :require => false
@@ -66,7 +66,7 @@ gem 'foreman'
 gem "devise", "~> 3.5.1"
 
 # authorization
-gem 'cancancan', '~> 1.11.0'
+gem 'cancancan', '~> 1.12.0'
 
 gem "url_formatter", :github => "cyrusstoller/url_formatter", :ref => "master"
 
@@ -95,7 +95,7 @@ gem "gabba", "~> 1.0.1"
 #   gem "rails_12factor", "~> 0.0.2"
 # end
 
-gem "newrelic_rpm", "~> 3.12.0.288"
+gem "newrelic_rpm", "~> 3.13.0.299"
 
 # Use unicorn as the app server
 # gem 'unicorn'
